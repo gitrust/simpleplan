@@ -11,7 +11,8 @@ $controller->invoke();
 
 $page = $controller->renderView();
 
-echo $page
+print ($page);
+
 ?>
 
 

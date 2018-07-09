@@ -1,6 +1,6 @@
 <h1>Planer - Login</h1>
 <!-- The above form looks like this -->
-<form>
+<form method="POST" action="index.php?page=home">
   <div class="row">
     <div class="six columns">
       <label for="loginInput">Your login</label>
