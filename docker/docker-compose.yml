@@ -1,0 +1,10 @@
+version: "3"
+
+services:
+    php:
+        image: fauria/lap
+        ports:
+            - "8080:80"
+        volumes:
+            - //c/Users/weeba:/var/www/html
+volumes: {}

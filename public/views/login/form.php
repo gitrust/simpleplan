@@ -1,6 +1,15 @@
-<h1>Planer - Login</h1>
+
+<h1><?= $data['form_header'] ?></h1>
+
+<?php echo Message::show(); ?>
+
+<?php
+ $logindata = $data['login'];
+
+?>
+	  
 <!-- The above form looks like this -->
-<form method="POST" action="index.php?page=home">
+<form method="POST" action="<?= DIR ?>/termin/list/">
   <div class="row">
     <div class="six columns">
       <label for="loginInput">Your login</label>

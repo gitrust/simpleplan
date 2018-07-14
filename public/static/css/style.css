@@ -1,0 +1,49 @@
+/*
+ Bootstrap (minified): https://netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css
+ */
+
+body { background-color: LightCyan; }
+
+img { max-width: 100%; }
+
+.container { max-width: 970px;}
+
+.panel {
+   margin: 50px auto;
+   width: 500px;
+}
+
+.form-control { margin-bottom: 15px; }
+
+.form-search { width: 300px; }
+
+.thumbnail {
+   margin-bottom: 25px;
+   padding: 0;
+}
+   .thumbnail h4 {
+      overflow: hidden;
+      margin: 0 0 10px;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      line-height: 1.2;
+   }
+   .thumbnail:hover .buttons-edit { visibility: visible; }
+   .thumbnail img {
+      display: block;
+      margin: 0 auto;
+      height: 200px;
+      border-radius: 4px 4px 0 0;
+   }
+
+.buttons-edit {
+   position: absolute;
+   top: 10px;
+   right: 25px;
+   visibility: hidden;
+}
+
+.alert-info {
+  font-size: 2em;
+  text-align: center;
+}
