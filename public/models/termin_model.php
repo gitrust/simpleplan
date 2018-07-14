@@ -23,5 +23,13 @@ class Termin_Model extends Model {
 
 	return $array;
    }
+   
+   public function termine() {
+	   return array("01.02.2018","10.07.2018","13.08.2018");
+   }
+   
+   public function rollen() {
+	   return array("singer","e-guitar","drummer","leader","singer1","singer2","singer3","piano","e-bass");
+   }
 
 }

@@ -1,3 +1,4 @@
 <div class="nav">
-<a href="login/login">Login</a>
+<a href="<?= DIR ?>/login/logout">Logout</a> | 
+<a href="<?= DIR ?>/login/logout">Administration</a>
 </div>

@@ -1,29 +1,42 @@
-<div class="row list-group products">
+<div class="row">
+<div class="nine columns">
 
-   <?php echo Message::show(); ?>
+	<h1><?= $data['title'] ?></h1>
 
-   <?php
-      if (!sizeof($data['termine'])) {
-         echo '<div class="alert alert-info">Derzeit gibt es keine Produkte. <a href="' . DIR . 'products/add">Leg gleich welche an</a>!</div>';
-      }
-      else {
-         foreach ($data['termine'] as $product) {
-            echo
-            '<div class="item col-xs-4">
-               <div class="thumbnail">
-                  <a href="' . $product['url'] . '" title="' . $product['name'] . '"><img src="' . $product['image'] . '" alt="' . $product['name'] . '"></a>
-                  <div class="buttons-edit">
-                     <a class="btn btn-default btn-sm" href="' . DIR . 'products/edit/' . $product['id'] . '">Edit</a>
-                     <a class="btn btn-default btn-sm" href="' . DIR . 'products/delete/' . $product['id'] . '">Delete</a>
-                  </div>
-                  <div class="caption">
-                     <h4><a href="' . $product['url'] . '" title="' . $product['name'] . '">' . $product['name'] . '</a></h4>
-                     <span class="lead">' . $product['price'] . '€</span>
-                  </div>
-               </div>
-            </div>';
-         }
-      }
-   ?>
+	<?php echo Message::show(); ?>
 
-</div> <!-- / .products -->
+	<form>
+	
+	<div>
+	<input class="button-primary" value="Speichern" type="submit">
+	</div>
+	<table>
+	<?php
+	  if (!sizeof($data['rollen'])) {
+		 echo '<div class="alert alert-info">Derzeit gibt es keine Produkte. <a href="' . DIR . 'products/add">Leg gleich welche an</a>!</div>';
+	  }
+	  else {
+		 echo '<thead><tr><th>Termin/Rolle</th>';
+		 foreach ($data['rollen'] as $rolle) {
+			echo
+			'<th>' . $rolle . '</th>';
+		 }
+		 echo '</tr></thead>';
+		 
+		 echo '<tbody>';
+		 foreach ($data['termine'] as $termin) {
+			echo '<tr>';
+			echo '<td>' . $termin . '</td>';
+			
+			foreach ($data['rollen'] as $rolle) {
+				echo '<td><input type="checkbox" name="" value=""></td>';
+			}
+			echo '</tr>';
+		 }
+		 echo '</tbody>';
+	  }
+	?>
+	</table>
+	</form>
+</div>
+</div> <!-- / .termine -->
