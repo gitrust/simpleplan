@@ -4,9 +4,9 @@ services:
     php:
         image: fauria/lap
         ports:
-            - "8080:80"
+          - "8080:80"
         volumes:
-            - $(WWW_FOLDER):/var/www/html
+          - "${WWW_FOLDER}:/var/www/html"
         networks:
           - backend
     db:
@@ -20,7 +20,7 @@ services:
       expose:
         - 3306
       volumes:
-        - $(SQL_SCRIPTS_FOLDER):/docker-entrypoint-initdb.d
+        - "${SQL_SCRIPTS_FOLDER}:/docker-entrypoint-initdb.d"
       networks:
         - backend
         
