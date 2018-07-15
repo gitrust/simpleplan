@@ -9,7 +9,7 @@
 ?>
 	  
 <!-- The above form looks like this -->
-<form method="POST" action="<?= DIR ?>/termin/list/">
+<form method="POST" action="<?= DIR ?>termin/list/">
   <div class="row">
     <div class="six columns">
       <label for="loginInput">Your login</label>

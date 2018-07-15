@@ -12,24 +12,24 @@
 	</div>
 	<table>
 	<?php
-	  if (!sizeof($data['rollen'])) {
+	  if (!sizeof($data['roles'])) {
 		 echo '<div class="alert alert-info">Derzeit gibt es keine Produkte. <a href="' . DIR . 'products/add">Leg gleich welche an</a>!</div>';
 	  }
 	  else {
 		 echo '<thead><tr><th>Termin/Rolle</th>';
-		 foreach ($data['rollen'] as $rolle) {
-			echo
-			'<th>' . $rolle . '</th>';
+		 foreach ($data['roles'] as $role) {
+			echo '<th>' . $role["role"] . '</th>';
 		 }
 		 echo '</tr></thead>';
 		 
 		 echo '<tbody>';
-		 foreach ($data['termine'] as $termin) {
+		 foreach ($data['entries'] as $termin) {
 			echo '<tr>';
-			echo '<td>' . $termin . '</td>';
+			echo '<td>' . $termin["targetDate"] . '</td>';
 			
-			foreach ($data['rollen'] as $rolle) {
-				echo '<td><input type="checkbox" name="" value=""></td>';
+			foreach ($data['roles'] as $role) {
+				$key = $termin["id"] . "-" . $role["id"];
+				echo '<td><input type="checkbox" name="entrykey" value="' . $key . '"></td>';
 			}
 			echo '</tr>';
 		 }

@@ -4,7 +4,7 @@
     <div class="container">
 		<div class="row">
 			<div class="twelve columns">
-				<a href="<?= DIR ?>/page/impressum/">Impressum</a>&nbsp;|&nbsp;<a href="<?= DIR ?>/page/datenschutz/">Datenschutz</a>
+				<a href="<?= DIR ?>page/impressum/">Impressum</a>&nbsp;|&nbsp;<a href="<?= DIR ?>page/datenschutz/">Datenschutz</a>
 			</div>
 		</div>
 		

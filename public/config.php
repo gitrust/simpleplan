@@ -5,12 +5,12 @@ date_default_timezone_set('Europe/Berlin');
 
 //site address
 define('ENVIRONMENT', 'development');
-define('DIR','http://localhost:8080/mvc');
+define('DIR','http://localhost:8080/');
 define('DOCROOT', dirname(__FILE__));
 
 // Credentials for the local server
 define('DB_TYPE','mysql');
-define('DB_HOST','localhost');
+define('DB_HOST','db');
 define('DB_NAME','wteamplaner');
 define('DB_USER','wteamplaner');
 define('DB_PASS','wteamplaner');

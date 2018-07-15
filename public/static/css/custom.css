@@ -2,3 +2,15 @@
 .site-footer {
   background: lightgray;
 }
+
+#copyright p {
+    margin: 0;
+}
+
+.pull-right {
+    float: right !important;
+}
+
+.pull-right {
+    float: right!important;
+}

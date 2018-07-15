@@ -35,7 +35,7 @@ set_exception_handler('logger::exception_handler');
 set_error_handler('logger::error_handler');
 
 $app = new Bootstrap();
-$app->setController('products');
+$app->setController('welcome');
 $app->init();
 
 ob_flush();

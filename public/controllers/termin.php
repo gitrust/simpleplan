@@ -8,8 +8,8 @@ class Termin extends Controller {
 
    public function index() {
       $data['title'] = 'Termin Übersicht';
-      $data['termine'] = $this->_model->termine();
-	  $data['rollen'] = $this->_model->rollen();
+      $data['entries'] = $this->_model->termine();
+	  $data['roles'] = $this->_model->rollen();
 
       $this->_view->render('header', $data);
 	  $this->_view->render('nav', $data);
