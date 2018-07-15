@@ -11,9 +11,9 @@ define('DOCROOT', dirname(__FILE__));
 // Credentials for the local server
 define('DB_TYPE','mysql');
 define('DB_HOST','localhost');
-define('DB_NAME','id6451972_team');
-define('DB_USER','id6451972_team');
-define('DB_PASS','teamteamteamteam');
+define('DB_NAME','wteamplaner');
+define('DB_USER','wteamplaner');
+define('DB_PASS','wteamplaner');
 
 // Credentials for the HTW server
 // define('DB_HOST','db.f4.htw-berlin.de');
