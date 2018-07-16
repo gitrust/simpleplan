@@ -2,6 +2,10 @@ version: "3"
 
 services:
     php:
+        environment:
+            LOG_STDOUT: "true"
+            LOG_STDERR: "true"
+            LOG_LEVEL: debug
         image: fauria/lap
         ports:
           - "8080:80"
