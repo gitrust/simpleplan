@@ -15,16 +15,23 @@ class Login extends Controller {
       $this->_view->render('footer');
    }
 
-   public function login() {
-      $loggedIn = $this->doLogin();
-       
-      $data['title'] = 'After Login';
-      $data['form_header'] = 'Benutzer angemeldet' . $loggedIn;
+    public function login() {
+        $loggedIn = $this->doLogin();
 
-      $this->_view->render('header', $data);
-      $this->_view->render('login/form', $data);
-      $this->_view->render('footer');
-   }
+        $data['title'] = 'After Login';
+        $data['form_header'] = 'Benutzer angemeldet' . Session::get("userid");
+      
+
+        if ($loggedIn) {
+            $data['location'] = 'termin/list/';
+            // redirect and die
+            $this->_view->render('redirect', $data);
+        } else {
+            $this->_view->render('header', $data);
+            $this->_view->render('login/form', $data);
+            $this->_view->render('footer');
+        }
+    }
    
    public function doLogin() {
        
@@ -38,7 +45,7 @@ class Login extends Controller {
        $users = $this->_model->usersByLogin($login,$pass);
        
        if ($users !== false && Password::validate($pass,$users["pass"])) {
-           Session::set("userid",$users["id"]);
+           Session::set("userid",$users[0]['id']);
            return true;
        }
        return false;

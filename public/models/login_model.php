@@ -26,7 +26,7 @@ class Login_Model extends Model {
     }
    
    public function usersByLogin($login,$pass) {    
-       return  $this->_db->select('SELECT * FROM Users WHERE login = :login ORDER BY id DESC LIMIT 0, 20',array("login" => $login));       
+       return  $this->_db->select('SELECT * FROM Users WHERE login = :login ORDER BY id DESC LIMIT 0, 1',array("login" => $login));       
    }
 
 }
