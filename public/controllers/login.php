@@ -25,6 +25,8 @@ class Login extends Controller {
    }
    
    public function logout() {
+	  Session::destroy();
+	  
 	  $data['title'] = 'Login';
 	   
 	  $this->_view->render('header', $data);

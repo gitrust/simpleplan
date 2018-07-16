@@ -5,10 +5,11 @@
 
 	<?php echo Message::show(); ?>
 
-	<form>
+	<form action="<?= DIR ?>termin/store/" method="POST">
 	
 	<div>
-	<input class="button-primary" value="Speichern" type="submit">
+	<input class="button-primary" value="Speichern" type="submit">&nbsp;
+	<input class="button-primary" value="Aktualisieren" type="submit">
 	</div>
 	<table>
 	<?php

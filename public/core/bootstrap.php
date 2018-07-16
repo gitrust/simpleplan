@@ -8,7 +8,7 @@ class Bootstrap {
 
     public function __construct() {
         //start the session class
-        //Session::init();
+        Session::init();
         //sets the url
         $this->_getUrl();
     }
