@@ -1,8 +1,10 @@
 # wteamplaner
+
 private repository for a PHP app to plan team resources
 
 http://tutorials.lemme.at/mvc-mit-php/
 
+framework is based on sources of simple mvc
 
 # Install docker toolbox
 
@@ -35,3 +37,7 @@ Create your docker-compose environment file ".env" in docker directory
 
 * init WWW_FOLDER variable
 * init SQL_SCRIPTS_FOLDER variable
+
+# Initialize database
+
+* adapt SQL files in /sql folder
