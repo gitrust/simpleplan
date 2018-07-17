@@ -7,7 +7,7 @@ class Login extends Controller {
   }
 
   public function index() {
-    $data['title'] = 'Login';
+    $data['title'] = I18n::tr('login');
     $data['form_header'] = 'Anmelden';
 
     $this->_view->render('header', $data);
@@ -45,6 +45,7 @@ class Login extends Controller {
 
     if ($users !== false && Password::validate($pass,$users["pass"])) {
       Session::set("userid",$users[0]['id']);
+      Session::set("username",$users[0]['firstname']);
       return true;
     }
     return false;
@@ -53,7 +54,7 @@ class Login extends Controller {
   public function logout() {
     Session::destroy();
 
-    $data['title'] = 'Login';
+    $data['title'] = I18n::tr('header.login');
 
     $this->_view->render('header', $data);
     $this->_view->render('login/form', $data);
