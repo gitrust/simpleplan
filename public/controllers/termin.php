@@ -22,9 +22,8 @@ class Termin extends Controller {
   }
 
   public function store() {
-    if
 
-      $data['title'] = 'Termin Uebersicht';
+    $data['title'] = 'Termin Uebersicht';
     $data['entries'] = $this->_model->termine();
     $data['roles'] = $this->_model->rollen();
 
