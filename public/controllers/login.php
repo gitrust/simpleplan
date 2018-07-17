@@ -21,7 +21,6 @@ class Login extends Controller {
     $data['title'] = 'After Login';
     $data['form_header'] = 'Benutzer angemeldet' . Session::get("userid");
 
-
     if ($loggedIn) {
       $data['location'] = 'termin/list/';
       // redirect and die
