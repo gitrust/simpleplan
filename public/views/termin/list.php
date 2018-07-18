@@ -24,13 +24,14 @@
 		 echo '</tr></thead>';
 		 
 		 echo '<tbody>';
+		 
 		 foreach ($data['entries'] as $termin) {
 			echo '<tr>';
 			echo '<td>' . $termin["targetDate"] . '</td>';
 			
 			foreach ($data['roles'] as $role) {
 				$key = $termin["id"] . "-" . $role["id"];
-				echo '<td><input type="checkbox" name="entrykey" value="' . $key . '"></td>';
+				echo '<td><input type="checkbox" name="entrykey[]" value="' . $key . '"></td>';
 			}
 			echo '</tr>';
 		 }

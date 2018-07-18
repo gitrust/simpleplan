@@ -15,6 +15,17 @@ class Termin extends Controller {
   }
 
   public function store() {
+  	 if (!empty($_POST['entrykey'])) {
+      $entries = $_POST['entrykey'];
+    	
+    	//echo $entries;
+    	
+    	foreach ($entries as $entry) {
+			//echo $entry . "<br>" ;   	
+    	}
+    }
+
+    
     $this->render();
   }
   
