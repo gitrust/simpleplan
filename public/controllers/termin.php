@@ -7,14 +7,7 @@ class Termin extends Controller {
   }
 
   public function index() {
-    $data['title'] = 'Termin Uebersicht';
-    $data['entries'] = $this->_model->termine();
-    $data['roles'] = $this->_model->rollen();
-
-    $this->_view->render('header', $data);
-    $this->_view->render('nav', $data);
-    $this->_view->render('termin/list', $data);      
-    $this->_view->render('footer');
+    $this->render();
   }
 
   public function genKey($termin,$rolle) {
@@ -22,8 +15,11 @@ class Termin extends Controller {
   }
 
   public function store() {
-
-    $data['title'] = 'Termin Uebersicht';
+    $this->render();
+  }
+  
+  private function render() {
+    $data['title'] = I18n::tr('title.schedulelist');
     $data['entries'] = $this->_model->termine();
     $data['roles'] = $this->_model->rollen();
 

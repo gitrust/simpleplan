@@ -1,4 +1,4 @@
-<h1>Error <?= $data['status'] ?></h1>
+<h1> <?= I18n::tr('title.error') . $data['status'] ?></h1>
 
 <hr />
 

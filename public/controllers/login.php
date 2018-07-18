@@ -7,28 +7,24 @@ class Login extends Controller {
   }
 
   public function index() {
-    $data['title'] = I18n::tr('login');
-    $data['form_header'] = 'Anmelden';
+    $data['title'] = I18n::tr('title.login');
+    $data['form_header'] = I18n::tr('form.login');
 
-    $this->_view->render('header', $data);
-    $this->_view->render('login/form', $data);
-    $this->_view->render('footer');
+    $this->render($data);
   }
 
   public function login() {
     $loggedIn = $this->doLogin();
 
-    $data['title'] = 'After Login';
-    $data['form_header'] = 'Benutzer angemeldet' . Session::get("userid");
+    $data['title'] = I18n::tr('title.login');
+    $data['form_header'] = I18n::tr('form.login');
 
     if ($loggedIn) {
       $data['location'] = 'termin/list/';
       // redirect and die
       $this->_view->render('redirect', $data);
     } else {
-      $this->_view->render('header', $data);
-      $this->_view->render('login/form', $data);
-      $this->_view->render('footer');
+      $this->render($data);
     }
   }
 
@@ -54,8 +50,13 @@ class Login extends Controller {
   public function logout() {
     Session::destroy();
 
-    $data['title'] = I18n::tr('header.login');
+    $data['title'] = I18n::tr('title.login');
+    $data['form_header'] = I18n::tr('form.login');
 
+    $this->render($data);
+  }
+  
+  private function render($data) {
     $this->_view->render('header', $data);
     $this->_view->render('login/form', $data);
     $this->_view->render('footer');

@@ -8,8 +8,8 @@
 	<form action="<?= DIR ?>termin/store/" method="POST">
 	
 	<div>
-	<input class="button-primary" value="Speichern" type="submit">&nbsp;
-	<input class="button-primary" value="Aktualisieren" type="submit">
+	<input class="button-primary" value="<?= I18n::tr('button.save'); ?>" type="submit">&nbsp;
+	<input class="button-primary" value="<?= I18n::tr('button.update'); ?>" type="submit">
 	</div>
 	<table>
 	<?php
@@ -17,7 +17,7 @@
 		 echo '<div class="alert alert-info">Derzeit gibt es keine Produkte. <a href="' . DIR . 'products/add">Leg gleich welche an</a>!</div>';
 	  }
 	  else {
-		 echo '<thead><tr><th>Termin/Rolle</th>';
+		 echo '<thead><tr><th>' . I18n::tr('table.header.schedulelist') . '</th>';
 		 foreach ($data['roles'] as $role) {
 			echo '<th>' . $role["role"] . '</th>';
 		 }
