@@ -20,6 +20,7 @@ class Termin extends Controller {
   
   private function render() {
     $data['title'] = I18n::tr('title.schedulelist');
+    
     $data['entries'] = $this->_model->termine();
     $data['roles'] = $this->_model->rollen();
 
