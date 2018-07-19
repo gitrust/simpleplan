@@ -1,11 +1,10 @@
 <?php
 
-class Welcome_Model extends Model {
+class Page_Model extends Model {
 
    public function __construct(){
       parent::__construct();
    }
-
   
 
 }
