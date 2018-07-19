@@ -9,7 +9,7 @@
 	
 	<div>
 	<input class="button-primary" value="<?= I18n::tr('button.save'); ?>" type="submit">&nbsp;
-	<input class="button-primary" value="<?= I18n::tr('button.update'); ?>" type="submit">
+	<input class="button-primary" value="<?= I18n::tr('button.update'); ?>" type="button">
 	</div>
 	<table>
 	<?php
@@ -24,14 +24,19 @@
 		 echo '</tr></thead>';
 		 
 		 echo '<tbody>';
-		 
-		 foreach ($data['entries'] as $termin) {
+		
+		 foreach ($data['schedules'] as $schedule) {
 			echo '<tr>';
-			echo '<td>' . $termin["targetDate"] . '</td>';
+			echo '<td>' . $schedule["targetDate"] . '</td>';
 			
 			foreach ($data['roles'] as $role) {
-				$key = $termin["id"] . "-" . $role["id"];
-				echo '<td><input type="checkbox" name="entrykey[]" value="' . $key . '"></td>';
+				$key = $schedule["id"] . "-" . $role["id"];
+				$checked = "";
+				
+				if (in_array($key,$data["entrykeys"])) {
+					$checked = "checked";
+				}
+				echo '<td><input type="checkbox" name="entrykeys[]" ' . $checked . ' value="' . $key . '"></td>';
 			}
 			echo '</tr>';
 		 }
