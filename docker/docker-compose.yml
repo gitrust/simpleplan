@@ -27,6 +27,22 @@ services:
         - "${SQL_SCRIPTS_FOLDER}:/docker-entrypoint-initdb.d"
       networks:
         - backend
+    phpmyadmin:
+      image: phpmyadmin/phpmyadmin
+      container_name: phpmyadmin
+      environment:
+        PMA_ARBITRARY: 1
+        PMA_PORT: 3306
+        PMA_HOST: "db"
+        MYSQL_DATABASE: wteamplaner
+        MYSQL_ROOT_PASSWORD: pass
+        MYSQL_USER: wteamplaner
+        MYSQL_PASSWORD: wteamplaner
+      restart: always
+      ports:
+       - "8081:80"
+      networks:
+        - backend
         
 volumes: {}
 networks:

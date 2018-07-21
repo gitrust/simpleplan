@@ -1,9 +1,8 @@
 <script language="JavaScript">
 	function resetAll() {
 		checkboxes = document.getElementsByName('entrykeys[]');
-		for(var i in checkboxes){
-			checkboxes[i].checked = false;			
-		}
+		for(var i in checkboxes)
+			checkboxes[i].checked = false;
 	}
 </script>
 
@@ -14,12 +13,10 @@
 
 	<?php echo Message::show(); ?>
 
-	<form action="<?= DIR ?>termin/update/" method="POST">
+	<form action="<?= DIR ?>termin/store/" method="POST">
 	
 	<div>
-	<input class="button-primary" value="<?= I18n::tr('button.save'); ?>" type="submit">&nbsp;
-	<!--input class="button-primary" value="<?= I18n::tr('button.update'); ?>" type="button">
-	<input class="button-primary" value="<?= I18n::tr('button.reset'); ?>" type="button" onClick="resetAll();"-->
+	&nbsp;
 	</div>
 	<table>
 	<?php
@@ -46,7 +43,7 @@
 				if (in_array($key,$data["entrykeys"])) {
 					$checked = "checked";
 				}
-				echo '<td><input type="checkbox" name="entrykeys[]" ' . $checked . ' value="' . $key . '"></td>';
+				echo '<td><input readonly type="checkbox" name="entrykeys[]" ' . $checked . ' value="' . $key . '"></td>';
 			}
 			echo '</tr>';
 		 }

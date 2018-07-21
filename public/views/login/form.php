@@ -5,7 +5,6 @@
 
 <?php
  $logindata = $data['login'];
-
 ?>
   
 <!-- The above form looks like this -->

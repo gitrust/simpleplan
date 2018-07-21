@@ -16,11 +16,11 @@ class Login extends Controller {
   public function login() {
     $loggedIn = $this->doLogin();
 
-    $data['title'] = I18n::tr('title.login');
+    $data['title'] = I18n::tr('title.login') ;
     $data['form_header'] = I18n::tr('form.login');
 
     if ($loggedIn) {
-      $data['location'] = 'termin/list/';
+      $data['location'] = 'termin/mylist/';
       // redirect and die
       $this->_view->render('redirect', $data);
     } else {
@@ -39,7 +39,7 @@ class Login extends Controller {
 
     $users = $this->_model->usersByLogin($login,$pass);
 
-    if ($users !== false && Password::validate($pass,$users["pass"])) {
+    if ($users !== false && count($users) > 0 && Pass::validate($pass,$users[0]["pass"])) {
       Session::set("userid",$users[0]['id']);
       Session::set("username",$users[0]['firstname']);
       return true;

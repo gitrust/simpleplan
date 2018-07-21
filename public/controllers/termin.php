@@ -9,56 +9,69 @@ class Termin extends Controller {
   public function index() {
   	 $this->checkAccess();
   	 
-    $this->render();
+     $this->render();
   }
 
-  public function genKey($termin,$rolle) {
+  public function key($termin,$rolle) {
     return "x";
   }
   
-  private function checkAccess() {  	
-  	  if (!Session::get("userid")) {
-		 $data['location'] = 'login/logout/';
-      	// redirect and die
-       $this->_view->render('redirect', $data); 	  
-  	  } 
+  private function checkAccess() {
+  	if (!Session::get("userid")) {
+		  $data['location'] = 'login/logout/';
+      
+      // redirect and die
+      $this->_view->render('redirect', $data); 	  
+  	} 
   }
 
-  public function store() {
+  public function update() {
   	 $this->checkAccess();
   	 
   	 $keys = $this->entryKeysFromUi();
-    $this->storeKeys($keys);
+     $this->storeKeys($keys);
     
-    $this->render();
+     $this->render();
   }
   
   public function reset() {
   	 $this->checkAccess();
     
+     $this->render();
+  }
+
+  public function mylist() {
+    $this->checkAccess();
+    
     $this->render();
+  }
+
+  public function teamlist() {
+    $this->checkAccess();
+    
+    $this->renderteamlist();
   }
   
   private function entryKeysFromDb() {
     $userId = Session::get("userid");
-    $schedules = $this->_model->entries($userId);
+    $entries = $this->_model->entries($userId);
     
     $keysFromDB = array();
-    foreach ($schedules as $schedule) {
-    	 $key = $schedule["scheduleId"] . '-' . $schedule["roleId"]; 
-		 array_push($keysFromDB,$key);
+    foreach ($entries as $entry) {
+    	 $key = $entry["scheduleId"] . '-' . $entry["roleId"]; 
+       array_push($keysFromDB,$key);
     }
     return $keysFromDB;
   }
   
   private function entryKeysFromUi() {
-  	 $keysFromUi = array();
-  	 if (!empty($_POST['entrykeys'])) {
+    $keysFromUi = array();
+    if (!empty($_POST['entrykeys'])) {
       $entries = $_POST['entrykeys'];
-    	
-    	foreach ($entries as $entry) {
- 			array_push($keysFromUi,$entry);
-    	}
+
+      foreach ($entries as $entry) {
+      	array_push($keysFromUi,$entry);
+      }
     }
     return $keysFromUi;
   }
@@ -75,7 +88,7 @@ class Termin extends Controller {
   }
   
   private function render() {
-    $data['title'] = I18n::tr('title.schedulelist');
+    $data['title'] = I18n::tr('title.entrylist');
     
     $data['schedules'] = $this->_model->schedules();
     $data['roles'] = $this->_model->roles();
@@ -86,5 +99,18 @@ class Termin extends Controller {
     $this->_view->render('termin/list', $data);      
     $this->_view->render('footer');
   }
+
+  private function renderteamlist() {
+    $data['title'] = I18n::tr('title.teamlist');
+    
+    $data['schedules'] = $this->_model->schedules();
+    $data['roles'] = $this->_model->roles();
+    $data['entrykeys'] = $this->entryKeysFromDb();
+
+    $this->_view->render('header', $data);
+    $this->_view->render('nav', $data);
+    $this->_view->render('termin/teamlist', $data);      
+    $this->_view->render('footer');
+  }  
 
 }
