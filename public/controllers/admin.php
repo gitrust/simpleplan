@@ -7,24 +7,25 @@ class Admin extends Controller {
   }
 
   public function index() {
+    $data["isadmin"] = $this->isAdmin();
     $data['title'] = I18n::tr('title.rolesite');
     $data['form_header'] = I18n::tr('form.login');
-
     $this->render($data);
   }
 
 
   public function roles() {
+    $data["isadmin"] = $this->isAdmin();
     $data['roles'] = $this->_model->roles();
-    $data['title'] = I18n::tr('title.rolesite') ;
+    $data['title'] = I18n::tr('title.rolesite');
     $data['form_header'] = I18n::tr('form.login');
-    $this->render($data);    
+    $this->render($data);
   }
-
 
   public function roleadd() {
     $this->addRole();
 
+    $data["isadmin"] = $this->isAdmin();
     $data['roles'] = $this->_model->roles();
     $data['title'] = I18n::tr('title.rolesite') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -36,6 +37,8 @@ class Admin extends Controller {
     if (!empty($roleId)) {
       $this->_model->deleteRole($roleId);
     }
+
+    $data["isadmin"] = $this->isAdmin();
     $data['roles'] = $this->_model->roles();
     $data['title'] = I18n::tr('title.rolesite') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -43,6 +46,7 @@ class Admin extends Controller {
   }
 
   public function schedules() {
+    $data["isadmin"] = $this->isAdmin();
     $data['schedules'] = $this->_model->schedules();
     $data['title'] = I18n::tr('title.schedules') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -54,6 +58,7 @@ class Admin extends Controller {
       $this->_model->deleteSchedule($id);
     }
 
+    $data["isadmin"] = $this->isAdmin();
     $data['schedules'] = $this->_model->schedules();
     $data['title'] = I18n::tr('title.schedules') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -88,6 +93,7 @@ class Admin extends Controller {
   }
 
   public function users() {
+    $data["isadmin"] = $this->isAdmin();
     $data['users'] = $this->_model->users();
     $data['title'] = I18n::tr('title.users') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -99,6 +105,7 @@ class Admin extends Controller {
       $this->_model->deleteUser($id);
     }
 
+    $data["isadmin"] = $this->isAdmin();
     $data['users'] = $this->_model->users();
     $data['title'] = I18n::tr('title.users') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -109,12 +116,14 @@ class Admin extends Controller {
   public function useradd() {
     $this->addUser();
 
+    $data["isadmin"] = $this->isAdmin();
     $data['users'] = $this->_model->users();
     $data['title'] = I18n::tr('title.users') ;
     $data['form_header'] = I18n::tr('form.login');
     
     $this->renderUsers($data); 
   }
+
 
   private function addUser() {
     if (!empty($_POST['login']) && !empty($_POST['firstname']) && !empty($_POST['pass'])) {
@@ -125,6 +134,7 @@ class Admin extends Controller {
   
   private function render($data) {
     $this->_view->render('header', $data);
+    $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
     $this->_view->render('admin/nav', $data);
     $this->_view->render('admin/roleedit', $data);
@@ -135,6 +145,7 @@ class Admin extends Controller {
 
   private function renderSchedules($data) {
     $this->_view->render('header', $data);
+    $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
     $this->_view->render('admin/nav', $data);
     $this->_view->render('admin/schededit', $data);
@@ -145,6 +156,7 @@ class Admin extends Controller {
 
   private function renderUsers($data) {
     $this->_view->render('header', $data);
+    $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
     $this->_view->render('admin/nav', $data);
     $this->_view->render('admin/useredit', $data);

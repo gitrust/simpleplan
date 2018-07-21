@@ -7,7 +7,7 @@
   <meta charset="utf-8">
   <title><?= $data['title'] . ' - ' . SITETITLE ?></title>
   <meta name="description" content="">
-  <meta name="author" content="">
+  <meta name="author" content="ew">
 
   <!-- Mobile Specific Metas
   ************************* -->
@@ -29,4 +29,4 @@
 
 </head>
 <body>
-<div class="container">
+<div class="container" id="main">

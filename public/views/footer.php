@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="six columns">				
-				<p class="pull-left">Copyright (c) 2018 - WTPlaner</p>				
+				<p class="pull-right">Copyright (c) 2018 - WTPlaner</p>				
 			</div>
 		</div>
     </div>

@@ -76,7 +76,7 @@ class Admin_Model extends Model {
    * get all available users
    */
   public function users() {
-    return $this->_db->select('SELECT id, firstname, login,email FROM Users ORDER BY firstname ASC LIMIT 0, 50');
+    return $this->_db->select('SELECT id, firstname, login,email FROM Users WHERE roleflag = :roleflag ORDER BY firstname ASC LIMIT 0, 50',array('roleflag' => 'U'));
   }
  
 

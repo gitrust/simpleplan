@@ -10,7 +10,7 @@ class Termin_Model extends Model {
    * get all available schedules
    */
   public function schedules() {
-    return $this->_db->select('SELECT id, targetDate FROM Schedule ORDER BY id DESC LIMIT 0, 100');
+    return $this->_db->select('SELECT id, targetDate FROM Schedule ORDER BY id ASC LIMIT 0, 100');
     //return array("01.02.2018","10.07.2018","13.08.2018");
   }
 

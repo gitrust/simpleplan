@@ -5,6 +5,12 @@ class I18n {
 	private static  $msg = 
 		array("button.save" => "Speichern",
 			"title.login" => "Anmelden",
+			"link.administration" => "Administration",
+			"link.logout" => "Abmelden",
+			"link.entries" => "Planung",
+			"link.roles" => "Rollen",
+			"link.users" => "Benutzer",
+			"link.schedules" => "Termine",
 		"form.login" => "Anmelden",
 		"form.password" => "Passwort",
 		"button.login" => "Anmelden",

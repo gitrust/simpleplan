@@ -2,15 +2,22 @@
 
 	<div class="eight columns">
 		<div class="nav">
-		<a href="<?= DIR ?>login/logout">Logout</a> | 
-		<a href="<?= DIR ?>admin/roles">Administration</a>
+		<a href="<?= DIR ?>termin/mylist"><?= I18n::tr('link.entries'); ?></a> |
+<?php 
+		if ($data["isadmin"]){
+			$link = I18n::tr('link.administration');
+			echo '<a href="' . DIR . 'admin/roles/">' . $link . '</a> |';
+		}
+?>
+		<a href="<?= DIR ?>login/logout/"><?= I18n::tr('link.logout'); ?></a>
+		
 		</div>
 	</div>
 
 	<div class="four columns">
 	<?php 
 	  if (Session::get("userid")) { 
-	    echo '<span class="loginname">Angemeldet als ' . Session::get('username') . '</span>';
+	    echo '<p class="pull-right loginname">Angemeldet als ' . Session::get('username') . '</p>';
 	  }  
 	?>
 	</div>

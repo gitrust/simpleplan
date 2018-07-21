@@ -90,6 +90,7 @@ class Termin extends Controller {
   private function render() {
     $data['title'] = I18n::tr('title.entrylist');
     
+    $data["isadmin"] = $this->isAdmin();
     $data['schedules'] = $this->_model->schedules();
     $data['roles'] = $this->_model->roles();
     $data['entrykeys'] = $this->entryKeysFromDb();
@@ -102,7 +103,7 @@ class Termin extends Controller {
 
   private function renderteamlist() {
     $data['title'] = I18n::tr('title.teamlist');
-    
+    $data["isadmin"] = $this->isAdmin();
     $data['schedules'] = $this->_model->schedules();
     $data['roles'] = $this->_model->roles();
     $data['entrykeys'] = $this->entryKeysFromDb();
