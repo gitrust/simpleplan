@@ -1,2 +1,1 @@
-</div> <!-- / .cols -->
-</div> <!-- / .row -->
+  <br>footer

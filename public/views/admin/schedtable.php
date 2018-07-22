@@ -1,3 +1,5 @@
+<div class="row">
+	<div class="twelve columns">
 	<table class="stripe">
 	<?php
 	  if (!sizeof($data['schedules'])) {
@@ -20,3 +22,5 @@
 	  }
 	?>
 	</table>
+	</div>
+</div>

@@ -5,4 +5,6 @@
 	<h1><?= $data['title'] ?></h1>
 
 	<?php echo Message::show(); ?>
+</div>
+</div>
 	
