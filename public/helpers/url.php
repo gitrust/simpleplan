@@ -30,4 +30,11 @@ class URL {
       }
       return DIR . $path;
    }
+
+   public static function JS($filename = false, $path = 'static/js/') {
+      if ($filename) {
+         $path .= "$filename.js";
+      }
+      return DIR . $path;
+   }
 }

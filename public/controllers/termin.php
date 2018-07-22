@@ -49,7 +49,7 @@ class Termin extends Controller {
   public function teamlist() {
     $this->checkAccess();
     
-    $this->renderteamlist();
+    $this->renderTeamlist();
   }
   
   private function entryKeysFromDb() {
@@ -101,8 +101,30 @@ class Termin extends Controller {
     $this->_view->render('footer');
   }
 
-  private function renderteamlist() {
+  /**
+   * returns an array with user names
+   * (key)scheduleId-roleId : (value)array with usernames
+   */
+  private function entryUsers() {
+    $teamEntries = $this->_model->teamEntries();
+    $entryUsers = array();
+    foreach ($teamEntries as $te) {
+      $key =  $te['scheduleId'] . '-' . $te['roleId'];
+      $userName = $te['firstname'];
+      if (array_key_exists($key,$entryUsers)) {
+         array_push($entryUsers[$key], $userName);
+      } else {
+         $entryUsers[$key] = array($userName);
+      }
+    }
+    return $entryUsers;
+  }
+
+  private function renderTeamlist() {
+    $entryUsers = $this->entryUsers();
+
     $data['title'] = I18n::tr('title.teamlist');
+    $data['entryUsers'] = $entryUsers;
     $data["isadmin"] = $this->isAdmin();
     $data['schedules'] = $this->_model->schedules();
     $data['roles'] = $this->_model->roles();

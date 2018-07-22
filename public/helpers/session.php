@@ -5,10 +5,33 @@ class Session {
    private static $_sessionStarted = false;
 
    public static function init() {
-      if (self::$_sessionStarted == false) {
+      if (self::$_sessionStarted == false) {         
          session_start();
          self::$_sessionStarted = true;
-      }
+
+         // check timeout         
+         self::checkTimeout();
+      } 
+   }
+
+   private static function  checkTimeout() {
+         if (SESSION_TIMEOUT <= 0) {
+            return ;
+         }
+
+         // check timeout
+         if (!self::get("timeout")) {
+            self::resetTimeout();
+         }
+
+         if ((self::get("timeout") + SESSION_TIMEOUT * 60) < time()) {
+               self::destroy();
+         }
+         self::resetTimeout();
+   }
+
+   private static function resetTimeout() {
+      self::set("timeout",  time());
    }
 
    public static function set($key, $value) {

@@ -33,7 +33,11 @@ class Termin_Model extends Model {
    * get all entries for all user
    */
   public function teamEntries() {
-     return $this->_db->select('SELECT id, roleId,userId,scheduleId FROM Entries  LIMIT 0, 500');
+     return $this->_db->select('SELECT e.id as id, e.roleId as roleId,e.userId as userId, u.firstname as firstname, e.scheduleId as scheduleId' 
+     . ' FROM Entries e, Users u  ' 
+     . ' WHERE  e.userId = u.id '
+     . ' ORDER BY e.roleId, e.scheduleId, u.firstname '
+     . ' LIMIT 0, 500');
   }
   
   /**

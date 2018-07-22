@@ -22,7 +22,10 @@ define('DB_PASS','wteamplaner');
 // define('DB_PASS','bummelletzter');
 
 //set prefix for sessions
-define('SESSION_PREFIX','splendr_');
+define('SESSION_PREFIX','wteam_');
 
 //optionall create a constant for the name of the site
-define('SITETITLE','Mein Team');
+define('SITETITLE','WPTeam Planer');
+
+// session timeout in minutes
+define('SESSION_TIMEOUT',1);

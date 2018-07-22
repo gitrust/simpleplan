@@ -8,23 +8,28 @@
 </script>
 
 <div class="row">
-<div class="nine columns">
+<div class="twelve columns">
 
 	<h1><?= $data['title'] ?></h1>
 
+<?php
+	if ($data["isadmin"]) {
+		require("nav.php");
+	}
+	echo "<br>";
+?>
+	
 	<?php echo Message::show(); ?>
 
 	<form action="<?= DIR ?>termin/update/" method="POST">
 	
 	<div>
 	<input class="button-primary" value="<?= I18n::tr('button.save'); ?>" type="submit">&nbsp;
-	<!--input class="button-primary" value="<?= I18n::tr('button.update'); ?>" type="button">
-	<input class="button-primary" value="<?= I18n::tr('button.reset'); ?>" type="button" onClick="resetAll();"-->
 	</div>
 	<table>
 	<?php
 	  if (!sizeof($data['roles'])) {
-		 echo '<div class="alert alert-info">Derzeit gibt es keine Produkte. <a href="' . DIR . 'products/add">Leg gleich welche an</a>!</div>';
+		 echo '<div class="alert alert-info">Derzeit gibt es keine Rollen!</div>';
 	  }
 	  else {
 		 echo '<thead><tr><th>' . I18n::tr('table.header.entrylist') . '</th>';
@@ -56,4 +61,4 @@
 	</table>
 	</form>
 </div>
-</div> <!-- / .termine -->
+</div> <!-- / .row -->

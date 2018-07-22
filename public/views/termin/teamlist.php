@@ -1,27 +1,25 @@
-<script language="JavaScript">
-	function resetAll() {
-		checkboxes = document.getElementsByName('entrykeys[]');
-		for(var i in checkboxes)
-			checkboxes[i].checked = false;
-	}
-</script>
 
 <div class="row">
-<div class="nine columns">
+<div class="twelve columns">
 
 	<h1><?= $data['title'] ?></h1>
 
-	<?php echo Message::show(); ?>
+	<!-- menu -->
+	<div class="subnav">
+		<a href="<?= DIR ?>termin/mylist/"><?= I18n::tr('link.mylist'); ?></a>
+		| <a href="<?= DIR ?>termin/teamlist/"><?= I18n::tr('link.teamlist'); ?></a> 
+	</div>
 
-	<form action="<?= DIR ?>termin/store/" method="POST">
-	
+	<?php echo Message::show(); ?>	
 	<div>
 	&nbsp;
 	</div>
+
+
 	<table>
 	<?php
 	  if (!sizeof($data['roles'])) {
-		 echo '<div class="alert alert-info">Derzeit gibt es keine Produkte. <a href="' . DIR . 'products/add">Leg gleich welche an</a>!</div>';
+		 echo '<div class="alert alert-info">Derzeit gibt es keine Eintraege. !</div>';
 	  }
 	  else {
 		 echo '<thead><tr><th>' . I18n::tr('table.header.entrylist') . '</th>';
@@ -38,12 +36,12 @@
 			
 			foreach ($data['roles'] as $role) {
 				$key = $schedule["id"] . "-" . $role["id"];
-				$checked = "";
-				
-				if (in_array($key,$data["entrykeys"])) {
-					$checked = "checked";
-				}
-				echo '<td><input readonly type="checkbox" name="entrykeys[]" ' . $checked . ' value="' . $key . '"></td>';
+				$uarray = $data["entryUsers"][$key];
+				$value = "";
+				if (count($uarray) > 0) {
+					$value = implode(', ',$uarray);
+				}			
+				echo '<td>' . $value . '</td>';
 			}
 			echo '</tr>';
 		 }
@@ -51,6 +49,5 @@
 	  }
 	?>
 	</table>
-	</form>
 </div>
-</div> <!-- / .termine -->
+</div> <!-- / .row -->

@@ -21,8 +21,12 @@
   ************************* -->
   <link rel="stylesheet" href="<?= URL::STYLES('normalize') ?>">
   <link rel="stylesheet" href="<?= URL::STYLES('skeleton') ?>">
+  <link rel="stylesheet" href="<?= URL::STYLES('rome.min') ?>">
   <link rel="stylesheet" href="<?= URL::STYLES('custom') ?>">
  
+  <!--  JS	-->
+  <script src="<?= URL::JS('rome.min') ?>"></script>
+  	
   <!-- Favicon
   ************************* -->
   <link rel="icon" type="image/png" href="images/favicon.png">
