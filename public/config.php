@@ -28,4 +28,4 @@ define('SESSION_PREFIX','wteam_');
 define('SITETITLE','WPTeam Planer');
 
 // session timeout in minutes
-define('SESSION_TIMEOUT',1);
+define('SESSION_TIMEOUT',10);

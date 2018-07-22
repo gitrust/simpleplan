@@ -1,4 +1,4 @@
-	<table>
+	<table class="stripe">
 	<?php
 	  if (!sizeof($data['roles'])) {
 		 echo '<div class="alert alert-info">Keine Rollen</div>';

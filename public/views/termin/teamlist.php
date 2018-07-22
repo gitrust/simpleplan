@@ -16,7 +16,7 @@
 	</div>
 
 
-	<table>
+	<table class="stripe">
 	<?php
 	  if (!sizeof($data['roles'])) {
 		 echo '<div class="alert alert-info">Derzeit gibt es keine Eintraege. !</div>';
@@ -24,7 +24,7 @@
 	  else {
 		 echo '<thead><tr><th>' . I18n::tr('table.header.entrylist') . '</th>';
 		 foreach ($data['roles'] as $role) {
-			echo '<th>' . $role["role"] . '</th>';
+			echo '<th>' . htmlspecialchars($role["role"]) . '</th>';
 		 }
 		 echo '</tr></thead>';
 		 
@@ -32,7 +32,7 @@
 		
 		 foreach ($data['schedules'] as $schedule) {
 			echo '<tr>';
-			echo '<td>' . $schedule["targetDate"] . '</td>';
+			echo '<td>' . htmlspecialchars($schedule["targetDate"]) . '</td>';
 			
 			foreach ($data['roles'] as $role) {
 				$key = $schedule["id"] . "-" . $role["id"];
@@ -41,7 +41,7 @@
 				if (count($uarray) > 0) {
 					$value = implode(', ',$uarray);
 				}			
-				echo '<td>' . $value . '</td>';
+				echo '<td>' . htmlspecialchars($value) . '</td>';
 			}
 			echo '</tr>';
 		 }

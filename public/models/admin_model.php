@@ -88,4 +88,10 @@ class Admin_Model extends Model {
     }
     return array();
   }
+
+  public function deleteUser($id,$currentUserId) {
+    if (!empty($id) && $id !== $currentUserId) {
+      return $this->_db->delete('Users',array("id" => $id),$limit = 1); 
+    }
+  }
 }
