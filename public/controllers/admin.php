@@ -3,7 +3,7 @@
 class Admin extends Controller {
 
   public function __construct() {
-    parent::__construct();
+    parent::__construct($needsLogin=true);
   }
 
   public function index() {

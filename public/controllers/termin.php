@@ -3,31 +3,18 @@
 class Termin extends Controller {
 
   public function __construct() {
-    parent::__construct();
+    parent::__construct($needsLogin=true);
   }
 
-  public function index() {
-  	 $this->checkAccess();
-  	 
+  public function index() {  	 
      $this->render();
   }
 
   public function key($termin,$rolle) {
     return "x";
-  }
+  }  
   
-  private function checkAccess() {
-  	if (!Session::get("userid")) {
-		  $data['location'] = 'login/logout/';
-      
-      // redirect and die
-      $this->_view->render('redirect', $data); 	  
-  	} 
-  }
-
   public function update() {
-  	 $this->checkAccess();
-  	 
   	 $keys = $this->entryKeysFromUi();
      $this->storeKeys($keys);
     
@@ -35,20 +22,14 @@ class Termin extends Controller {
   }
   
   public function reset() {
-  	 $this->checkAccess();
-    
      $this->render();
   }
 
   public function mylist() {
-    $this->checkAccess();
-    
     $this->render();
   }
 
-  public function teamlist() {
-    $this->checkAccess();
-    
+  public function teamlist() {    
     $this->renderTeamlist();
   }
   
