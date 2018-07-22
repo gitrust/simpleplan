@@ -1,5 +1,5 @@
 
-
+/* Main content div, white page with shadow */
 #main {
 	background-color: white;
 	padding-left: 20px;
@@ -30,6 +30,7 @@ body {
     float: right!important;
 }
 
+/* displayed login name, header */
 p.loginname {
 	font-size: 10px; 
 }
@@ -47,17 +48,17 @@ footer.page-footer {
 		background: #ffffff;
 }
 .stripe td{ 
-	padding:5px;
+	padding:8px;
 	 /*border:#4e95f4 1px solid; padding:7px;*/
 }
 /* provide some minimal visual accomodation for IE8 and below */
-.stripe tr{
-	/*background: #b8d1f3;*/
-}
+/*.stripe tr{
+	background: #1EAEDB;
+}*/
 /*  Define the background color for all the ODD background rows  */
-.stripe tr:nth-child(odd){ 
-	background: #b8d1f3;
-}
+/*.stripe tr:nth-child(odd){ 
+	background: #1EAEDB;
+} */
 /*  Define the background color for all the EVEN background rows  */
 .stripe tr:nth-child(even){
 	background: #dae5f4;
