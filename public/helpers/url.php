@@ -37,4 +37,11 @@ class URL {
       }
       return DIR . $path;
    }
+
+   public static function IMG($filename = false, $path = 'static/img/') {
+      if ($filename) {
+         $path .= "$filename";
+      }
+      return DIR . $path;
+   }
 }
