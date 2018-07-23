@@ -13,6 +13,7 @@ class I18n {
 			"link.schedules" => "Termine",
 			"link.mylist" => "Meine Termine",
 			"link.teamlist" => "Team Uebersicht",
+			"table.noentries" => "Derzeit gibt es keine Eintraege!",
 		"form.login" => "Anmelden",
 		"form.password" => "Passwort",
 		"button.login" => "Anmelden",

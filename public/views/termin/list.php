@@ -23,13 +23,18 @@
 
 	<form action="<?= DIR ?>termin/update/" method="POST">
 	
-	<div>
-	<input class="button-primary" value="<?= I18n::tr('button.save'); ?>" type="submit">&nbsp;
-	</div>
+<?php
+  if (sizeof($data['roles'])) {
+	echo '<div>';
+	echo '<input class="button-primary" value="' . I18n::tr('button.save') . '" type="submit">&nbsp;';
+	echo '</div>';
+  }
+?>
+
 	<table class="stripe">
 	<?php
 	  if (!sizeof($data['roles'])) {
-		 echo '<div class="alert alert-info">Derzeit gibt es keine Rollen!</div>';
+		 echo '<div class="alert alert-info">' . I18n::tr('table.noentries') . '</div>';
 	  }
 	  else {
 		 echo '<thead><tr><th>' . I18n::tr('table.header.entrylist') . '</th>';

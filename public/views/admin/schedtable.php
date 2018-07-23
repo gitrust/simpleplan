@@ -3,7 +3,7 @@
 	<table class="stripe">
 	<?php
 	  if (!sizeof($data['schedules'])) {
-		 echo '<div class="alert alert-info">Keine Termine</div>';
+		 echo '<div class="alert alert-info">' . I18n::tr('table.noentries') . '</div>';
 	  }
 	  else {
 		 echo '<thead><tr>';

@@ -19,7 +19,7 @@
 	<table class="stripe">
 	<?php
 	  if (!sizeof($data['roles'])) {
-		 echo '<div class="alert alert-info">Derzeit gibt es keine Eintraege. !</div>';
+		 echo '<div class="alert alert-info">' . I18n::tr('table.noentries') . '</div>';
 	  }
 	  else {
 		 echo '<thead><tr><th>' . I18n::tr('table.header.entrylist') . '</th>';
