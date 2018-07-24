@@ -16,7 +16,9 @@ class Termin extends Controller {
   
   public function update() {
   	 $keys = $this->entryKeysFromUi();
-     $this->storeKeys($keys);
+     if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
+        $this->storeKeys($keys);
+     }
     
      $this->render();
   }
@@ -61,6 +63,7 @@ class Termin extends Controller {
 		$userId = Session::get("userid");
 		
 		$this->_model->deleteEntriesForUser($userId);
+        
 		foreach ($keys as $key) {
 			$scheduleId = explode('-',$key,2)[0];
 			$roleId = explode('-',$key,2)[1];
