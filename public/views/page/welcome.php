@@ -4,7 +4,7 @@
 <h2>WTeamPlaner</h2>
 </div>
 <div class="three columns">
-	<form action="<?= DIR ?>/login/" method="GET">
+	<form action="<?= DIR ?>login/" method="GET">
 <input type="submit" value="WEITER">
 </form>
 </div>
