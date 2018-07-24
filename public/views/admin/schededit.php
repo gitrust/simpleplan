@@ -18,7 +18,7 @@
 
 	<!-- https://github.com/bevacqua/rome -->
 	<SCRIPT LANGUAGE="JavaScript" ID="js1">
-		rome(mydate, { "time": false, "autoClose": true,"strictParse": false,"inputFormat": "DD.MM.YYYY" });
+		rome(mydate, { "time": false, "autoClose": true,"strictParse": false,"inputFormat": "DD.MM.YYYY","weekStart" : "1" });
 	</SCRIPT>
 
 </div>
