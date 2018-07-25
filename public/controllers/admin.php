@@ -88,13 +88,9 @@ class Admin extends Controller {
     }
   }
 
-  private function getRoles() {
-    $roles = array();
-  }
-
   public function users() {
     $data["isadmin"] = $this->isAdmin();
-    $data['users'] = $this->_model->users();
+    $data['users'] = $this->_model->users(Session::get('userid'));
     $data['title'] = I18n::tr('title.users') ;
     $data['form_header'] = I18n::tr('form.login');
     $this->renderUsers($data);    
@@ -106,7 +102,7 @@ class Admin extends Controller {
     }
 
     $data["isadmin"] = $this->isAdmin();
-    $data['users'] = $this->_model->users();
+    $data['users'] = $this->_model->users(Session::get('userid'));
     $data['title'] = I18n::tr('title.users') ;
     $data['form_header'] = I18n::tr('form.login');
     $this->renderUsers($data);    
@@ -117,7 +113,7 @@ class Admin extends Controller {
     $this->addUser();
 
     $data["isadmin"] = $this->isAdmin();
-    $data['users'] = $this->_model->users();
+    $data['users'] = $this->_model->users(Session::get('userid'));
     $data['title'] = I18n::tr('title.users') ;
     $data['form_header'] = I18n::tr('form.login');
     
@@ -128,7 +124,9 @@ class Admin extends Controller {
   private function addUser() {
     if (!empty($_POST['login']) && !empty($_POST['firstname']) && !empty($_POST['pass'])) {
         $genpass = Pass::generate($_POST['pass']);
-        $this->_model->addUser(trim($_POST['login']),trim($_POST['firstname']),$genpass);
+        $email = $_POST['email'];
+        $admin = !empty($_POST['isadmin']);
+        $this->_model->addUser(trim($_POST['login']),trim($_POST['firstname']),$genpass,$email,$admin);
     }
   }  
   

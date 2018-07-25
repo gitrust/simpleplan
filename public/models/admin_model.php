@@ -75,16 +75,17 @@ class Admin_Model extends Model {
   /**
    * get all available users
    */
-  public function users() {
-    return $this->_db->select('SELECT id, firstname, login,email FROM Users WHERE roleflag = :roleflag ORDER BY firstname ASC LIMIT 0, 50',array('roleflag' => 'U'));
+  public function users($currentUserId) {
+    return $this->_db->select('SELECT id, firstname, login,email, roleflag FROM Users WHERE id != :id ORDER BY firstname ASC LIMIT 0, 100',array('id' => $currentUserId));
   }
  
 
-  public function addUser($login,$name,$pass) {
+  public function addUser($login,$name,$pass,$email,$admin) {
     if (!empty($login) && !empty($name) && !empty($pass)) {
+      $roleflag = $admin ? 'A' : 'U';
       return  $this->_db->insert('Users',array("login" => substr($login,0,29)
          ,"firstname" => substr($name,0,29)
-        ,"pass" => substr($pass,0,254),"roleflag" => 'U'));
+        ,"pass" => substr($pass,0,254),"roleflag" => $roleflag,"email" => substr($email,0,49)));
     }
     return array();
   }
