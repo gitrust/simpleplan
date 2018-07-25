@@ -12,7 +12,7 @@
 
 <div class="row">
 <div id="headerImage" class="twelve columns">
-<img src="<?= URL::IMG('clouds.jpg') ?>" />
+<img src="<?= URL::IMG('clouds.jpg') ?>" alt="LOGO" />
 </div>
 </div>
 
