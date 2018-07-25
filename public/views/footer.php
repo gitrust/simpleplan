@@ -1,4 +1,5 @@
 </div> <!-- / .container -->
+
 <footer class="page-footer">
 <div id="copyright">
     <div class="container">
@@ -9,7 +10,7 @@
 			</div>
 
 			<div class="six columns">				
-				<p class="pull-right">Copyright (c) 2018 - WTPlaner</p>				
+				<p class="pull-right">Copyright (c) 2018 - WTeamPlaner</p>				
 			</div>
 		</div>
     </div>
