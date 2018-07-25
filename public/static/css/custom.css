@@ -30,6 +30,11 @@ body {
     float: right!important;
 }
 
+/* horizontal scrollbar for tables */
+.hscroller {
+   overflow-x:scroll;
+}
+
 /* displayed login name, header */
 p.loginname {
 	font-size: 10px; 

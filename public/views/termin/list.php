@@ -31,6 +31,7 @@
   }
 ?>
 
+    <div class="hscroller">
 	<table class="stripe">
 	<?php
 	  if (!sizeof($data['roles'])) {
@@ -64,6 +65,7 @@
 	  }
 	?>
 	</table>
+    </div>
 	</form>
 </div>
 </div> <!-- / .row -->
