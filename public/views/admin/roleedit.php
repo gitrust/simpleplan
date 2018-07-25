@@ -4,7 +4,7 @@
 
 	<div class="row">
 		<div class="four columns">
-			<label for="role"><?= I18n::tr('label.newrole'); ?></label>
+			<label for="role"><?= I18n::tr('label.newrole'); ?> (*)</label>
 			<input type="text" name="role" value=""> 
 		</div>
 		<div class="eight columns">

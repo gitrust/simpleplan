@@ -4,6 +4,13 @@ class I18n {
     
 	private static  $msg = 
 		array("button.save" => "Speichern",
+            "label.administrator" => "Administrator",
+            "table.header.admin" => "Administrator",
+            "table.header.firstname" => "Name",
+            "table.header.email" => "Email",
+            "label.password" => "Passwort",
+            "label.firstname" => "Name",
+            "label.email" => "Email",
 			"title.login" => "Anmelden",
 			"link.administration" => "Administration",
 			"link.logout" => "Abmelden",

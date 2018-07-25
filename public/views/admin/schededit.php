@@ -5,7 +5,7 @@
 
 	<div class="row">
 		<div class="four columns">
-			<label for="role"><?= I18n::tr('label.newschedule'); ?></label>
+			<label for="role"><?= I18n::tr('label.newschedule'); ?> (*)</label>
 			<input id="mydate" type="text" name="targetDate" value=""> 
 		</div>
 		<div class="eight columns">
