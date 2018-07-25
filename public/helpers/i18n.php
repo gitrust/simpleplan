@@ -20,6 +20,7 @@ class I18n {
 		"link.imprint" => "Impressum",
 		"link.privacy" => "Datenschutz",
 		"title.entrylist" => "Meine Termine",
+        "title.welcome" => "Willkommen",
 		"button.update" => "Aktualisieren",
 		"table.header.entrylist" => "Termine / Rollen",
 		"title.teamlist" => "Team Uebersicht",
