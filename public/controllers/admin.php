@@ -98,7 +98,7 @@ class Admin extends Controller {
 
   public function userdel($id) {
     if (!empty($id)) {
-      $this->_model->deleteUser($id);
+      $this->_model->deleteUser($id,Session::get('userid'));
     }
 
     $data["isadmin"] = $this->isAdmin();
