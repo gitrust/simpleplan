@@ -1,3 +1,11 @@
+<?php
+header("HTTP/1.0 404 Not Found");
+?>
+
+<!DOCTYPE html>
+<html lang="en">
+
+<body>
 <h1>404</h1>
 
 <hr />
@@ -12,3 +20,5 @@
    <li>If you spelled the URL manually, double check the spelling</li>
    <li>Go to our website's home page, and navigate to the content in question</li>
 </ul>
+</body>
+</html>

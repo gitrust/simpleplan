@@ -1,5 +1,5 @@
 
-<h1><?= $data['title'] ?></h1>
+<h1>WTeamPlaner</h1>
 
 <?php echo Message::show() ; ?>
 
@@ -17,7 +17,7 @@
       <input class="u-full-width" placeholder="login" name="login" id="loginInput" type="text">
     </div>
     <div class="four columns">&nbsp;
-    </div>
+    </div>    
   </div>
   
   <div class="row">
