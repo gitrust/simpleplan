@@ -38,14 +38,14 @@ class Admin_Model extends Model {
    * delete a role
    */
   public function deleteRole($id) {
-   return $this->_db->delete('Roles',array("id" => $id),$limit = 1); 
+    return $this->_db->delete('Roles',array("id" => $id),$limit = 1); 
   }
 
   /**
    * delete a schedule
    */
   public function deleteSchedule($id) {
-   return $this->_db->delete('Schedule',array("id" => $id),$limit = 1); 
+    return $this->_db->delete('Schedule',array("id" => $id),$limit = 1); 
   }
 
   public function getRole($id) {

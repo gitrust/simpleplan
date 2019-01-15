@@ -21,20 +21,20 @@ img { max-width: 100%; }
    margin-bottom: 25px;
    padding: 0;
 }
-   .thumbnail h4 {
-      overflow: hidden;
-      margin: 0 0 10px;
-      text-overflow: ellipsis;
-      white-space: nowrap;
-      line-height: 1.2;
-   }
-   .thumbnail:hover .buttons-edit { visibility: visible; }
-   .thumbnail img {
-      display: block;
-      margin: 0 auto;
-      height: 200px;
-      border-radius: 4px 4px 0 0;
-   }
+.thumbnail h4 {
+  overflow: hidden;
+  margin: 0 0 10px;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  line-height: 1.2;
+}
+.thumbnail:hover .buttons-edit { visibility: visible; }
+.thumbnail img {
+  display: block;
+  margin: 0 auto;
+  height: 200px;
+  border-radius: 4px 4px 0 0;
+}
 
 .buttons-edit {
    position: absolute;

@@ -40,7 +40,9 @@
 	  else {
 		 echo '<thead><tr><th>' . I18n::tr('table.header.entrylist') . '</th>';
 		 foreach ($data['roles'] as $role) {
-			echo '<th>' . htmlspecialchars($role["role"]) . '</th>';
+			$title = htmlspecialchars($role["description"]);
+			$role  = htmlspecialchars($role["role"]);
+			echo '<th title="' . $title . '">' . $role . '</th>';
 		 }
 		 echo '</tr></thead>';
 		 

@@ -17,7 +17,7 @@ class Termin_Model extends Model {
    * get all available roles
    */
   public function roles() {
-    return $this->_db->select('SELECT id, role FROM Roles ORDER BY role DESC LIMIT 0, 20');
+    return $this->_db->select('SELECT id, role, description FROM Roles ORDER BY role DESC LIMIT 0, 50');
   }
   
   /**
