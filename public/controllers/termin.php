@@ -10,10 +10,8 @@ class Termin extends Controller {
      $this->render();
   }
 
-  public function key($termin,$rolle) {
-    return "x";
-  }  
   
+  /** API: Update function */
   public function update() {
   	 $keys = $this->entryKeysFromUi();
      if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
@@ -23,17 +21,24 @@ class Termin extends Controller {
      $this->render();
   }
   
+  /** API: Reset form */
   public function reset() {
      $this->render();
   }
 
+  /** API: My Event list */
   public function mylist() {
     $this->render();
   }
 
+  /** API: Team list */
   public function teamlist() {    
     $this->renderTeamlist();
   }
+
+  public function key($termin,$rolle) {
+    return "x";
+  }  
   
   private function entryKeysFromDb() {
     $userId = Session::get("userid");

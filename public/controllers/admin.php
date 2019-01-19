@@ -10,18 +10,20 @@ class Admin extends Controller {
     $data["isadmin"] = $this->isAdmin();
     $data['title'] = I18n::tr('title.rolesite');
     $data['form_header'] = I18n::tr('form.login');
-    $this->render($data);
+    $this->renderRoles($data);
   }
 
 
+  /** API: Get Roles */
   public function roles() {
     $data["isadmin"] = $this->isAdmin();
     $data['roles'] = $this->_model->roles();
     $data['title'] = I18n::tr('title.rolesite');
     $data['form_header'] = I18n::tr('form.login');
-    $this->render($data);
+    $this->renderRoles($data);
   }
 
+  /** API: Add New Role */
   public function roleadd() {
     $this->addRole();
 
@@ -30,9 +32,10 @@ class Admin extends Controller {
     $data['title'] = I18n::tr('title.rolesite') ;
     $data['form_header'] = I18n::tr('form.login');
     
-    $this->render($data); 
+    $this->renderRoles($data); 
   }
 
+  /** API: Delete Role */
   public function roledel($roleId) {
     if (!empty($roleId)) {
       $this->_model->deleteRole($roleId);
@@ -42,52 +45,43 @@ class Admin extends Controller {
     $data['roles'] = $this->_model->roles();
     $data['title'] = I18n::tr('title.rolesite') ;
     $data['form_header'] = I18n::tr('form.login');
-    $this->render($data);    
+    $this->renderRoles($data);    
   }
 
-  public function schedules() {
+  /** API: Get Events */
+  public function events() {
     $data["isadmin"] = $this->isAdmin();
-    $data['schedules'] = $this->_model->schedules();
+    $data['schedules'] = $this->_model->events();
     $data['title'] = I18n::tr('title.schedules') ;
     $data['form_header'] = I18n::tr('form.login');
-    $this->renderSchedules($data);    
+    $this->renderEvents($data);    
   }
 
-  public function scheddel($id) {
+  /** API: Delete Event */
+  public function eventdel($id) {
     if (!empty($id)) {
-      $this->_model->deleteSchedule($id);
+      $this->_model->deleteEvent($id);
     }
 
     $data["isadmin"] = $this->isAdmin();
-    $data['schedules'] = $this->_model->schedules();
+    $data['schedules'] = $this->_model->events();
     $data['title'] = I18n::tr('title.schedules') ;
     $data['form_header'] = I18n::tr('form.login');
-    $this->renderSchedules($data);    
+    $this->renderEvents($data);    
   }
 
+  /** API: Add Event */
+  public function eventadd() {
+    $this->addEvent();
 
-  public function schedadd() {
-    $this->addSchedule();
-
-    $data['schedules'] = $this->_model->schedules();
+    $data['schedules'] = $this->_model->events();
     $data['title'] = I18n::tr('title.schedules') ;
     $data['form_header'] = I18n::tr('form.login');
     
-    $this->renderSchedules($data); 
+    $this->renderEvents($data); 
   }
 
-  private function addSchedule() {
-    if (!empty($_POST['targetDate'])) {
-        $this->_model->addSchedule(trim($_POST['targetDate']),trim($_POST['desc']));
-    }
-  }
-
-  private function addRole() {
-    if (!empty($_POST['role'])) {
-        $this->_model->addRole(trim($_POST['role']),trim($_POST['desc']));
-    }
-  }
-
+  /** API: Get Users */
   public function users() {
     $data["isadmin"] = $this->isAdmin();
     $data['users'] = $this->_model->users(Session::get('userid'));
@@ -96,6 +90,7 @@ class Admin extends Controller {
     $this->renderUsers($data);    
   }
 
+  /** API: Delete User */
   public function userdel($id) {
     if (!empty($id)) {
       $this->_model->deleteUser($id,Session::get('userid'));
@@ -108,7 +103,7 @@ class Admin extends Controller {
     $this->renderUsers($data);    
   }
 
-
+  /** API: Add New User */
   public function useradd() {
     $this->addUser();
 
@@ -120,7 +115,21 @@ class Admin extends Controller {
     $this->renderUsers($data); 
   }
 
+  // Helper Function
+  private function addEvent() {
+    if (!empty($_POST['targetDate'])) {
+        $this->_model->addEvent(trim($_POST['targetDate']),trim($_POST['desc']));
+    }
+  }
 
+  // Helper Function
+  private function addRole() {
+    if (!empty($_POST['role'])) {
+        $this->_model->addRole(trim($_POST['role']),trim($_POST['desc']));
+    }
+  }
+
+  // Helper Function
   private function addUser() {
     if (!empty($_POST['login']) && !empty($_POST['firstname']) && !empty($_POST['pass'])) {
         $genpass = Pass::generate($_POST['pass']);
@@ -130,7 +139,9 @@ class Admin extends Controller {
     }
   }  
   
-  private function render($data) {
+  // RENDER TEMPLATES
+
+  private function renderRoles($data) {
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
@@ -141,13 +152,13 @@ class Admin extends Controller {
     $this->_view->render('footer');
   }
 
-  private function renderSchedules($data) {
+  private function renderEvents($data) {
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
     $this->_view->render('admin/nav', $data);
-    $this->_view->render('admin/schededit', $data);
-    $this->_view->render('admin/schedtable', $data);
+    $this->_view->render('admin/eventedit', $data);
+    $this->_view->render('admin/eventtable', $data);
     $this->_view->render('admin/footer', $data);
     $this->_view->render('footer');
   } 

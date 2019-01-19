@@ -7,25 +7,25 @@ class Admin_Model extends Model {
   }
 
   /**
-   * get all available schedules
+   * Get all available events
    */
-  public function schedules() {
-    return $this->_db->select('SELECT id, targetDate,description FROM Schedule ORDER BY id DESC LIMIT 0, 100');
+  public function events() {
+    return $this->_db->select('SELECT id, targetDate,description FROM Events ORDER BY id DESC LIMIT 0, 100');
     //return array("01.02.2018","10.07.2018","13.08.2018");
   }
 
   /**
-   * get all available roles
+   * Get all available roles
    */
   public function roles() {
-    return $this->_db->select('SELECT id, role, description FROM Roles ORDER BY role ASC LIMIT 0, 20');
+    return $this->_db->select('SELECT id, role, description FROM DepartmentRoles ORDER BY role ASC LIMIT 0, 20');
   }
 
-    /**
-   * get all available roles
+  /**
+   * Get all available role names
    */
   public function rolenames() {
-    $result  = array_values($this->_db->select('SELECT role FROM Roles ORDER BY role DESC LIMIT 0, 20'));
+    $result  = array_values($this->_db->select('SELECT role FROM DepartmentRoles ORDER BY role DESC LIMIT 0, 20'));
     $names = array();
     foreach ($result as $ar) {
         array_push($names,$ar["role"]);
@@ -35,38 +35,47 @@ class Admin_Model extends Model {
   }
 
    /**
-   * delete a role
+   * Delete a Role
    */
   public function deleteRole($id) {
-    return $this->_db->delete('Roles',array("id" => $id),$limit = 1); 
+    return $this->_db->delete('DepartmentRoles',array("id" => $id),$limit = 1); 
   }
-
-  /**
-   * delete a schedule
-   */
-  public function deleteSchedule($id) {
-    return $this->_db->delete('Schedule',array("id" => $id),$limit = 1); 
-  }
-
+  
   public function getRole($id) {
-    return $this->_db->select('SELECT id, role FROM Roles WHERE id = :id',array("id" => $id));
+    return $this->_db->select('SELECT id, role, departmentId, description FROM DepartmentRoles WHERE id = :id',array("id" => $id));
     //return array("hh","e-guitar","drummer","leader","singer1","singer2","singer3","piano","e-bass");
   }
 
+  /**
+   * Update existing Role
+   */
   public function updateRole($id,$role) {
-    return $this->_db->update('Roles',array("role" => $role),array("id" => $id));
+    return $this->_db->update('DepartmentRoles',array("role" => $role),array("id" => $id));
   }
 
+  /**
+   * Add new Department Role
+   */
   public function addRole($role,$description="") {
     if (!empty($role)) {
-      return  $this->_db->insert('Roles',array("role" => substr($role,0,29),"description" => substr($description,0,149)));
+      return  $this->_db->insert('DepartmentRoles',array("role" => substr($role,0,29),"description" => substr($description,0,149),"departmentId" => 1));
     }
     return -1;
   }
 
-  public function addSchedule($targetDate,$description="") {
+  /**
+   * Delete an Event
+   */
+  public function deleteEvent($id) {
+    return $this->_db->delete('Events',array("id" => $id),$limit = 1); 
+  }
+
+  /**
+   * Add new Event
+   */
+  public function addEvent($targetDate,$description="") {
     if (!empty($targetDate)) {
-      return  $this->_db->insert('Schedule',array("targetDate" => substr($targetDate,0,29),"description" => substr($description,0,149)));
+      return  $this->_db->insert('Events',array("targetDate" => substr($targetDate,0,29),"description" => substr($description,0,149)));
     }
     return -1;
   }

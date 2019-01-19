@@ -10,31 +10,31 @@ class Termin_Model extends Model {
    * get all available schedules
    */
   public function schedules() {
-    return $this->_db->select('SELECT id, targetDate FROM Schedule ORDER BY id ASC LIMIT 0, 100');
+    return $this->_db->select('SELECT id, targetDate FROM Events ORDER BY id ASC LIMIT 0, 100');
   }
 
   /**
    * get all available roles
    */
   public function roles() {
-    return $this->_db->select('SELECT id, role, description FROM Roles ORDER BY role DESC LIMIT 0, 50');
+    return $this->_db->select('SELECT id, role, departmentId, description FROM DepartmentRoles ORDER BY role DESC LIMIT 0, 50');
   }
   
   /**
    * get all entries for a user
    */
   public function entries($userId) {
-  	 return $this->_db->select('SELECT id, roleId,userId,scheduleId FROM Entries WHERE userId = :userId LIMIT 0, 200',array("userId" => $userId));
+  	 return $this->_db->select('SELECT id, roleId,userId,eventId FROM UserRoleEvents WHERE userId = :userId LIMIT 0, 400',array("userId" => $userId));
   }
 
   /**
    * get all entries for all user
    */
   public function teamEntries() {
-     return $this->_db->select('SELECT e.id as id, e.roleId as roleId,e.userId as userId, u.firstname as firstname, e.scheduleId as scheduleId' 
-     . ' FROM Entries e, Users u  ' 
+     return $this->_db->select('SELECT e.id as id, e.roleId as roleId,e.userId as userId, u.firstname as firstname, e.eventId as scheduleId' 
+     . ' FROM UserRoleEvents e, Users u  ' 
      . ' WHERE  e.userId = u.id '
-     . ' ORDER BY e.roleId, e.scheduleId, u.firstname '
+     . ' ORDER BY e.roleId, e.eventId, u.firstname '
      . ' LIMIT 0, 500');
   }
   
@@ -42,11 +42,11 @@ class Termin_Model extends Model {
    * delete all entries for a user
    */
   public function deleteEntriesForUser($userId) {
-	 return $this->_db->delete('Entries',array("userId" => $userId),$limit = 100);  
+	 return $this->_db->delete('UserRoleEvents',array("userId" => $userId),$limit = 100);  
   }
   
   public function insertEntryForUser($userId,$roleId,$scheduleId) {
-  		return $this->_db->insert("Entries",array("userId" => $userId,"roleId" => $roleId,"scheduleId" => $scheduleId));
+  		return $this->_db->insert("UserRoleEvents",array("userId" => $userId,"roleId" => $roleId,"eventId" => $scheduleId));
   }
 
 }
