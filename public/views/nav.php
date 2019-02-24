@@ -2,7 +2,7 @@
 
 	<div class="eight columns">
 		<div class="nav">
-		<a href="<?= DIR ?>events/mylist/"><?= I18n::tr('link.entries'); ?></a> |
+		<a href="<?= DIR ?>schedules/list/"><?= I18n::tr('link.entries'); ?></a> |
 <?php 
 		if ($data["isadmin"]){
 			$link = I18n::tr('link.administration');
