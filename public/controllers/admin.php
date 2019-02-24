@@ -124,10 +124,21 @@ class Admin extends Controller {
     $this->renderResources($data);
   }
 
+  /**  API: Add resource */
+  public function resourceadd() {
+    $this->addResource();
+
+    $data['resources'] = $this->_model->resources();
+    $data['title'] = I18n::tr('title.resourcesite') ;
+    $data['form_header'] = I18n::tr('form.login');
+    
+    $this->renderResources($data); 
+  }
+
   /** API: Delete resource */
   public function resourcedel($resourceId) {
     if (!empty($resourceId)) {
-      // $this->_model->deleteResource($resourceId);
+      $this->_model->deleteResource($resourceId);
     }
 
     $data["isadmin"] = $this->isAdmin();
@@ -143,6 +154,13 @@ class Admin extends Controller {
         $this->_model->addEvent(trim($_POST['targetDate']),trim($_POST['desc']));
     }
   }
+
+    // Helper Function
+  private function addResource() {
+      if (!empty($_POST['name'])) {
+          $this->_model->addResource(trim($_POST['name']),trim($_POST['desc']));
+      }
+    }
 
   // Helper Function
   private function addActivity() {
@@ -201,6 +219,7 @@ class Admin extends Controller {
     $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
     $this->_view->render('admin/nav', $data);
+    $this->_view->render('admin/resourceedit', $data);
     $this->_view->render('admin/resourcelist', $data);
     $this->_view->render('admin/footer', $data);
     $this->_view->render('footer');

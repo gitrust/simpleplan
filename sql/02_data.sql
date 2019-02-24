@@ -24,3 +24,6 @@ insert into Resources (name,description) VALUES ("Peter","Description");
 insert into Resources (name,description) VALUES ("Anna","Description");
 insert into Resources (name,description) VALUES ("Hanna","Description");
 insert into Resources (name,description) VALUES ("Songar","Description");
+
+insert into ResourceAssignment (resourceId,eventId,activityId) VALUES (1,1,1);
+insert into ResourceAssignment (resourceId,eventId,activityId) VALUES (1,2,2);

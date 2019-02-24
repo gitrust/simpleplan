@@ -34,6 +34,14 @@ CREATE TABLE Resources (
     description VARCHAR(150)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
+CREATE TABLE ResourceAssignment (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    resourceId INT(6) NOT NULL,
+    eventId INT(6) NOT NULL,
+    activityId INT(6) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
+/* OBSOLETE */
 CREATE TABLE UserRoleAssignment (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     roleId int(6) NOT NULL,

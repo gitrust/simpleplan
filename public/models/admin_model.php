@@ -17,7 +17,7 @@ class Admin_Model extends Model {
    * Get all available Activites
    */
   public function activities() {
-    return $this->_db->select('SELECT id, name, description FROM Activities ORDER BY name ASC LIMIT 0, 500');
+    return $this->_db->select('SELECT id, name, description, departmentId FROM Activities ORDER BY name ASC LIMIT 0, 500');
   }
 
   /**
@@ -115,4 +115,20 @@ class Admin_Model extends Model {
   public function resources() {
     return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY id DESC LIMIT 0, 100');
   }
+
+  /** Add new resource */
+  public function addResource($name,$description="") {
+    if (!empty($name)) {
+      return  $this->_db->insert('Resources',array("name" => substr($name,0,29),"description" => substr($description,0,149)));
+    }
+    return -1;
+  }
+
+   /**
+   * Delete an Resource
+   */
+  public function deleteResource($id) {
+    return $this->_db->delete('Resources',array("id" => $id),$limit = 1); 
+  }
+
 }

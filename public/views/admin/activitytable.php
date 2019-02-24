@@ -2,7 +2,7 @@
 <div class="twelve columns">
 	<table class="stripe">
 	<?php
-	  if (!sizeof($data['activites'])) {
+	  if (!sizeof($data['activities'])) {
 		 echo '<div class="alert alert-info">' . I18n::tr('table.noentries') . '</div>';
 	  }
 	  else {
@@ -11,7 +11,7 @@
 		 echo '</tr></thead>';
 		 echo '<tbody>';
 		
-		 foreach ($data['activites'] as $activity) {
+		 foreach ($data['activities'] as $activity) {
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($activity["name"]) . '</td>';
 			echo '<td>' . htmlspecialchars($activity["description"]) . '</td>';
