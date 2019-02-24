@@ -11,54 +11,51 @@ class Admin_Model extends Model {
    */
   public function events() {
     return $this->_db->select('SELECT id, targetDate,description FROM Events ORDER BY id DESC LIMIT 0, 100');
-    //return array("01.02.2018","10.07.2018","13.08.2018");
   }
 
   /**
-   * Get all available roles
+   * Get all available Activites
    */
-  public function roles() {
-    return $this->_db->select('SELECT id, role, description FROM DepartmentRoles ORDER BY role ASC LIMIT 0, 20');
+  public function activities() {
+    return $this->_db->select('SELECT id, name, description FROM Activities ORDER BY name ASC LIMIT 0, 500');
   }
 
   /**
-   * Get all available role names
+   * Get all available Activity names
    */
-  public function rolenames() {
-    $result  = array_values($this->_db->select('SELECT role FROM DepartmentRoles ORDER BY role DESC LIMIT 0, 20'));
+  public function activityNames() {
+    $result  = array_values($this->_db->select('SELECT name FROM Activities ORDER BY name DESC LIMIT 0, 20'));
     $names = array();
     foreach ($result as $ar) {
-        array_push($names,$ar["role"]);
+        array_push($names,$ar["name"]);
     }
     return $names;
-    //return array("hh","e-guitar","drummer","leader","singer1","singer2","singer3","piano","e-bass");
   }
 
    /**
-   * Delete a Role
+   * Delete a Activity
    */
-  public function deleteRole($id) {
-    return $this->_db->delete('DepartmentRoles',array("id" => $id),$limit = 1); 
+  public function deleteActivity($id) {
+    return $this->_db->delete('Activities',array("id" => $id),$limit = 1); 
   }
   
-  public function getRole($id) {
-    return $this->_db->select('SELECT id, role, departmentId, description FROM DepartmentRoles WHERE id = :id',array("id" => $id));
-    //return array("hh","e-guitar","drummer","leader","singer1","singer2","singer3","piano","e-bass");
+  public function getActivity($id) {
+    return $this->_db->select('SELECT id, name, departmentId, description FROM Activities WHERE id = :id',array("id" => $id));
   }
 
   /**
-   * Update existing Role
+   * Update existing Activity
    */
-  public function updateRole($id,$role) {
-    return $this->_db->update('DepartmentRoles',array("role" => $role),array("id" => $id));
+  public function updateActivity($id,$name) {
+    return $this->_db->update('Activities',array("name" => $name),array("id" => $id));
   }
 
   /**
-   * Add new Department Role
+   * Add new Activity
    */
-  public function addRole($role,$description="") {
-    if (!empty($role)) {
-      return  $this->_db->insert('DepartmentRoles',array("role" => substr($role,0,29),"description" => substr($description,0,149),"departmentId" => 1));
+  public function addActivity($name,$description="") {
+    if (!empty($name)) {
+      return  $this->_db->insert('Activities',array("name" => substr($name,0,29),"description" => substr($description,0,149),"departmentId" => 1));
     }
     return -1;
   }
@@ -110,5 +107,12 @@ class Admin_Model extends Model {
     }
     
     return 0;
+  }
+
+  /**
+   * Get all available resources
+   */
+  public function resources() {
+    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY id DESC LIMIT 0, 100');
   }
 }

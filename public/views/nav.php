@@ -2,11 +2,11 @@
 
 	<div class="eight columns">
 		<div class="nav">
-		<a href="<?= DIR ?>termin/mylist/"><?= I18n::tr('link.entries'); ?></a> |
+		<a href="<?= DIR ?>events/mylist/"><?= I18n::tr('link.entries'); ?></a> |
 <?php 
 		if ($data["isadmin"]){
 			$link = I18n::tr('link.administration');
-			echo '<a href="' . DIR . 'admin/schedules/">' . $link . '</a> |';
+			echo '<a href="' . DIR . 'admin/events/">' . $link . '</a> |';
 		}
 ?>
 		<a href="<?= DIR ?>login/logout/"><?= I18n::tr('link.logout'); ?></a>

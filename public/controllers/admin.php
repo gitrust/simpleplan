@@ -8,44 +8,44 @@ class Admin extends Controller {
 
   public function index() {
     $data["isadmin"] = $this->isAdmin();
-    $data['title'] = I18n::tr('title.rolesite');
+    $data['title'] = I18n::tr('title.activitysite');
     $data['form_header'] = I18n::tr('form.login');
-    $this->renderRoles($data);
+    $this->renderActivities($data);
   }
 
 
   /** API: Get Roles */
-  public function roles() {
+  public function activities() {
     $data["isadmin"] = $this->isAdmin();
-    $data['roles'] = $this->_model->roles();
-    $data['title'] = I18n::tr('title.rolesite');
+    $data['activities'] = $this->_model->activities();
+    $data['title'] = I18n::tr('title.activitysite');
     $data['form_header'] = I18n::tr('form.login');
-    $this->renderRoles($data);
+    $this->renderActivities($data);
   }
 
-  /** API: Add New Role */
-  public function roleadd() {
-    $this->addRole();
+  /** API: Add New Activity */
+  public function activityadd() {
+    $this->addActivity();
 
     $data["isadmin"] = $this->isAdmin();
-    $data['roles'] = $this->_model->roles();
-    $data['title'] = I18n::tr('title.rolesite') ;
+    $data['activities'] = $this->_model->activities();
+    $data['title'] = I18n::tr('title.activitysite') ;
     $data['form_header'] = I18n::tr('form.login');
     
-    $this->renderRoles($data); 
+    $this->renderActivities($data); 
   }
 
-  /** API: Delete Role */
-  public function roledel($roleId) {
-    if (!empty($roleId)) {
-      $this->_model->deleteRole($roleId);
+  /** API: Delete Activity */
+  public function activitydel($activityId) {
+    if (!empty($activityId)) {
+      $this->_model->deleteActivity($activityId);
     }
 
     $data["isadmin"] = $this->isAdmin();
-    $data['roles'] = $this->_model->roles();
-    $data['title'] = I18n::tr('title.rolesite') ;
+    $data['activities'] = $this->_model->activities();
+    $data['title'] = I18n::tr('title.activitysite') ;
     $data['form_header'] = I18n::tr('form.login');
-    $this->renderRoles($data);    
+    $this->renderActivities($data);    
   }
 
   /** API: Get Events */
@@ -115,6 +115,28 @@ class Admin extends Controller {
     $this->renderUsers($data); 
   }
 
+  /**  API: Get resources */
+  public function resources() {
+    $data["isadmin"] = $this->isAdmin();
+    $data['resources'] = $this->_model->resources();
+    $data['title'] = I18n::tr('title.resourcessite');
+    $data['form_header'] = I18n::tr('form.login');
+    $this->renderResources($data);
+  }
+
+  /** API: Delete resource */
+  public function resourcedel($resourceId) {
+    if (!empty($resourceId)) {
+      // $this->_model->deleteResource($resourceId);
+    }
+
+    $data["isadmin"] = $this->isAdmin();
+    $data['resources'] = $this->_model->resources();
+    $data['title'] = I18n::tr('title.resourcessite') ;
+    $data['form_header'] = I18n::tr('form.login');
+    $this->renderResources($data);    
+  }
+
   // Helper Function
   private function addEvent() {
     if (!empty($_POST['targetDate'])) {
@@ -123,9 +145,9 @@ class Admin extends Controller {
   }
 
   // Helper Function
-  private function addRole() {
-    if (!empty($_POST['role'])) {
-        $this->_model->addRole(trim($_POST['role']),trim($_POST['desc']));
+  private function addActivity() {
+    if (!empty($_POST['name'])) {
+        $this->_model->addActivity(trim($_POST['name']),trim($_POST['desc']));
     }
   }
 
@@ -141,13 +163,13 @@ class Admin extends Controller {
   
   // RENDER TEMPLATES
 
-  private function renderRoles($data) {
+  private function renderActivities($data) {
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
     $this->_view->render('admin/nav', $data);
-    $this->_view->render('admin/roleedit', $data);
-    $this->_view->render('admin/roletable', $data);
+    $this->_view->render('admin/activityedit', $data);
+    $this->_view->render('admin/activitytable', $data);
     $this->_view->render('admin/footer', $data);
     $this->_view->render('footer');
   }
@@ -173,5 +195,15 @@ class Admin extends Controller {
     $this->_view->render('admin/footer', $data);
     $this->_view->render('footer');
   } 
+
+  private function renderResources($data) {
+    $this->_view->render('header', $data);
+    $this->_view->render('nav', $data);
+    $this->_view->render('admin/head', $data);
+    $this->_view->render('admin/nav', $data);
+    $this->_view->render('admin/resourcelist', $data);
+    $this->_view->render('admin/footer', $data);
+    $this->_view->render('footer');
+  }
 
 }

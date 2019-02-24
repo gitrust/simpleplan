@@ -41,3 +41,19 @@ Create your docker-compose environment file ".env" in docker directory
 # Initialize database
 
 * adapt SQL files in /sql folder
+
+# Terminology
+
+## Domain
+
+### Division
+
+### Division Activities
+
+### Users
+
+### User Roles
+
+### Events
+
+### Resources

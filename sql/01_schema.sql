@@ -21,10 +21,16 @@ CREATE TABLE Department (
     description VARCHAR(150)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE DepartmentRoles (
+CREATE TABLE Activities (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     departmentId INT(6) NOT NULL,
-    role VARCHAR(30) NOT NULL,
+    name VARCHAR(30) NOT NULL,
+    description VARCHAR(150)
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
+
+CREATE TABLE Resources (
+    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+    name VARCHAR(30) NOT NULL,
     description VARCHAR(150)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 

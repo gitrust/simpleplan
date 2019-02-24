@@ -20,7 +20,7 @@ class Login extends Controller {
     $data['form_header'] = I18n::tr('form.login');
 
     if ($loggedIn) {
-      $data['location'] = 'termin/mylist/';
+      $data['location'] = 'events/mylist/';
       // redirect and die
       $this->_view->render('redirect', $data);
     } else {
