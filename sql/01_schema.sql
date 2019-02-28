@@ -15,7 +15,8 @@ CREATE TABLE Events (
     description VARCHAR(150)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
-CREATE TABLE Department (
+/* Activity Category */
+CREATE TABLE ActivityCategories (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
     description VARCHAR(150)
@@ -23,7 +24,7 @@ CREATE TABLE Department (
 
 CREATE TABLE Activities (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    departmentId INT(6) NOT NULL,
+    categoryId INT(6) NOT NULL,
     name VARCHAR(30) NOT NULL,
     description VARCHAR(150)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;

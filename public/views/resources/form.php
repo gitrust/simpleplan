@@ -1,7 +1,7 @@
 <div class="row">
 <div class="twelve columns">
 
-	<form action="<?= DIR ?>admin/resourceadd/" method="POST">
+	<form action="<?= DIR ?>resources/add" method="POST">
 
 	<div class="row">
 		<div class="four columns">

@@ -10,15 +10,15 @@ insert into Events(targetDate,description) VALUES("2 June","Event 4");
 insert into Events(targetDate,description) VALUES("2 July","Event 5");
 insert into Events(targetDate,description) VALUES("22 July","Event 6");
 
-insert into Department(name,description) VALUES ("Department 1","Description Dptm 1");
-insert into Department(name,description) VALUES ("Department 2","Description Dptm 2");
+insert into ActivityCategories(name,description) VALUES ("ActivityCategory 1","Description Dptm 1");
+insert into ActivityCategories(name,description) VALUES ("ActivityCategory 2","Description Dptm 2");
 
-insert into Activities (departmentId,name,description) VALUES (1,"Activity 1","Description");
-insert into Activities (departmentId,name,description) VALUES (1,"Activity 2","Description");
-insert into Activities (departmentId,name,description) VALUES (1,"Activity 3","Description");
-insert into Activities (departmentId,name,description) VALUES (2,"Activity 1","Description");
-insert into Activities (departmentId,name,description) VALUES (2,"Activity 2","Description");
-insert into Activities (departmentId,name,description) VALUES (2,"Activity 3","Description");
+insert into Activities (categoryId,name,description) VALUES (1,"Activity 1","Description");
+insert into Activities (categoryId,name,description) VALUES (1,"Activity 2","Description");
+insert into Activities (categoryId,name,description) VALUES (1,"Activity 3","Description");
+insert into Activities (categoryId,name,description) VALUES (2,"Activity 1","Description");
+insert into Activities (categoryId,name,description) VALUES (2,"Activity 2","Description");
+insert into Activities (categoryId,name,description) VALUES (2,"Activity 3","Description");
 
 insert into Resources (name,description) VALUES ("Peter","Description");
 insert into Resources (name,description) VALUES ("Anna","Description");

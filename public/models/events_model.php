@@ -17,7 +17,7 @@ class Events_Model extends Model {
    * get all available roles
    */
   public function roles() {
-    return $this->_db->select('SELECT id, name, departmentId, description FROM Activities ORDER BY name DESC LIMIT 0, 50');
+    return $this->_db->select('SELECT id, name, categoryId, description FROM Activities ORDER BY name DESC LIMIT 0, 50');
   }
   
   /**

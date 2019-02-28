@@ -15,7 +15,8 @@ class Schedules extends Controller {
     $data['title'] = I18n::tr('title.entrylist');
     
     $data["isadmin"] = $this->isAdmin();
-    $data['schedules'] = $this->_model->events();
+    $data['events'] = $this->_model->events();
+    $data['activities'] = $this->_model->activities();
 
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);

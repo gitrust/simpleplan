@@ -17,48 +17,10 @@ class Admin_Model extends Model {
    * Get all available Activites
    */
   public function activities() {
-    return $this->_db->select('SELECT id, name, description, departmentId FROM Activities ORDER BY name ASC LIMIT 0, 500');
+    return $this->_db->select('SELECT id, name, description, categoryId FROM Activities ORDER BY name ASC LIMIT 0, 500');
   }
 
-  /**
-   * Get all available Activity names
-   */
-  public function activityNames() {
-    $result  = array_values($this->_db->select('SELECT name FROM Activities ORDER BY name DESC LIMIT 0, 20'));
-    $names = array();
-    foreach ($result as $ar) {
-        array_push($names,$ar["name"]);
-    }
-    return $names;
-  }
-
-   /**
-   * Delete a Activity
-   */
-  public function deleteActivity($id) {
-    return $this->_db->delete('Activities',array("id" => $id),$limit = 1); 
-  }
   
-  public function getActivity($id) {
-    return $this->_db->select('SELECT id, name, departmentId, description FROM Activities WHERE id = :id',array("id" => $id));
-  }
-
-  /**
-   * Update existing Activity
-   */
-  public function updateActivity($id,$name) {
-    return $this->_db->update('Activities',array("name" => $name),array("id" => $id));
-  }
-
-  /**
-   * Add new Activity
-   */
-  public function addActivity($name,$description="") {
-    if (!empty($name)) {
-      return  $this->_db->insert('Activities',array("name" => substr($name,0,29),"description" => substr($description,0,149),"departmentId" => 1));
-    }
-    return -1;
-  }
 
   /**
    * Delete an Event
@@ -107,28 +69,6 @@ class Admin_Model extends Model {
     }
     
     return 0;
-  }
-
-  /**
-   * Get all available resources
-   */
-  public function resources() {
-    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY id DESC LIMIT 0, 100');
-  }
-
-  /** Add new resource */
-  public function addResource($name,$description="") {
-    if (!empty($name)) {
-      return  $this->_db->insert('Resources',array("name" => substr($name,0,29),"description" => substr($description,0,149)));
-    }
-    return -1;
-  }
-
-   /**
-   * Delete an Resource
-   */
-  public function deleteResource($id) {
-    return $this->_db->delete('Resources',array("id" => $id),$limit = 1); 
   }
 
 }

@@ -16,11 +16,30 @@
 
 	<table class="stripe">
 	<?php
-	  if (!sizeof($data['schedules'])) {
+	  if (!sizeof($data['events'])) {
 		 echo '<div class="alert alert-info">' . I18n::tr('table.noentries') . '</div>';
 	  }
 	  else {
-		 echo 'Hello'
+		echo '<thead><tr><th>&nbsp;</th>';
+		foreach ($data['events'] as $item) { 
+			echo '<th>';
+			echo '' . $item['targetDate'] . '';
+			echo '</th>';
+		}
+
+		echo '</tr></thead>';
+		echo '<tbody>';
+		foreach ($data['activities'] as $item) {
+				echo '<tr>';
+				echo '<td>[' . htmlspecialchars($item["categoryname"])  . '] ' . htmlspecialchars($item["name"]) . '</td>';
+				foreach ($data['events'] as $item) { 
+					echo '<td>';
+					echo '<a href="" title="Resource planen">+R</a>';
+					echo '</td>';
+				}
+				echo '</tr>';
+		}
+		echo '</tbody>';
 	  }
 	?>
 	</table>
