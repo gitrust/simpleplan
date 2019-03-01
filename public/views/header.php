@@ -19,13 +19,23 @@
 
   <!-- CSS
   ************************* -->
-  <link rel="stylesheet" href="<?= URL::STYLES('normalize') ?>">
-  <link rel="stylesheet" href="<?= URL::STYLES('skeleton') ?>">
-  <link rel="stylesheet" href="<?= URL::STYLES('rome.min') ?>">
-  <link rel="stylesheet" href="<?= URL::STYLES('custom') ?>">
- 
+  <link type="text/css" rel="stylesheet" href="<?= URL::STYLES('normalize') ?>">
+  <link type="text/css" rel="stylesheet" href="<?= URL::STYLES('skeleton') ?>">
+  <link type="text/css" rel="stylesheet" href="<?= URL::STYLES('rome.min') ?>">
+  <link type="text/css" rel="stylesheet" href="<?= URL::STYLES('custom') ?>">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.bootstrap3.min.css">
+  <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/css/selectize.min.css">
+
   <!--  JS	-->
   <script src="<?= URL::JS('rome.min') ?>"></script>
+  <!-- Remember to include jQuery :) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <!-- jQuery Modal -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+  <!-- selectize plugin -->
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
+
   	
   <!-- Favicon
   ************************* -->
