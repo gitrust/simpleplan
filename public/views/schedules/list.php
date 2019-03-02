@@ -2,6 +2,7 @@
 <!-- modal div to choose a resource -->
 <div id="moddiv" class="modal">
 <form id="scheduleform" method="POST" action="<?= DIR ?>schedules/add">
+<h3>Resource auswählen</h3>
     <input type="hidden" id="event" name="event" value="">
 	<input type="hidden" id="activity" name="activity" value="">
 	<select id="select-resource" autofocus name="resource" required>
@@ -11,9 +12,8 @@ foreach ($data['resources'] as $item) {
 }
 ?>
 	</select>
-	<br>
+	
 	<input class="button-primary" type="submit" value="Add">
-	<input class="button-primary" type="submit" value="Delete">
 	</form>
 </div>
 
@@ -57,16 +57,23 @@ foreach ($data['resources'] as $item) {
 					$col = $row[$j];
 					echo '<td>';
 
-					// jquery modal plugin
+					// popup link
 					$link = '<a ';
 					$link .= 'id="reslink" ';
 					$link .= 'href="#" ';
 					$link .= 'data-ref="' . $col["eventid"] . ',' . $col["activityid"] . '" ' ;
 					$link .= 'title="Add Resource" ';
 					$link .= '>';
-					$link .= 'add';
+					$link .= '--';
 					$link .= '</a>';
-					echo $link;
+
+					// delete link
+					if ($col["resourceexists"]) {
+						echo htmlspecialchars($col["resourcename"]) . '&nbsp;';
+						echo '<a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">X</a>';
+					} else {
+						echo $link;
+					}
 
 					echo '</td>';
 				}
@@ -81,11 +88,15 @@ foreach ($data['resources'] as $item) {
 
 <script>
 
-$('#select-resource').selectize();
+var $selectresource = $('#select-resource').selectize();
 
 function popupWindow(event, activity) {
+	// set event and activity ids
 	$("#event").val(event);
 	$('#activity').val(activity);
+
+	// set default value
+	$selectresource[0].selectize.setValue("1");
 	$('#moddiv').modal('show');
 	//$('#scheduleform').submit();
 }

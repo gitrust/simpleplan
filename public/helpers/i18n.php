@@ -56,7 +56,9 @@ class I18n {
 			"label.newactivity" => "Neue Aktivität",
 			"table.header.activities" => "Aktivitäten",
 			"table.header.resources" => "Ressourcen",
-			"label.newresource" => "Neue Ressource");
+			"label.newresource" => "Neue Ressource",
+			"title.resourcesite" => "Ressourcen",
+			"title.activitysite" => "Aktivitäten");
 	
    public static function tr($msgid, $lang = "de") {
    	 if (array_key_exists($msgid, self::$msg)){

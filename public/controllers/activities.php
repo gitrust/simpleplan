@@ -10,7 +10,7 @@ class Activities extends Controller {
     $data["isadmin"] = $this->isAdmin();
     $data['activities'] = $this->_model->activities();
     $data['categories'] = $this->_model->categories();
-    $data['title'] = I18n::tr('title.activityssite');
+    $data['title'] = I18n::tr('title.activitysite');
     $data['form_header'] = I18n::tr('form.login');
     
     $this->render($data);
@@ -22,7 +22,7 @@ class Activities extends Controller {
 
     $data['activities'] = $this->_model->activities();
     $data['categories'] = $this->_model->categories();
-    $data['title'] = I18n::tr('title.activityssite') ;
+    $data['title'] = I18n::tr('title.activitysite') ;
     $data['form_header'] = I18n::tr('form.login');
     
     $this->render($data); 
@@ -37,7 +37,7 @@ class Activities extends Controller {
     $data["isadmin"] = $this->isAdmin();
     $data['activities'] = $this->_model->activities();
     $data['categories'] = $this->_model->categories();
-    $data['title'] = I18n::tr('title.activityssite') ;
+    $data['title'] = I18n::tr('title.activitysite') ;
     $data['form_header'] = I18n::tr('form.login');
     $this->render($data);    
   }

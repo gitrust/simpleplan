@@ -19,10 +19,18 @@ class Schedules_Model extends Model {
   }
 
   public function assignments() {
-    return $this->_db->select('SELECT ra.id, ra.eventId, ra.activityId, ra.resourceId, r.name 
-    FROM ResourceAssignment as ra 
-    RIGHT JOIN Resources as r ON r.id = ra.resourceId   
-    ORDER BY a.id DESC LIMIT 0, 200');
+    // FIXME only fetch items for one specific date?
+    return $this->_db->select('SELECT ra.id as id, ra.eventId, ra.activityId, 
+      CONCAT(ra.eventId, "-" , ra.activityId) as combkey, ra.resourceId, r.name as resourcename 
+      FROM ResourceAssignment as ra 
+      JOIN Resources as r ON r.id = ra.resourceId   
+      ORDER BY r.name ASC');
+  }
+
+  public function delete($id) {
+    if (!empty($id)) {
+      return $this->_db->delete('ResourceAssignment',array("id" => $id),$limit = 1);
+    }
   }
 
   /**

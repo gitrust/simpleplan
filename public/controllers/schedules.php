@@ -18,11 +18,14 @@ class Schedules extends Controller {
         $event = $_POST['event'];
         $resource = $_POST['resource'];        
         $this->_model->add($event,$activity,$resource);
-        Message::set("ja");
-      } else {
-        Message::set($_POST['resource']);
-      }
-      
+      }       
+    }
+    $this->render();
+  }
+
+  public function del($assignmentid) {
+    if (!empty($assignmentid)) {
+      $this->_model->delete($assignmentid);
     }
     $this->render();
   }
@@ -30,11 +33,31 @@ class Schedules extends Controller {
   private function createtable($data) {
       $table[] = array();
 
+      $assignments = $this->_model->assignments();
+
       $row = 0;      
       foreach ($data['activities'] as $activity) {
          $col = 0;
          foreach ($data['events'] as $event) {
-            $table[$row][$col] = array("eventid" => $event["id"], "activityid" => $activity["id"],"activityname" => $activity["name"] ,"resourceid" => 0, "resourcename" => "hello");
+
+            // FIXME improve performance
+            // search for existing assignments
+            $assignment = array();
+            foreach ($assignments as $a) {
+                $key = $event["id"] . '-' . $activity["id"];
+                if ($a["combkey"] == $key) {
+                  $assignment = array("resourcename" => $a["resourcename"],"id" => $a["id"]);
+                  break;
+                }
+            }
+
+            // generate assignment table
+            $table[$row][$col] = array("eventid" => $event["id"], 
+              "activityid" => $activity["id"],
+              "activityname" => $activity["name"] ,
+              "assignmentid" => $assignment["id"], 
+              "resourceexists" => count($assignment) > 0,
+              "resourcename" => $assignment["resourcename"]);
             $col++;
          }
          $row++;

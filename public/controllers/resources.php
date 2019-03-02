@@ -9,7 +9,7 @@ class Resources extends Controller {
   public function index() {  	 
     $data["isadmin"] = $this->isAdmin();
     $data['resources'] = $this->_model->resources();
-    $data['title'] = I18n::tr('title.resourcessite');
+    $data['title'] = I18n::tr('title.resourcesite');
     $data['form_header'] = I18n::tr('form.login');
     
     $this->render($data);
@@ -34,7 +34,7 @@ class Resources extends Controller {
 
     $data["isadmin"] = $this->isAdmin();
     $data['resources'] = $this->_model->resources();
-    $data['title'] = I18n::tr('title.resourcessite') ;
+    $data['title'] = I18n::tr('title.resourcesite') ;
     $data['form_header'] = I18n::tr('form.login');
     $this->render($data);    
   }
