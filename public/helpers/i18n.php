@@ -4,13 +4,13 @@ class I18n {
     
 	private static  $msg = 
 		array("button.save" => "Speichern",
-            "label.administrator" => "Administrator",
-            "table.header.admin" => "Administrator",
-            "table.header.firstname" => "Name",
-            "table.header.email" => "Email",
-            "label.password" => "Passwort",
-            "label.firstname" => "Name",
-            "label.email" => "Email",
+			"label.administrator" => "Administrator",
+			"table.header.admin" => "Administrator",
+			"table.header.firstname" => "Name",
+			"table.header.email" => "Email",
+			"label.password" => "Passwort",
+			"label.firstname" => "Name",
+			"label.email" => "Email",
 			"title.login" => "Anmelden",
 			"link.administration" => "Administration",
 			"link.logout" => "Abmelden",
@@ -26,7 +26,7 @@ class I18n {
 			"button.login" => "Anmelden",
 			"link.imprint" => "Impressum",
 			"link.privacy" => "Datenschutz",
-			"title.entrylist" => "Meine Termine",
+			"title.entrylist" => "Dienstplan",
 			"title.welcome" => "Willkommen",
 			"button.update" => "Aktualisieren",
 			"table.header.entrylist" => "Termine / Dienste",
@@ -50,7 +50,13 @@ class I18n {
 			"table.header.users" => "Benutzer",
 			"label.newuser" => "Neuer Benutzer",
 			"title.users" => "Benutzer",
-			"title.schedules" => "Termine");
+			"title.schedules" => "Termine",
+			"label.category" => "Kategorie",
+			"label.description" => "Beschreibung",
+			"label.newactivity" => "Neue Aktivität",
+			"table.header.activities" => "Aktivitäten",
+			"table.header.resources" => "Ressourcen",
+			"label.newresource" => "Neue Ressource");
 	
    public static function tr($msgid, $lang = "de") {
    	 if (array_key_exists($msgid, self::$msg)){

@@ -2,17 +2,18 @@
 <!-- modal div to choose a resource -->
 <div id="moddiv" class="modal">
 <form id="scheduleform" method="POST" action="<?= DIR ?>schedules/add">
-  <input type="hidden" id="event">
-	<input type="hidden" id="activity">
+    <input type="hidden" id="event" name="event" value="">
+	<input type="hidden" id="activity" name="activity" value="">
 	<select id="select-resource" autofocus name="resource" required>
 <?php
-  foreach ($data['resources'] as $item) {
-	echo '<option value="' . $item['id'] . '">' . htmlspecialchars($item["name"]) . '</option>';
-	}
+foreach ($data['resources'] as $item) {
+	echo '<option value="' . htmlspecialchars($item['id']) . '">' . htmlspecialchars($item["name"]) . '</option>';
+}
 ?>
 	</select>
 	<br>
-	<input type="submit" value="Add">
+	<input class="button-primary" type="submit" value="Add">
+	<input class="button-primary" type="submit" value="Delete">
 	</form>
 </div>
 
@@ -40,16 +41,34 @@
 
 		echo '</tr></thead>';
 		echo '<tbody>';
-		$i = 0;
-		foreach ($data['activities'] as $item) {
+		
+		$table = $data['tabledata'];
+		for ($i = 0; $i < count($table); $i++) {
+				$row = $table[$i];
+
 				echo '<tr>';
-				echo '<td>[' . htmlspecialchars($item["categoryname"])  . '] ' . htmlspecialchars($item["name"]) . '</td>';
-				foreach ($data['events'] as $item) {
+
+				// first column is name of activity
+				echo '<td>';
+				echo htmlspecialchars($row[0]["activityname"]);
+				echo '</td>';
+
+				for ($j = 0; $j < count($row); $j++) {
+					$col = $row[$j];
 					echo '<td>';
+
 					// jquery modal plugin
-					echo '<a id=\'reslink'.$i.'\' href=\'#\' data-ref=\'222,333\' title=\'Resource planen\'>+R</a>';
+					$link = '<a ';
+					$link .= 'id="reslink" ';
+					$link .= 'href="#" ';
+					$link .= 'data-ref="' . $col["eventid"] . ',' . $col["activityid"] . '" ' ;
+					$link .= 'title="Add Resource" ';
+					$link .= '>';
+					$link .= 'add';
+					$link .= '</a>';
+					echo $link;
+
 					echo '</td>';
-					$i = $i + 1;
 				}
 				echo '</tr>';
 		}
@@ -74,11 +93,11 @@ function popupWindow(event, activity) {
 // register a click handler for a with id=reslink
 $('[id^=reslink]').click(function(){
 	  // set values from link and popup modal window
-	  var data = $(this).data("ref");
-		var eId = data.slice(0,data.indexOf(','));
-		var aId = data.slice(data.indexOf(',')+1,data.length);
-		popupWindow(eId,aId); 
-		return false; 
+	var data = $(this).data("ref");
+	var eId = data.slice(0,data.indexOf(','));
+	var aId = data.slice(data.indexOf(',')+1,data.length);
+	popupWindow(eId,aId); 
+	return false; 
 });
 
 

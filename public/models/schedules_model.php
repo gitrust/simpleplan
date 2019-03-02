@@ -18,11 +18,18 @@ class Schedules_Model extends Model {
      FROM Activities as a JOIN ActivityCategories as ac WHERE a.categoryId = ac.id  ORDER BY a.id DESC LIMIT 0, 200');
   }
 
+  public function assignments() {
+    return $this->_db->select('SELECT ra.id, ra.eventId, ra.activityId, ra.resourceId, r.name 
+    FROM ResourceAssignment as ra 
+    RIGHT JOIN Resources as r ON r.id = ra.resourceId   
+    ORDER BY a.id DESC LIMIT 0, 200');
+  }
+
   /**
    * Get all available resources
    */
   public function resources() {
-    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY id DESC LIMIT 0, 150');
+    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY name ASC LIMIT 0, 150');
   }
 
   /**

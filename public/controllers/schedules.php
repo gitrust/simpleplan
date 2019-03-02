@@ -18,7 +18,9 @@ class Schedules extends Controller {
         $event = $_POST['event'];
         $resource = $_POST['resource'];        
         $this->_model->add($event,$activity,$resource);
-        Message::set('Aktualisiert schedule ');
+        Message::set("ja");
+      } else {
+        Message::set($_POST['resource']);
       }
       
     }
@@ -28,19 +30,18 @@ class Schedules extends Controller {
   private function createtable($data) {
       $table[] = array();
 
-      $row = 0;
-      $col = 0;
+      $row = 0;      
       foreach ($data['activities'] as $activity) {
+         $col = 0;
          foreach ($data['events'] as $event) {
-            $table[$row][$col] = array("eventid" => $event.id, "activityid" => $activity.id,"resourcename" => "hello");
+            $table[$row][$col] = array("eventid" => $event["id"], "activityid" => $activity["id"],"activityname" => $activity["name"] ,"resourceid" => 0, "resourcename" => "hello");
             $col++;
          }
          $row++;
       }
 
-      $data['tabledata'] = $table;
-  }
-  
+      return $table;
+  }  
   
   private function render() {
     $data['title'] = I18n::tr('title.entrylist');
@@ -50,8 +51,7 @@ class Schedules extends Controller {
     $data['activities'] = $this->_model->activities();
     $data['resources'] = $this->_model->resources();
 
-    $this->createtable($data);
-    
+    $data['tabledata'] = $this->createtable($data);    
 
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);

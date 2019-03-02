@@ -9,6 +9,7 @@ class Activities extends Controller {
   public function index() {  	 
     $data["isadmin"] = $this->isAdmin();
     $data['activities'] = $this->_model->activities();
+    $data['categories'] = $this->_model->categories();
     $data['title'] = I18n::tr('title.activityssite');
     $data['form_header'] = I18n::tr('form.login');
     
@@ -20,6 +21,7 @@ class Activities extends Controller {
     $this->addActivity();
 
     $data['activities'] = $this->_model->activities();
+    $data['categories'] = $this->_model->categories();
     $data['title'] = I18n::tr('title.activityssite') ;
     $data['form_header'] = I18n::tr('form.login');
     
@@ -34,6 +36,7 @@ class Activities extends Controller {
 
     $data["isadmin"] = $this->isAdmin();
     $data['activities'] = $this->_model->activities();
+    $data['categories'] = $this->_model->categories();
     $data['title'] = I18n::tr('title.activityssite') ;
     $data['form_header'] = I18n::tr('form.login');
     $this->render($data);    
@@ -41,8 +44,11 @@ class Activities extends Controller {
 
      // Helper Function
   private function addActivity() {
-    if (!empty($_POST['name'])) {
-        $this->_model->add(trim($_POST['name']),trim($_POST['desc']));
+    if (!empty($_POST['name']) && !empty($_POST['category'])) {
+        $name = trim($_POST['name']);
+        $category = intval($_POST['category']);
+        $desc =  trim($_POST['desc']);
+        $this->_model->add($name,$category,$desc);
     }
   }
 
