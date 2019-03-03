@@ -15,7 +15,7 @@
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($item["targetDate"]) . '</td>';
 			echo '<td>' . htmlspecialchars($item["description"]) . '</td>';
-			echo '<td><a href="' . DIR . 'admin/eventdel/' . htmlspecialchars($item["id"]) . '">' . I18n::tr('link.delete') . '</a></td>';
+			echo '<td><a href="' . DIR . 'admin/eventdel/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
 			echo '</tr>';
 		 }
 		 echo '</tbody>';

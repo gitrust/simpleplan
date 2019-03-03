@@ -12,7 +12,7 @@
 			<select id="select-category" autofocus name="category" required>
 <?php
 			foreach ($data['categories'] as $item) {
-				echo '<option value="' . $item['id'] . '">' . htmlspecialchars($item["name"]) . '</option>';
+				echo '<option value="' . htmlspecialchars($item['id']) . '">' . htmlspecialchars($item["name"]) . '</option>';
 			}
 ?>
 			</select>

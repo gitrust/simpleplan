@@ -47,39 +47,7 @@ class Admin extends Controller {
     $this->renderEvents($data); 
   }
 
-  /** API: Get Users */
-  public function users() {
-    $data["isadmin"] = $this->isAdmin();
-    $data['users'] = $this->_model->users(Session::get('userid'));
-    $data['title'] = I18n::tr('title.users') ;
-    $data['form_header'] = I18n::tr('form.login');
-    $this->renderUsers($data);    
-  }
-
-  /** API: Delete User */
-  public function userdel($id) {
-    if (!empty($id)) {
-      $this->_model->deleteUser($id,Session::get('userid'));
-    }
-
-    $data["isadmin"] = $this->isAdmin();
-    $data['users'] = $this->_model->users(Session::get('userid'));
-    $data['title'] = I18n::tr('title.users') ;
-    $data['form_header'] = I18n::tr('form.login');
-    $this->renderUsers($data);    
-  }
-
-  /** API: Add New User */
-  public function useradd() {
-    $this->addUser();
-
-    $data["isadmin"] = $this->isAdmin();
-    $data['users'] = $this->_model->users(Session::get('userid'));
-    $data['title'] = I18n::tr('title.users') ;
-    $data['form_header'] = I18n::tr('form.login');
-    
-    $this->renderUsers($data); 
-  }
+  
 
   // Helper Function
   private function addEvent() {
@@ -88,15 +56,7 @@ class Admin extends Controller {
     }
   }
 
-  // Helper Function
-  private function addUser() {
-    if (!empty($_POST['login']) && !empty($_POST['firstname']) && !empty($_POST['pass'])) {
-        $genpass = Pass::generate($_POST['pass']);
-        $email = $_POST['email'];
-        $admin = !empty($_POST['isadmin']);
-        $this->_model->addUser(trim($_POST['login']),trim($_POST['firstname']),$genpass,$email,$admin);
-    }
-  }  
+  
   
   // RENDER TEMPLATES
 
@@ -111,15 +71,5 @@ class Admin extends Controller {
     $this->_view->render('footer');
   } 
 
-  private function renderUsers($data) {
-    $this->_view->render('header', $data);
-    $this->_view->render('nav', $data);
-    $this->_view->render('admin/head', $data);
-    $this->_view->render('admin/nav', $data);
-    $this->_view->render('admin/useredit', $data);
-    $this->_view->render('admin/usertable', $data);
-    $this->_view->render('admin/footer', $data);
-    $this->_view->render('footer');
-  } 
 
 }

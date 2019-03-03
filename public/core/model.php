@@ -10,7 +10,7 @@ class Model {
 	}
 
 	public function isUserAdmin($id) {
-    	$a = $this->_db->select('SELECT * FROM Users WHERE id = :id AND roleflag = :roleflag',array("id" => $id,"roleflag" => "A"));
+    	$a = $this->_db->select('SELECT * FROM Users WHERE id = :id AND userRole = :userRole',array("id" => $id,"userRole" => "admin"));
     	return count($a[0]) > 0;
-  }
+  	}
 }

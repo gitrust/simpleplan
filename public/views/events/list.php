@@ -59,7 +59,7 @@
 				if (in_array($key,$data["entrykeys"])) {
 					$checked = "checked";
 				}
-				echo '<td><input type="checkbox" name="entrykeys[]" ' . $checked . ' value="' . $key . '"></td>';
+				echo '<td><input type="checkbox" name="entrykeys[]" ' . $checked . ' value="' . htmlspecialchars($key) . '"></td>';
 			}
 			echo '</tr>';
 		 }

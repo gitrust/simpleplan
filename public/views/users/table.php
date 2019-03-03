@@ -1,6 +1,5 @@
 <div class="row">
 	<div class="twelve columns">
-    <div class="hscroller">
 	<table class="stripe">
 	<?php
 	  if (!sizeof($data['users'])) {
@@ -21,14 +20,13 @@
 			echo '<td>' . htmlspecialchars($item["login"]) . '</td>';
 			echo '<td>' . htmlspecialchars($item["firstname"]) . '</td>';
             echo '<td>' . htmlspecialchars($item["email"]) . '</td>';
-            echo '<td>' . htmlspecialchars($item["roleflag"] == 'A' ? 'Yes' : 'No') . '</td>';
-			echo '<td><a href="' . DIR . 'admin/userdel/' . htmlspecialchars($item["id"]) . '">' . I18n::tr('link.delete') . '</a></td>';
+            echo '<td>' . htmlspecialchars($item["userRole"]) . '</td>';
+			echo '<td><a href="' . DIR . 'users/del/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
 			echo '</tr>';
 		 }
 		 echo '</tbody>';
 	  }
 	?>
 	</table>
-    </div>
 	</div>
 </div>

@@ -15,7 +15,7 @@
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($activity["categoryname"]) . '/' . htmlspecialchars($activity["name"]) . '</td>';
 			echo '<td>' . htmlspecialchars($activity["description"]) . '</td>';
-			echo '<td><a href="' . DIR . 'activities/del/' . htmlspecialchars($activity["id"]) . '">' . I18n::tr('link.delete') . '</a></td>';
+			echo '<td><a href="' . DIR . 'activities/del/' . htmlspecialchars($activity["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
 			echo '</tr>';
 		 }
 		 echo '</tbody>';

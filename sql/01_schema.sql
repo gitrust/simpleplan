@@ -5,7 +5,7 @@ CREATE TABLE Users (
     firstname VARCHAR(30) NOT NULL,
     login VARCHAR(30) NOT NULL,
     email VARCHAR(50),
-    roleflag CHAR(1),
+    userRole VARCHAR(30),
     pass VARCHAR(255)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 

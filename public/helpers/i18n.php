@@ -46,7 +46,7 @@ class I18n {
 			"label.userlogin" => "Benutzer Login",
 			"label.userfirstname" => "Name",
 			"label.userpass" => "Passwort",
-			"label.userrole" => "Dienst",
+			"label.userrole" => "Systemrolle",
 			"table.header.users" => "Benutzer",
 			"label.newuser" => "Neuer Benutzer",
 			"title.users" => "Benutzer",
@@ -58,7 +58,10 @@ class I18n {
 			"table.header.resources" => "Ressourcen",
 			"label.newresource" => "Neue Ressource",
 			"title.resourcesite" => "Ressourcen",
-			"title.activitysite" => "Aktivitäten");
+			"title.activitysite" => "Aktivitäten",
+			"label.user" => "Benutzer",
+			"label.manager" => "Manager"
+			);
 	
    public static function tr($msgid, $lang = "de") {
    	 if (array_key_exists($msgid, self::$msg)){

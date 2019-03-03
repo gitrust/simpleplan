@@ -13,7 +13,7 @@ foreach ($data['resources'] as $item) {
 ?>
 	</select>
 	
-	<input class="button-primary" type="submit" value="Add">
+	<input class="button-primary" type="submit" value="<?= I18n::tr('button.add'); ?>">
 	</form>
 </div>
 
@@ -35,7 +35,7 @@ foreach ($data['resources'] as $item) {
 		echo '<thead><tr><th>&nbsp;</th>';
 		foreach ($data['events'] as $item) { 
 			echo '<th>';
-			echo '' . $item['targetDate'] . '';
+			echo '' . htmlspecialchars($item['targetDate']) . '';
 			echo '</th>';
 		}
 
@@ -61,16 +61,16 @@ foreach ($data['resources'] as $item) {
 					$link = '<a ';
 					$link .= 'id="reslink" ';
 					$link .= 'href="#" ';
-					$link .= 'data-ref="' . $col["eventid"] . ',' . $col["activityid"] . '" ' ;
+					$link .= 'data-ref="' . htmlspecialchars($col["eventid"]) . ',' . htmlspecialchars($col["activityid"]) . '" ' ;
 					$link .= 'title="Add Resource" ';
 					$link .= '>';
-					$link .= '--';
+					$link .= '<i class="fas fa-plus"></i>';
 					$link .= '</a>';
 
 					// delete link
 					if ($col["resourceexists"]) {
 						echo htmlspecialchars($col["resourcename"]) . '&nbsp;';
-						echo '<a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">X</a>';
+						echo '<a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a>';
 					} else {
 						echo $link;
 					}

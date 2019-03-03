@@ -134,6 +134,18 @@ footer.page-footer {
 	height: auto;
 }
 
+a  i {
+	color: lightgrey;
+}
+
+a:hover  i.fas.fa-trash-alt {
+	color: red;
+}
+
+a:hover  i.fas.fa-plus {
+	color: #0FA0CE;
+}
+
 
 /* #Media Queries
 ================================================== */

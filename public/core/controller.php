@@ -37,6 +37,7 @@ class Controller {
 
 	protected function isAdmin() {
     	return $this->_model->isUserAdmin(Session::get("userid"));
-  	}
+	}
+	
 
 }

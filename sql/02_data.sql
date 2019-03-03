@@ -1,7 +1,7 @@
 
 
-insert into Users(firstname,login,email,roleflag,pass) VALUES("Administrator","admin","admin@admin.com","A","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
-insert into Users(firstname,login,email,roleflag,pass) VALUES("User","user","user@admin.com","U","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
+insert into Users(firstname,login,email,userRole,pass) VALUES("Administrator","admin","admin@admin.com","admin","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
+insert into Users(firstname,login,email,userRole,pass) VALUES("User","user","user@admin.com","user","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
 
 insert into Events(targetDate,description) VALUES("2 May","Event 1");
 insert into Events(targetDate,description) VALUES("10 May","Event 2");

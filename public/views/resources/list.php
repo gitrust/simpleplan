@@ -17,7 +17,7 @@
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($item["name"]) . '</td>';
 			echo '<td>' . htmlspecialchars($item["description"]) . '</td>';
-			echo '<td><a href="' . DIR . 'resources/del/' . htmlspecialchars($item["id"]) . '">' . I18n::tr('link.delete') . '</a></td>';
+			echo '<td><a href="' . DIR . 'resources/del/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
 			echo '</tr>';
 		 }
 		 echo '</tbody>';
