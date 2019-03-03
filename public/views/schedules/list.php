@@ -1,29 +1,14 @@
-
-<!-- modal div to choose a resource -->
-<div id="moddiv" class="modal">
-<form id="scheduleform" method="POST" action="<?= DIR ?>schedules/add">
-<h3>Resource auswählen</h3>
-    <input type="hidden" id="event" name="event" value="">
-	<input type="hidden" id="activity" name="activity" value="">
-	<select id="select-resource" autofocus name="resource" required>
-<?php
-foreach ($data['resources'] as $item) {
-	echo '<option value="' . htmlspecialchars($item['id']) . '">' . htmlspecialchars($item["name"]) . '</option>';
-}
-?>
-	</select>
-	
-	<input class="button-primary" type="submit" value="<?= I18n::tr('button.add'); ?>">
-	</form>
-</div>
-
-
-
 <div class="row">
 <div class="twelve columns">
 
 	<h1><?= $data['title'] ?></h1>
 	
+		<!-- menu -->
+	<div class="subnav">
+		<a href="<?= DIR ?>schedules/view/"><?= I18n::tr('link.schedules.readonly'); ?></a>
+		| <a href="<?= DIR ?>schedules/print/"><?= I18n::tr('link.schedules.print'); ?></a>
+	</div>
+
 	<?php echo Message::show(); ?>
 
 	<table id="schedules" class="stripe">
@@ -36,6 +21,7 @@ foreach ($data['resources'] as $item) {
 		foreach ($data['events'] as $item) { 
 			echo '<th>';
 			echo '' . htmlspecialchars($item['targetDate']) . '';
+			echo '<br><div class="caption-small">' . htmlspecialchars($item['description']) . '</div>';
 			echo '</th>';
 		}
 
@@ -55,24 +41,28 @@ foreach ($data['resources'] as $item) {
 
 				for ($j = 0; $j < count($row); $j++) {
 					$col = $row[$j];
-					echo '<td>';
+					echo '<td class="schedule">';
 
 					// popup link
-					$link = '<a ';
-					$link .= 'id="reslink" ';
-					$link .= 'href="#" ';
-					$link .= 'data-ref="' . htmlspecialchars($col["eventid"]) . ',' . htmlspecialchars($col["activityid"]) . '" ' ;
-					$link .= 'title="Add Resource" ';
-					$link .= '>';
-					$link .= '<i class="fas fa-plus"></i>';
-					$link .= '</a>';
+					$addlink = '<a ';
+					$addlink .= 'id="reslink" ';
+					$addlink .= 'href="#" ';
+					$addlink .= 'data-ref="' . htmlspecialchars($col["eventid"]) . ',' . htmlspecialchars($col["activityid"]) . '" ' ;
+					$addlink .= 'title="Add Resource" ';
+					$addlink .= '>';
+					$addlink .= '<i class="fas fa-plus"></i>';
+					$addlink .= '</a>';
 
 					// delete link
 					if ($col["resourceexists"]) {
 						echo htmlspecialchars($col["resourcename"]) . '&nbsp;';
-						echo '<a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a>';
+						if (!$data["readonly"]) {						
+							echo '<a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a>';
+						}
 					} else {
-						echo $link;
+						if (!$data["readonly"]) {
+							echo $addlink;
+						}
 					}
 
 					echo '</td>';
@@ -85,31 +75,3 @@ foreach ($data['resources'] as $item) {
 	</table>
 </div>
 </div> <!-- / .row -->
-
-<script>
-
-var $selectresource = $('#select-resource').selectize();
-
-function popupWindow(event, activity) {
-	// set event and activity ids
-	$("#event").val(event);
-	$('#activity').val(activity);
-
-	// set default value
-	$selectresource[0].selectize.setValue("1");
-	$('#moddiv').modal('show');
-	//$('#scheduleform').submit();
-}
-
-// register a click handler for a with id=reslink
-$('[id^=reslink]').click(function(){
-	  // set values from link and popup modal window
-	var data = $(this).data("ref");
-	var eId = data.slice(0,data.indexOf(','));
-	var aId = data.slice(data.indexOf(',')+1,data.length);
-	popupWindow(eId,aId); 
-	return false; 
-});
-
-
-</script>

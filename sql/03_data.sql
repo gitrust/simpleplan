@@ -27,3 +27,14 @@ insert into Activities (categoryId,name,description) VALUES (4,"Mischpult 2","De
 insert into Activities (categoryId,name,description) VALUES (6,"Schäffchen","Description");
 insert into Activities (categoryId,name,description) VALUES (6,"Bibelkreis","Description");
 insert into Activities (categoryId,name,description) VALUES (6,"Kids ab 7","Description");
+
+
+/*
+assignments
+
+select ra.id, ra.eventId, a.id, ra.resourceId, r.name, a.name
+FROM ResourceAssignment as ra
+LEFT JOIN Events as e ON e.id = ra.eventId
+LEFT JOIN Activities as a ON a.id = ra.activityId
+right JOIN Resources as r ON r.id = ra.resourceId
+*/

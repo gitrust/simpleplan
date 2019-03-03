@@ -38,6 +38,14 @@ class Controller {
 	protected function isAdmin() {
     	return $this->_model->isUserAdmin(Session::get("userid"));
 	}
+
+	protected function isManager() {
+		return $this->_model->isUserManager(Session::get("userid"));
+	}
+
+	protected function isUser() {
+		return $this->_model->isUser(Session::get("userid"));
+	}
 	
 
 }

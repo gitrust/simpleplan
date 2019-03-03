@@ -25,6 +25,7 @@ class Resources_Model extends Model {
    * Delete an Resource
    */
   public function deleteResource($id) {
+    $this->_db->delete('ResourceAssignment',array("resourceId" => $id),$limit = 'no'); 
     return $this->_db->delete('Resources',array("id" => $id),$limit = 1); 
   }
 

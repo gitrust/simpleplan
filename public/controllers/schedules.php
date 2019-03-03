@@ -45,6 +45,7 @@ class Schedules extends Controller {
             $assignment = array();
             foreach ($assignments as $a) {
                 $key = $event["id"] . '-' . $activity["id"];
+                // eventid-activityid
                 if ($a["combkey"] == $key) {
                   $assignment = array("resourcename" => $a["resourcename"],"id" => $a["id"]);
                   break;
@@ -70,6 +71,7 @@ class Schedules extends Controller {
     $data['title'] = I18n::tr('title.entrylist');
     
     $data["isadmin"] = $this->isAdmin();
+    $data["readonly"] = $this->isUser();
     $data['events'] = $this->_model->events();
     $data['activities'] = $this->_model->activities();
     $data['resources'] = $this->_model->resources();
@@ -78,7 +80,9 @@ class Schedules extends Controller {
 
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);
-    $this->_view->render('schedules/list', $data);      
+    $this->_view->render('schedules/modal', $data);
+    $this->_view->render('schedules/list', $data);
+    $this->_view->render('schedules/scripts', $data);
     $this->_view->render('footer');
   } 
 

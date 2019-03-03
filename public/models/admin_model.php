@@ -26,7 +26,8 @@ class Admin_Model extends Model {
    * Delete an Event
    */
   public function deleteEvent($id) {
-    return $this->_db->delete('Events',array("id" => $id),$limit = 1); 
+    $this->_db->delete('ResourceAssignment',array("eventId" => $id),$limit = 'no'); 
+    return $this->_db->delete('Events',array("id" => $id),$limit = 1);
   }
 
   /**
