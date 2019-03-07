@@ -24,9 +24,9 @@ class Schedules_Model extends Model {
    */
   public function eventsLimited($page) {
     // FIXME Need to use .bindParam(...) in database
-    return $this->_db->select('SELECT id, targetDate, description 
+    return $this->_db->selectP('SELECT id, targetDate, description 
       FROM Events 
-      ORDER BY targetDate ASC');
+      ORDER BY targetDate ASC limit :odor , 2',array('odor' => array("value" => $page, "type" => PDO::PARAM_INT)));
   }
 
   public function activities() {

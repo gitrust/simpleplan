@@ -9,7 +9,7 @@ class Schedules extends Controller {
   }
 
   private function initPager() {
-    $page = abs(intval($this->getParamGet('page',1)));
+    $page = abs(intval($this->getParamGet('page',0)));
 
     // Paginator
     $itemCount = $this->_model->eventCount();
