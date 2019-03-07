@@ -23,10 +23,10 @@ class Schedules extends Controller {
   // FIXME only admin should do that
   public function add() {
     if ($this->isPost()){
-        $activity = $this.getParamPost('activity');
-        $event = $this.getParamPost('event');
-        $resource = $this.getParamPost('resource');
-        if (!empty($activity) && $empty($event) && !empty($resource)) {      
+        $activity = $this->getParamPost('activity');
+        $event = $this->getParamPost('event');
+        $resource = $this->getParamPost('resource');
+        if (!empty($activity) && !empty($event) && !empty($resource)) {      
           $this->_model->add($event,$activity,$resource);
         }
       }
