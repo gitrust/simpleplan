@@ -18,12 +18,22 @@ class Database extends PDO {
    public function select($prepared_sql, $data = array()) {
       $statement = $this->prepare($prepared_sql);
       foreach($data as $key => $value) {
-         $statement->bindValue(":$key", $value);
+         $statement->bindParam("$key", $value);
       }
 
       $statement->execute();
       return $statement->fetchAll();
    }
+
+   public function selectP($prepared_sql, $data = array()) {
+    $statement = $this->prepare($prepared_sql);
+    foreach($data as $key => $config) {
+       $statement->bindParam("$key", $config["value"],$config["type"]);
+    }
+
+    $statement->execute();
+    return $statement->fetchAll();
+ }
 
    /**
      * insert method
