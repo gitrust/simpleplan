@@ -4,12 +4,14 @@
 	<h1><?= $data['title'] ?></h1>
 	
 		<!-- menu -->
-	<div class="subnav">
+	<!--div class="subnav">
 		<a href="<?= DIR ?>schedules/view/"><?= I18n::tr('link.schedules.readonly'); ?></a>
 		| <a href="<?= DIR ?>schedules/print/"><?= I18n::tr('link.schedules.print'); ?></a>
-	</div>
+	</div-->
 
 	<?php echo Message::show(); ?>
+	
+	<?php echo Paginator::show("schedules"); ?>
 
 	<table id="schedules" class="stripe">
 	<?php
@@ -50,7 +52,7 @@
 					$addlink .= 'data-ref="' . htmlspecialchars($col["eventid"]) . ',' . htmlspecialchars($col["activityid"]) . '" ' ;
 					$addlink .= 'title="Add Resource" ';
 					$addlink .= '>';
-					$addlink .= '<i class="fas fa-plus"></i>';
+					$addlink .= UiHelper::plusIcon();
 					$addlink .= '</a>';
 
 					// delete link

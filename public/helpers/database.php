@@ -2,6 +2,8 @@
 
 class Database extends PDO {
 
+    const ITEMS_PER_PAGE = 2;
+
    function __construct() {
       try {
          parent::__construct(DB_TYPE . ':host=' . DB_HOST . ';dbname=' . DB_NAME . ';charset=utf8', DB_USER, DB_PASS);
@@ -125,5 +127,9 @@ class Database extends PDO {
    public function truncate($table) {
       return $this->exec("TRUNCATE TABLE $table");
    }
+
+   public function getOffset($page) {
+    return $ITEMS_PER_PAGE * ($page - 1);
+  }
 
 }

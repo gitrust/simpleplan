@@ -6,8 +6,14 @@ class Schedules extends Controller {
     parent::__construct($needsLogin=true);
   }
 
-  public function index() { 
-     $this->render();
+  public function index() {
+    // set page number
+    $page = $this->reqGet('page');
+    if (!empty($page)) {
+      $this->setPage($page);
+    }
+
+    $this->render();
   }
 
   // FIXME only admin should do that
@@ -65,14 +71,15 @@ class Schedules extends Controller {
       }
 
       return $table;
-  }  
+  }
+
   
   private function render() {
     $data['title'] = I18n::tr('title.entrylist');
     
     $data["isadmin"] = $this->isAdmin();
     $data["readonly"] = $this->isUser();
-    $data['events'] = $this->_model->events();
+    $data['events'] = $this->_model->eventsLimited($this->getPage());
     $data['activities'] = $this->_model->activities();
     $data['resources'] = $this->_model->resources();
 
