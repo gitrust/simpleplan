@@ -11,7 +11,7 @@ CREATE TABLE Users (
 
 CREATE TABLE Events (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    targetDate VARCHAR(10) NOT NULL,
+    targetDate date NOT NULL,
     description VARCHAR(150)
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 

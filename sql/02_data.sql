@@ -3,12 +3,12 @@
 insert into Users(firstname,login,email,userRole,pass) VALUES("Administrator","admin","admin@admin.com","admin","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
 insert into Users(firstname,login,email,userRole,pass) VALUES("User","user","user@admin.com","user","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
 
-insert into Events(targetDate,description) VALUES("2 May","Event 1");
-insert into Events(targetDate,description) VALUES("10 May","Event 2");
-insert into Events(targetDate,description) VALUES("22 May","Event 3");
-insert into Events(targetDate,description) VALUES("2 June","Event 4");
-insert into Events(targetDate,description) VALUES("2 July","Event 5");
-insert into Events(targetDate,description) VALUES("22 July","Event 6");
+insert into Events(targetDate,description) VALUES(STR_TO_DATE('01/05/2010', '%m/%d/%Y'),"Event 1");
+insert into Events(targetDate,description) VALUES(STR_TO_DATE('01/06/2010', '%m/%d/%Y'),"Event 2");
+insert into Events(targetDate,description) VALUES(STR_TO_DATE('03/05/2010', '%m/%d/%Y'),"Event 3");
+insert into Events(targetDate,description) VALUES(STR_TO_DATE('06/05/2010', '%m/%d/%Y'),"Event 4");
+insert into Events(targetDate,description) VALUES(STR_TO_DATE('01/05/2012', '%m/%d/%Y'),"Event 5");
+insert into Events(targetDate,description) VALUES(STR_TO_DATE('01/05/1999', '%m/%d/%Y'),"Event 6");
 
 insert into ActivityCategories(name,description) VALUES ("ActivityCategory 1","Description Dptm 1");
 insert into ActivityCategories(name,description) VALUES ("ActivityCategory 2","Description Dptm 2");
