@@ -3,7 +3,7 @@
 
 	<h1><?= $data['title'] ?></h1>
 	
-		<!-- menu -->
+	<!-- menu -->
 	<!--div class="subnav">
 		<a href="<?= DIR ?>schedules/view/"><?= I18n::tr('link.schedules.readonly'); ?></a>
 		| <a href="<?= DIR ?>schedules/print/"><?= I18n::tr('link.schedules.print'); ?></a>
@@ -11,8 +11,16 @@
 
 	<?php echo Message::show(); ?>
 	
-	<?php echo Paginator::show("schedules"); ?>
+	<!-- Paginator -->
+	<?php
+	echo 
+		'<div class="paging"><a href="/schedules/?page=' . $data["pager.prev"] . '"> 
+			&lt; </a>  &nbsp; Page [' . $data["pager.page"] . '] &nbsp;
+			<a href="/schedules?page=' . $data["pager.next"] . '"> &gt; </a>
+		</div>';
+	?>
 
+	<!-- Schedules table -->
 	<table id="schedules" class="stripe">
 	<?php
 	  if (!sizeof($data['events'])) {

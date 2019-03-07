@@ -35,7 +35,10 @@ class Admin_Model extends Model {
    */
   public function addEvent($targetDate,$description="") {
     if (!empty($targetDate)) {
-      return  $this->_db->insert('Events',array("targetDate" => substr($targetDate,0,29),"description" => substr($description,0,149)));
+      // FIXME optimize
+      // comes from date_parse_from_str
+      $s = $targetDate["year"] . '-' . $targetDate["month"] . '-' .  $targetDate["day"];
+      return  $this->_db->insert('Events',array("targetDate" => $s,"description" => substr($description,0,149)));
     }
     return -1;
   }

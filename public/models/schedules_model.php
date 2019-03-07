@@ -14,15 +14,19 @@ class Schedules_Model extends Model {
     return $this->_db->select('SELECT id, targetDate, description FROM Events ORDER BY id ASC');
   }
 
+  public function eventCount() {
+    $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events');
+    return $result[0]["eventCount"];
+  }
+
   /**
    * get all available assignments
    */
-  public function eventsLimited($page=1) {
+  public function eventsLimited($page) {
     // FIXME Need to use .bindParam(...) in database
     return $this->_db->select('SELECT id, targetDate, description 
       FROM Events 
-      ORDER BY id ASC 
-       ');
+      ORDER BY targetDate ASC');
   }
 
   public function activities() {
@@ -36,7 +40,7 @@ class Schedules_Model extends Model {
   public function assignmentsLimited($page) {
     $eventIds = $this->eventIdsLimited($page);
     $eventIds_string = implode(',', $eventIds); // WITHOUT WHITESPACES BEFORE AND AFTER THE COMMA
-    $stmt->bindParam('eventIdArray', $eventIds_string);
+    //$stmt->bindParam('eventIdArray', $eventIds_string);
 
   
 
@@ -67,9 +71,7 @@ class Schedules_Model extends Model {
   }
 
   private function eventIdsLimited($page) {
-    $count =  $this->_db->select('SELECT count(id) FROM Events');
-    $offset = $this->_db->getOffset($page);
-    return $this->_db->select('SELECT id FROM Events  ',array());
+    return $this->_db->select('SELECT id FROM Events');
   }
 
   public function delete($id) {

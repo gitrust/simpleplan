@@ -18,7 +18,7 @@ class Database extends PDO {
    public function select($prepared_sql, $data = array()) {
       $statement = $this->prepare($prepared_sql);
       foreach($data as $key => $value) {
-         $statement->bindValue("$key", $value);
+         $statement->bindValue(":$key", $value);
       }
 
       $statement->execute();

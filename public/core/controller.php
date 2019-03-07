@@ -37,7 +37,11 @@ class Controller {
 	      // redirect and die
 	      $this->_view->render('redirect', $data);
 	  	} 
-  }
+	}
+	
+	protected function isPost() {
+		return (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST');
+	}
 
 	protected function isAdmin() {
     	return $this->_model->isUserAdmin(Session::get("userid"));
@@ -51,26 +55,18 @@ class Controller {
 		return $this->_model->isUser(Session::get("userid"));
 	}
 
-
-	protected function reqGet($name) {
-		return filter_input(INPUT_GET, $name, FILTER_SANITIZE_SPECIAL_CHARS);
-	}
-
-	
-	protected function getPage() {
-		$name = $this->getControllerName();
-		$page = Session::get($name . "-page");
-		if (!empty($page)) {
-			return $page;
+	protected function getParamGet($name,$default=null) {
+		if (isset($_GET[$name])){
+			return filter_input(INPUT_GET, $name, FILTER_SANITIZE_SPECIAL_CHARS);
 		}
-		// default page
-		return 1;
+		return $default;
 	}
 
-	
-	protected function setPage($page) {
-		$name = $this->getControllerName();
-		Session::set($name . "-page",$page);
+	protected function getParamPost($name,$default=null) {
+		if (isset($_POST[$name])){
+			return filter_input(INPUT_POST, $name, FILTER_SANITIZE_SPECIAL_CHARS);
+		}
+		return $default;
 	}
 
 }

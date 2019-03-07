@@ -47,12 +47,12 @@ class Admin extends Controller {
     $this->renderEvents($data); 
   }
 
-  
 
   // Helper Function
   private function addEvent() {
     if (!empty($_POST['targetDate'])) {
-        $this->_model->addEvent(trim($_POST['targetDate']),trim($_POST['desc']));
+        $date = date_parse_from_format('d.m.Y',$_POST['targetDate']);
+        $this->_model->addEvent($date,trim($_POST['desc']));
     }
   }
 

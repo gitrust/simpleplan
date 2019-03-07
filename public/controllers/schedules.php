@@ -1,31 +1,35 @@
 <?php
 
 class Schedules extends Controller {
+  private $pager;
 
   public function __construct() {
     parent::__construct($needsLogin=true);
+    $this->initPager();
+  }
+
+  private function initPager() {
+    $page = abs(intval($this->getParamGet('page',1)));
+
+    // Paginator
+    $itemCount = $this->_model->eventCount();
+    $this->pager = new Paginator("schedules", $page, $itemCount);
   }
 
   public function index() {
-    // set page number
-    $page = $this->reqGet('page');
-    if (!empty($page)) {
-      $this->setPage($page);
-    }
-
     $this->render();
   }
 
   // FIXME only admin should do that
   public function add() {
-    if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
-      if (!empty($_POST['activity']) && !empty($_POST['event']) && !empty($_POST['resource'])) {
-        $activity = $_POST['activity'];
-        $event = $_POST['event'];
-        $resource = $_POST['resource'];        
-        $this->_model->add($event,$activity,$resource);
-      }       
-    }
+    if ($this->isPost()){
+        $activity = $this.getParamPost('activity');
+        $event = $this.getParamPost('event');
+        $resource = $this.getParamPost('resource');
+        if (!empty($activity) && $empty($event) && !empty($resource)) {      
+          $this->_model->add($event,$activity,$resource);
+        }
+      }
     $this->render();
   }
 
@@ -75,16 +79,18 @@ class Schedules extends Controller {
 
   
   private function render() {
-    $data['title'] = I18n::tr('title.entrylist');
-    
+    $data['title'] = I18n::tr('title.entrylist');    
     $data["isadmin"] = $this->isAdmin();
     $data["readonly"] = $this->isUser();
-    $data['events'] = $this->_model->eventsLimited($this->getPage());
+    $data["pager.prev"] = $this->pager->getPrev();
+    $data["pager.next"] = $this->pager->getNext();
+    $data["pager.page"] = $this->pager->getPage();
+    $data['events'] = $this->_model->eventsLimited($this->pager->getPage());
     $data['activities'] = $this->_model->activities();
     $data['resources'] = $this->_model->resources();
-
     $data['tabledata'] = $this->createtable($data);    
 
+    // Render
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('schedules/modal', $data);
