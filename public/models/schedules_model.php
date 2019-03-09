@@ -22,11 +22,16 @@ class Schedules_Model extends Model {
   /**
    * get all available assignments
    */
-  public function eventsLimited($page) {
+  public function eventsLimited($offset,$limit) {
     // FIXME Need to use .bindParam(...) in database
-    return $this->_db->selectP('SELECT id, targetDate, description 
+    $data = array('offset' => array("value" => intval($offset), "type" => PDO::PARAM_INT),
+    'limit' => array('value' => intval($limit), "type" => PDO::PARAM_INT));
+
+    return $this->_db->selectWithTypeBinding('SELECT id, targetDate, description 
       FROM Events 
-      ORDER BY targetDate ASC limit :odor , 2',array('odor' => array("value" => $page, "type" => PDO::PARAM_INT)));
+      ORDER BY targetDate ASC limit :offset, :limit ',
+        $data
+      );
   }
 
   public function activities() {

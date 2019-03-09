@@ -28,6 +28,10 @@ class Paginator {
       }
       return $this->getPageCount();
    }
+
+   public function getItemsPerPage() {
+      return $this->itemsPerPage;
+   }
    
    public function getPageCount() {
       if ($this->itemCount > 0 && ($this->itemCount > $this->itemsPerPage)) {

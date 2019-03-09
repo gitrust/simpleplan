@@ -9,6 +9,7 @@ class Schedules extends Controller {
   }
 
   private function initPager() {
+    // only positive numbers
     $page = abs(intval($this->getParamGet('page',0)));
 
     // Paginator
@@ -85,7 +86,7 @@ class Schedules extends Controller {
     $data["pager.prev"] = $this->pager->getPrev();
     $data["pager.next"] = $this->pager->getNext();
     $data["pager.page"] = $this->pager->getPage();
-    $data['events'] = $this->_model->eventsLimited($this->pager->getPage());
+    $data['events'] = $this->_model->eventsLimited($this->pager->getPage(),$this->pager->getItemsPerPage());
     $data['activities'] = $this->_model->activities();
     $data['resources'] = $this->_model->resources();
     $data['tabledata'] = $this->createtable($data);    

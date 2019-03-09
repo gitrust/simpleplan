@@ -22,7 +22,7 @@
 		</div>
         <div class="three columns">
 			<label for="email"> <?= I18n::tr('label.email'); ?></label>
-			<input type="text" name="email" placeholder="<?= I18n::tr('label.email'); ?>" value="" maxlength="50" required>
+			<input type="text" name="email" placeholder="<?= I18n::tr('label.email'); ?>" value="" maxlength="50">
 		</div>
 	</div>
 

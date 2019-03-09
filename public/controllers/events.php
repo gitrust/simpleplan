@@ -31,10 +31,6 @@ class Events extends Controller {
     $this->render();
   }
 
-  /** API: Team list */
-  public function teamlist() {    
-    $this->renderTeamlist();
-  }
 
   public function key($termin,$rolle) {
     return "x";
@@ -108,21 +104,5 @@ class Events extends Controller {
     }
     return $entryUsers;
   }
-
-  private function renderTeamlist() {
-    $entryUsers = $this->entryUsers();
-
-    $data['title'] = I18n::tr('title.teamlist');
-    $data['entryUsers'] = $entryUsers;
-    $data["isadmin"] = $this->isAdmin();
-    $data['schedules'] = $this->_model->schedules();
-    $data['roles'] = $this->_model->roles();
-    $data['entrykeys'] = $this->entryKeysFromDb();
-
-    $this->_view->render('header', $data);
-    $this->_view->render('nav', $data);
-    $this->_view->render('events/teamlist', $data);      
-    $this->_view->render('footer');
-  }  
 
 }
