@@ -10,17 +10,20 @@ class Model {
 	}
 
 	public function isUserAdmin($id) {
-		$a = $this->_db->select('SELECT count(id) as usersCount FROM Users WHERE id = :id AND userRole = :userRole',array("id" => $id,"userRole" => "admin"));
-    	return count($a[0]["usersCount"]) > 0;
-	  }
+		return $this->checkRole($id,"admin");
+	}
 	  
 	public function isUserManager($id) {
-    	$a = $this->_db->select('SELECT count(id) as usersCount FROM Users WHERE id = :id AND userRole = :userRole',array("id" => $id,"userRole" => "manager"));
-    	return count($a[0]) > 0;
-	  }
+    	return $this->checkRole($id,"manager");
+	}
 	  
 	public function isUser($id) {
-    	$a = $this->_db->select('SELECT count(id) as usersCount FROM Users WHERE id = :id AND userRole = :userRole',array("id" => $id,"userRole" => "user"));
-    	return count($a[0]) > 0;
-  	}
+		return $this->checkRole($id,"user");
+	}
+
+	private function checkRole($id, $role) {
+		$a = $this->_db->select('SELECT count(id) as usersCount FROM Users WHERE id = :id AND userRole = :userRole',array("id" => $id,"userRole" => $role));
+    	return count($a[0]["usersCount"]) > 0;
+	}
+	  
 }
