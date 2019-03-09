@@ -146,6 +146,14 @@ a:hover  i.fas.fa-plus {
 	color: #0FA0CE;
 }
 
+a i.fas.fa-arrow-left{
+	color: #0FA0CE;
+}
+
+a i.fas.fa-arrow-right{
+	color: #0FA0CE;
+}
+
 /* paging */
 .paging {
 	justify-content: center;

@@ -36,7 +36,10 @@ class Schedules_Model extends Model {
 
   public function activities() {
     return $this->_db->select('SELECT a.id, a.name as name, a.description,a.categoryId, ac.name as categoryname
-     FROM Activities as a JOIN ActivityCategories as ac WHERE a.categoryId = ac.id  ORDER BY a.id DESC LIMIT 0, 200');
+     FROM Activities as a 
+     JOIN ActivityCategories as ac 
+     WHERE a.categoryId = ac.id  
+     ORDER BY categoryname ASC, name ASC');
   }
 
   /**

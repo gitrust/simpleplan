@@ -15,8 +15,8 @@
 	<?php
 	echo 
 		'<div class="paging"><a href="/schedules/?page=' . $data["pager.prev"] . '"> 
-			&lt; </a>  &nbsp; Page [' . $data["pager.page"] . '] &nbsp;
-			<a href="/schedules?page=' . $data["pager.next"] . '"> &gt; </a>
+			' . UiHelper::leftIcon() . '</a>  &nbsp; Page [' . $data["pager.page"] . '] &nbsp;
+			<a href="/schedules?page=' . $data["pager.next"] . '">' . UiHelper::rightIcon() . '</a>
 		</div>';
 	?>
 
@@ -46,6 +46,8 @@
 
 				// first column is name of activity
 				echo '<td>';
+				echo htmlspecialchars($row[0]["categoryname"]);
+				echo ' / ';
 				echo htmlspecialchars($row[0]["activityname"]);
 				echo '</td>';
 
@@ -69,10 +71,10 @@
 						if (!$data["readonly"]) {						
 							echo '<a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a>';
 						}
+					} else if (!$data["readonly"]){
+						echo $addlink;						
 					} else {
-						if (!$data["readonly"]) {
-							echo $addlink;
-						}
+						echo '&nbsp;';
 					}
 
 					echo '</td>';

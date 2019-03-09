@@ -60,7 +60,9 @@ class I18n {
 			"title.resourcesite" => "Ressourcen",
 			"title.activitysite" => "Aktivitäten",
 			"label.user" => "Benutzer",
-			"label.manager" => "Manager"
+			"label.manager" => "Manager",
+			"title.chooseresource" => "Ressource wählen",
+			"option.chooseresource" => "Ressource wählen"
 			);
 	
    public static function tr($msgid, $lang = "de") {

@@ -14,7 +14,7 @@ class Schedules extends Controller {
 
     // Paginator
     $itemCount = $this->_model->eventCount();
-    $this->pager = new Paginator("schedules", $page, $itemCount);
+    $this->pager = new Paginator("schedules", $page, $itemCount,1);
   }
 
   public function index() {
@@ -67,6 +67,7 @@ class Schedules extends Controller {
             $table[$row][$col] = array("eventid" => $event["id"], 
               "activityid" => $activity["id"],
               "activityname" => $activity["name"] ,
+              "categoryname" => $activity["categoryname"],
               "assignmentid" => $assignment["id"], 
               "resourceexists" => count($assignment) > 0,
               "resourcename" => $assignment["resourcename"]);
@@ -80,9 +81,9 @@ class Schedules extends Controller {
 
   
   private function render() {
-    $data['title'] = I18n::tr('title.entrylist');    
-    $data["isadmin"] = $this->isAdmin();
-    $data["readonly"] = $this->isUser();
+    $data['title'] = I18n::tr('title.entrylist');
+    $data['isadmin'] = $this->isAdmin();
+    $data["readonly"] = !($this->isAdmin() || $this->isManager());
     $data["pager.prev"] = $this->pager->getPrev();
     $data["pager.next"] = $this->pager->getNext();
     $data["pager.page"] = $this->pager->getPage();

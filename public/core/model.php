@@ -22,8 +22,10 @@ class Model {
 	}
 
 	private function checkRole($id, $role) {
-		$a = $this->_db->select('SELECT count(id) as usersCount FROM Users WHERE id = :id AND userRole = :userRole',array("id" => $id,"userRole" => $role));
-    	return count($a[0]["usersCount"]) > 0;
+		$a = $this->_db->select('SELECT count(id) as usersCount 
+			FROM Users 
+			WHERE id = :id AND userRole = :userRole',array("id" => $id,"userRole" => $role));
+    	return intval($a[0]["usersCount"]) > 0;
 	}
 	  
 }
