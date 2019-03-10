@@ -25,17 +25,21 @@ class Controller {
 		}
 	}
 
+	protected function redirectToLogin() {
+		// location to go if user is not logged in
+		$data['location'] = 'login/';
+						
+		// redirect and die
+		$this->_view->render('redirect', $data);
+	}
+
 	private function getControllerName() {
 		return strtolower(get_class($this));
 	}
 
 	private function checkAccess() {
 	  	if (!Session::get("userid")) {
-	  	  // location to go if user is not logged in
-		  	$data['location'] = 'login/';
-	      
-	      // redirect and die
-	      $this->_view->render('redirect', $data);
+	  	  $this->redirectToLogin();
 	  	} 
 	}
 	

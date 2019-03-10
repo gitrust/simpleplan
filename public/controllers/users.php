@@ -4,6 +4,10 @@ class Users extends Controller {
 
   public function __construct() {
     parent::__construct($needsLogin=true);
+
+    if (!$this->isAdmin()) {
+      $this->redirectToLogin();
+    }
   }
 
   public function index() { 

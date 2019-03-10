@@ -14,7 +14,7 @@ class I18n {
 			"title.login" => "Anmelden",
 			"link.administration" => "Administration",
 			"link.logout" => "Abmelden",
-			"link.entries" => "Planung",
+			"link.entries" => "Dienstplan",
 			"link.roles" => "Dienste",
 			"link.users" => "Benutzer",
 			"link.schedules" => "Termine",
@@ -62,7 +62,9 @@ class I18n {
 			"label.user" => "Benutzer",
 			"label.manager" => "Manager",
 			"title.chooseresource" => "Ressource wählen",
-			"option.chooseresource" => "Ressource wählen"
+			"option.chooseresource" => "Ressource wählen",
+			"title.privacy" => "Datenschutz",
+			"title.imprint" => "Impressum"
 			);
 	
    public static function tr($msgid, $lang = "de") {

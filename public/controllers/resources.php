@@ -6,24 +6,16 @@ class Resources extends Controller {
     parent::__construct($needsLogin=true);
   }
 
-  public function index() {  	 
-    $data["isadmin"] = $this->isAdmin();
-    $data['resources'] = $this->_model->resources();
-    $data['title'] = I18n::tr('title.resourcesite');
-    $data['form_header'] = I18n::tr('form.login');
+  public function index() { 
     
-    $this->render($data);
+    $this->render();
   }
 
   /**  API: Add resource */
   public function add() {
     $this->addResource();
-
-    $data['resources'] = $this->_model->resources();
-    $data['title'] = I18n::tr('title.resourcesite') ;
-    $data['form_header'] = I18n::tr('form.login');
     
-    $this->render($data); 
+    $this->render(); 
   }
 
   /** API: Delete resource */
@@ -31,12 +23,8 @@ class Resources extends Controller {
     if (!empty($resourceId)) {
       $this->_model->deleteResource($resourceId);
     }
-
-    $data["isadmin"] = $this->isAdmin();
-    $data['resources'] = $this->_model->resources();
-    $data['title'] = I18n::tr('title.resourcesite') ;
-    $data['form_header'] = I18n::tr('form.login');
-    $this->render($data);    
+    
+    $this->render();    
   }
 
      // Helper Function
@@ -46,7 +34,12 @@ class Resources extends Controller {
     }
   }
 
-  private function render($data) {
+  private function render() {
+    $data["isadmin"] = $this->isAdmin();
+    $data['resources'] = $this->_model->resources();
+    $data['title'] = I18n::tr('title.resourcesite') ;
+    $data['form_header'] = I18n::tr('form.login');
+
     $this->_view->render('header', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('partials/admin/head', $data);

@@ -20,7 +20,8 @@ class Schedules_Model extends Model {
   }
 
   /**
-   * get all available assignments
+   * get all available events (paginated)
+   * with a date range starting from now - 7 days
    */
   public function eventsLimited($offset,$limit) {
     $data = array('offset' => array("value" => intval($offset), "type" => PDO::PARAM_INT),
@@ -28,6 +29,7 @@ class Schedules_Model extends Model {
 
     return $this->_db->selectWithTypeBinding('SELECT id, targetDate, description 
       FROM Events 
+      WHERE targetDate >= NOW() - INTERVAL 7 DAY
       ORDER BY targetDate ASC limit :offset, :limit ',
         $data
       );

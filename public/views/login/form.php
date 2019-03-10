@@ -1,5 +1,5 @@
 
-<h1>WTeamPlaner</h1>
+<h1>Dienstplan</h1>
 
 <?php echo Message::show() ; ?>
 

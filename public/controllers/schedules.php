@@ -14,7 +14,7 @@ class Schedules extends Controller {
 
     // Paginator
     $itemCount = $this->_model->eventCount();
-    $this->pager = new Paginator("schedules", $page, $itemCount,2);
+    $this->pager = new Paginator("schedules", $page, $itemCount,3);
   }
 
   public function index() {
