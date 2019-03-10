@@ -45,11 +45,11 @@
 				echo '<tr>';
 
 				// first column is name of activity
-				echo '<td>';
+				echo '<td class="caption"><span>';
 				echo htmlspecialchars($row[0]["categoryname"]);
 				echo ' / ';
 				echo htmlspecialchars($row[0]["activityname"]);
-				echo '</td>';
+				echo '</span></td>';
 
 				for ($j = 0; $j < count($row); $j++) {
 					$col = $row[$j];
@@ -60,16 +60,16 @@
 					$addlink .= 'id="reslink" ';
 					$addlink .= 'href="#" ';
 					$addlink .= 'data-ref="' . htmlspecialchars($col["eventid"]) . ',' . htmlspecialchars($col["activityid"]) . '" ' ;
-					$addlink .= 'title="Add Resource" ';
+					$addlink .= 'title="' . I18n::tr('title.addresource') . '" ';
 					$addlink .= '>';
 					$addlink .= UiHelper::plusIcon();
 					$addlink .= '</a>';
 
 					// delete link
 					if ($col["resourceexists"]) {
-						echo htmlspecialchars($col["resourcename"]) . '&nbsp;';
+						echo '<span>' . htmlspecialchars($col["resourcename"]) . '&nbsp;</span>';
 						if (!$data["readonly"]) {						
-							echo '<a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a>';
+							echo '<span class="floatright"><a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a></span>';
 						}
 					} else if (!$data["readonly"]){
 						echo $addlink;						

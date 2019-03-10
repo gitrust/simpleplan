@@ -14,7 +14,7 @@ class Schedules extends Controller {
 
     // Paginator
     $itemCount = $this->_model->eventCount();
-    $this->pager = new Paginator("schedules", $page, $itemCount,1);
+    $this->pager = new Paginator("schedules", $page, $itemCount,2);
   }
 
   public function index() {
@@ -87,10 +87,10 @@ class Schedules extends Controller {
     $data["pager.prev"] = $this->pager->getPrev();
     $data["pager.next"] = $this->pager->getNext();
     $data["pager.page"] = $this->pager->getPage();
-    $data['events'] = $this->_model->eventsLimited($this->pager->getPage(),$this->pager->getItemsPerPage());
+    $data['events'] = $this->_model->eventsLimited($this->pager->getOffset(),$this->pager->getItemsPerPage());
     $data['activities'] = $this->_model->activities();
     $data['resources'] = $this->_model->resources();
-    $data['tabledata'] = $this->createtable($data);    
+    $data['tabledata'] = $this->createtable($data);  
 
     // Render
     $this->_view->render('header', $data);

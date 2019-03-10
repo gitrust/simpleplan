@@ -10,8 +10,8 @@ class Paginator {
    function __construct($name,$currentPageNumber,$itemCount,$itemsPerPage=2) {
       $this->name = $name;
       $this->currentPage = $this->getAndStorePage($currentPageNumber);
-      $this->itemCount = $itemCount;
-      $this->itemsPerPage = $itemsPerPage;
+      $this->itemCount = abs($itemCount);
+      $this->itemsPerPage = abs($itemsPerPage);
    }
    
    public function getPrev() {
@@ -34,15 +34,12 @@ class Paginator {
    }
    
    public function getPageCount() {
+      $pc = 1;
       if ($this->itemCount > 0 && ($this->itemCount > $this->itemsPerPage)) {
-         $remainder = $this->itemCount % $this->itemsPerPage;
-         $result = $this->itemCount / $this->itemsPerPage;
-         if ($remainder > 0) {
-            return intval($result) + 1 ;
-         }
-         return $result;
+         //$remainder = $this->itemCount % $this->itemsPerPage;
+         $pc = ceil($this->itemCount / $this->itemsPerPage);
       }
-      return 1;
+      return $pc;
    }
 
    public function getPage() {
@@ -50,6 +47,13 @@ class Paginator {
          return $this->getPageCount();
       }
       return $this->currentPage;
+   }
+
+   public function getOffset() {
+      if ($this->getPageCount() < 2 || $this->getPage() == 1) {
+         return 0;
+      }
+      return ($this->getPage() - 1) * $this->getItemsPerPage();
    }
 
    private function getAndStorePage($page) {

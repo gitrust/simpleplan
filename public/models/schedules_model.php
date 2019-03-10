@@ -23,7 +23,6 @@ class Schedules_Model extends Model {
    * get all available assignments
    */
   public function eventsLimited($offset,$limit) {
-    // FIXME Need to use .bindParam(...) in database
     $data = array('offset' => array("value" => intval($offset), "type" => PDO::PARAM_INT),
     'limit' => array('value' => intval($limit), "type" => PDO::PARAM_INT));
 

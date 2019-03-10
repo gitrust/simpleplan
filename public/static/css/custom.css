@@ -30,6 +30,16 @@ body {
     float: right!important;
 }
 
+/* schedule table */
+td.caption {
+	font-style: italic;
+	color: grey;
+}
+
+td span.floatright {
+	float: right;
+}
+
 /* horizontal scrollbar for tables */
 .hscroller {
    overflow-x:scroll;
