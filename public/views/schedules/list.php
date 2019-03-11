@@ -58,18 +58,19 @@
 					// popup link
 					$addlink = '<a ';
 					$addlink .= 'id="reslink" ';
+					$addlink .= 'class="addlink" ';
 					$addlink .= 'href="#" ';
 					$addlink .= 'data-ref="' . htmlspecialchars($col["eventid"]) . ',' . htmlspecialchars($col["activityid"]) . '" ' ;
 					$addlink .= 'title="' . I18n::tr('title.addresource') . '" ';
 					$addlink .= '>';
 					$addlink .= UiHelper::plusIcon();
-					$addlink .= '</a>';
+					$addlink .= '</a>&nbsp;';
 
 					// delete link
 					if ($col["resourceexists"]) {
 						echo '<span>' . htmlspecialchars($col["resourcename"]) . '&nbsp;</span>';
 						if (!$data["readonly"]) {						
-							echo '<span class="floatright"><a href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a></span>';
+							echo '<span class="floatright"><a class="dellink" href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a></span>';
 						}
 					} else if (!$data["readonly"]){
 						echo $addlink;						
