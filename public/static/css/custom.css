@@ -1,4 +1,5 @@
 
+@media screen {
 /* Main content div, white page with shadow */
 #main {
 	background-color: white;
@@ -177,6 +178,8 @@ div.caption-small {
 	font-style: italic;
 }
 
+} /* media screen */
+
 
 /* #Media Queries
 ================================================== */
@@ -201,3 +204,28 @@ div.caption-small {
 
 /* Mobile Landscape Only */
 @media only screen and (min-width: 480px) and (max-width: 767px) and (max-device-width: 1000px) {}
+
+/* print only */
+@media print {
+	.nav { display:none}
+	.subnav { display:none}
+	footer { display:none}
+	div.paging { display:none }
+	.container { width:100%; max-width: 100%; }
+	#main { box-shadow: white}
+	.moddiv { display:none}
+	body {
+		
+		width: 100%;
+	}
+	a { display: none;}
+	a.addlink  { display: none}
+	a.dellink  { display: none}
+	input { display: none}
+	p.loginname  { display: none}
+	table { width: 100%;}
+	table , th, td { border: 1px solid black;  border-collapse: collapse; }
+	th, td {
+		padding: 5px; margin: 5px;
+	}
+}
