@@ -14,8 +14,13 @@ class Schedules_Model extends Model {
     return $this->_db->select('SELECT id, targetDate, description FROM Events ORDER BY id ASC');
   }
 
-  public function eventCount() {
+  public function eventsAllCount() {
     $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events');
+    return $result[0]["eventCount"];
+  }
+
+  public function eventCount() {
+    $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events WHERE targetDate >= NOW() - INTERVAL 7 DAY');
     return $result[0]["eventCount"];
   }
 
