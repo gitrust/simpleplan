@@ -42,7 +42,14 @@ CREATE TABLE ResourceAssignment (
     activityId INT(6) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
+CREATE TABLE SystemConfiguration (
+ id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
+ ckey VARCHAR(30) NOT NULL,
+ cvalue VARCHAR(30) NOT NULL
+) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
+
 /* OBSOLETE */
+/*
 CREATE TABLE UserRoleAssignment (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     roleId int(6) NOT NULL,
@@ -54,11 +61,5 @@ CREATE TABLE UserRoleEvents (
     userId int(6) NOT NULL,
     eventId int(6) NOT NULL,
     roleId int(6) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
-
-/*CREATE TABLE Configuration (
- id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
- key VARCHAR(30) NOT NULL,
- value VARCHAR(30) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 */
