@@ -17,4 +17,8 @@ class UiHelper {
     public static function rightIcon() {
         return '<i class="fas fa-arrow-right"></i>';
     }
+
+    public static function externalLinkIcon() {
+        return '<i class="fas fa-external-link-alt"></i>';
+    }
 }
