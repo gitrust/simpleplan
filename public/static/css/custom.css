@@ -32,10 +32,10 @@ body {
 }
 
 /* schedule table */
-td.caption {
-	font-style: italic;
+/*td.caption {
+font-style: italic;
 	color: grey;
-}
+}*/
 
 td span.floatright {
 	float: right;
@@ -161,6 +161,10 @@ a i.fas.fa-arrow-left{
 	color: #0FA0CE;
 }
 
+a:hover i.fas.fa-external-link-alt {
+	color: #0FA0CE;
+}
+
 a i.fas.fa-arrow-right{
 	color: #0FA0CE;
 }
@@ -221,6 +225,7 @@ div.caption-small {
 	a { display: none;}
 	a.addlink  { display: none}
 	a.dellink  { display: none}
+	a.actlink  { display: none}
 	input { display: none}
 	p.loginname  { display: none}
 	table { width: 100%;}
