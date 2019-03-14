@@ -44,6 +44,7 @@ class Login extends Controller {
       Session::set("username",$users[0]['firstname']);
       return true;
     }
+    Message::set(I18n::tr('message.loginfailed'));
     return false;
   }
 

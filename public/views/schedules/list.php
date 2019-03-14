@@ -42,10 +42,19 @@
 		for ($i = 0; $i < count($table); $i++) {
 				$row = $table[$i];
 
+				$actlink = '<a ';
+				$actlink .= 'id="actlink" ';
+				$actlink .= 'class="actlink" ';
+				$actlink .= 'href="/activityresources/' . htmlspecialchars($row[0]["activityid"]) . '" ';
+				$actlink .= '>';
+				$actlink .= UiHelper::externalLinkIcon();
+				$actlink .= '</a>&nbsp;';
+
 				echo '<tr>';
 
 				// first column is name of activity
 				echo '<td class="caption"><span>';
+				echo $actlink;
 				echo htmlspecialchars($row[0]["categoryname"]);
 				echo ' / ';
 				echo htmlspecialchars($row[0]["activityname"]);
