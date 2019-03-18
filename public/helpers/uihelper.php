@@ -21,4 +21,8 @@ class UiHelper {
     public static function externalLinkIcon() {
         return '<i class="fas fa-external-link-alt"></i>';
     }
+
+    public static function pdfIcon() {
+        return '<i class="far fa-file-pdf"></i>';
+    }
 }

@@ -4,10 +4,9 @@
 	<h1><?= $data['title'] ?></h1>
 	
 	<!-- menu -->
-	<!--div class="subnav">
-		<a href="<?= DIR ?>schedules/view/"><?= I18n::tr('link.schedules.readonly'); ?></a>
-		| <a href="<?= DIR ?>schedules/print/"><?= I18n::tr('link.schedules.print'); ?></a>
-	</div-->
+	<div class="subnav">
+	<a href="<?= DIR ?>schedules/pdf/">Download</a>
+	</div>
 
 	<?php echo Message::show(); ?>
 	

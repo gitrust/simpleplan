@@ -42,6 +42,10 @@ Create your docker-compose environment file ".env" in docker directory
 
 * adapt SQL files in /sql folder
 
+# Libraries
+
+- Install fpdf 1.8.1
+
 # Terminology
 
 ## Domain
