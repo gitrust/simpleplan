@@ -6,7 +6,7 @@ services:
             LOG_STDOUT: "true"
             LOG_STDERR: "true"
             LOG_LEVEL: debug
-        image: fauria/lap
+        image: fauria/lamp
         ports:
           - "8080:80"
         volumes:
