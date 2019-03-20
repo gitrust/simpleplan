@@ -1,7 +1,9 @@
 <?php
-require('lib/fpdf/fpdf.php');
+define('FPDF_FONTPATH',dirname(__FILE__) . "/../../lib/tfpdf/font/");
+#define("_SYSTEM_TTFONTS","/www/htdocs/w019373a/dienstplan.immanuel-kf.de/lib/tfpdf/font/")
+require('lib/tfpdf/tfpdf.php');
 
-class PDF extends FPDF
+class PDF extends tFPDF
 {
 	public function __construct() {
         # L = Landscape, P = Portrait
@@ -49,7 +51,7 @@ class PDF extends FPDF
 
 	function CreateFooter() {
 		$this->SetY(-15); 
-		$this->SetFont('Arial','I',7);
+		$this->SetFont('DejaVu','I',7);
 		$this->Cell(0,10,I18n::tr("label.createdat") .date("j.n.Y"),0,0,'R');
 		$this->Ln();
 	}
@@ -58,7 +60,7 @@ class PDF extends FPDF
 	// Better table
 	function CreateTable($header, $tabledata)
 	{
-		$this->SetFont('Arial','',14);
+		$this->SetFont('DejaVu','',14);
 		$this->Cell(100);
 		$this->Cell(30,25,I18n::tr("title.reportschedulestitle"),0,0,'C');
 		$this->Ln(20);
@@ -69,13 +71,13 @@ class PDF extends FPDF
 
 		// Header
 		$headerheight = 10;
-		$this->SetFont('Arial','',10);
+		$this->SetFont('DejaVu','',10);
 		for($i=0;$i<count($header);$i++){
 			$this->Cell($w[$i],$headerheight,$header[$i],0,0,'C');
 		}
 		$this->Ln();
 
-		$this->SetFont('Arial','',10);
+		$this->SetFont('DejaVu','',10);
 
 		// Data
 		$rowidx = 1;
@@ -92,7 +94,7 @@ class PDF extends FPDF
 				$pagecreated = true;
 			}
 
-			$this->SetFont('Arial','',10);
+			$this->SetFont('DejaVu','',10);
 			$colidx=0;
 			foreach ($row as $col) {
 				$value = $col;
@@ -116,9 +118,12 @@ $header = $pdf->TableHeader($data);
 $data = $pdf->LoadData($data);
 
 // Add a Unicode font (uses UTF-8)
+$pdf->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
+$pdf->AddFont('DejaVu','B','DejaVuSansCondensed-Bold.ttf',true);
+$pdf->AddFont('DejaVu','I','DejaVuSansCondensed-Oblique.ttf',true);
 
 $pdf->SetAutoPageBreak(false);
-$pdf->SetFont('Arial','',10);
+$pdf->SetFont('DejaVu','',10);
 $pdf->SetTitle(I18n::tr("pdfreport.schedules.filetitle"));
 $pdf->SetCreator('schedule-pdf-generator');
 $pdf->AddPage();
@@ -126,5 +131,5 @@ $pdf->AddPage();
 
 # Generate table
 $pdf->CreateTable($header,$data);
-$pdf->Output('D','plan.pdf');
+$pdf->Output('plan.pdf','D');
 ?>

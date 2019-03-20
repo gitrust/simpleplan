@@ -5,7 +5,7 @@
 	
 	<!-- menu -->
 	<div class="subnav">
-	<a href="<?= DIR ?>schedules/pdf/">Download</a>
+	<a href="<?= DIR ?>schedules/pdf/"><?= I18n::tr("link.downloadreport"); ?></a>
 	</div>
 
 	<?php echo Message::show(); ?>

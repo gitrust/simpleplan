@@ -10,7 +10,7 @@
 		 echo '<th>' . I18n::tr('table.header.users') . '</th>';
          echo '<th>' . I18n::tr('table.header.firstname') . '</th>';
          echo '<th>' . I18n::tr('table.header.email') . '</th>';
-         echo '<th>' . I18n::tr('table.header.admin') . '</th>';
+         echo '<th>' . I18n::tr('table.header.systemrole') . '</th>';
          echo '<th>&nbsp;</th>';
 		 echo '</tr></thead>';
 		 echo '<tbody>';
