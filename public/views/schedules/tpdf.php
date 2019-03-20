@@ -51,7 +51,7 @@ class PDF extends tFPDF
 
 	function CreateFooter() {
 		$this->SetY(-15); 
-		$this->SetFont('DejaVu','',7);
+		$this->SetFont('DejaVu','I',7);
 		$this->Cell(0,10,I18n::tr("label.createdat") .date("j.n.Y"),0,0,'R');
 		$this->Ln();
 	}
@@ -60,7 +60,7 @@ class PDF extends tFPDF
 	// Better table
 	function CreateTable($header, $tabledata)
 	{
-		$this->SetFont('DejaVu','',14);
+		$this->SetFont('DejaVu','B',14);
 		$this->Cell(100);
 		$this->Cell(30,25,I18n::tr("title.reportschedulestitle"),0,0,'C');
 		$this->Ln(20);
@@ -71,7 +71,7 @@ class PDF extends tFPDF
 
 		// Header
 		$headerheight = 10;
-		$this->SetFont('DejaVu','',10);
+		$this->SetFont('DejaVu','B',10);
 		for($i=0;$i<count($header);$i++){
 			$this->Cell($w[$i],$headerheight,$header[$i],0,0,'C');
 		}
@@ -119,8 +119,8 @@ $data = $pdf->LoadData($data);
 
 // Add a Unicode font (uses UTF-8)
 $pdf->AddFont('DejaVu','','DejaVuSans.ttf',true);
-$pdf->AddFont('DejaVu','B','DejaVuSans.ttf',true);
-$pdf->AddFont('DejaVu','I','DejaVuSans.ttf',true);
+$pdf->AddFont('DejaVu','B','DejaVuSans-Bold.ttf',true);
+$pdf->AddFont('DejaVu','I','DejaVuSans-Oblique.ttf',true);
 
 $pdf->SetAutoPageBreak(false);
 $pdf->SetFont('DejaVu','',10);
