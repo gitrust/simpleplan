@@ -14,7 +14,7 @@
 	<?php
 	echo 
 		'<div class="paging"><a href="/schedules/?page=' . $data["pager.prev"] . '"> 
-			' . UiHelper::leftIcon() . '</a>  &nbsp; Page [' . $data["pager.page"] . '] &nbsp;
+			' . UiHelper::leftIcon() . '</a>  &nbsp; ' . I18n::tr('pager.page') . ' ' . $data["pager.page"] . ' &nbsp;
 			<a href="/schedules?page=' . $data["pager.next"] . '">' . UiHelper::rightIcon() . '</a>
 		</div>';
 	?>
@@ -30,7 +30,7 @@
 		foreach ($data['events'] as $item) { 
 			echo '<th>';
 			echo '' . htmlspecialchars($item['targetDate']) . '';
-			echo '<br><div class="caption-small">' . htmlspecialchars($item['description']) . '</div>';
+			echo '<br><div class="caption-small">' . htmlspecialchars($item['description']) . '&nbsp;</div>';
 			echo '</th>';
 		}
 
