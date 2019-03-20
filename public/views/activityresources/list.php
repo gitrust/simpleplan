@@ -2,12 +2,6 @@
 <div class="twelve columns">
 
 	<h1><?= $data['title'] ?></h1>
-	
-	<!-- menu -->
-	<!--div class="subnav">
-		<a href="<?= DIR ?>schedules/view/"><?= I18n::tr('link.schedules.readonly'); ?></a>
-		| <a href="<?= DIR ?>schedules/print/"><?= I18n::tr('link.schedules.print'); ?></a>
-	</div-->
 
 	<?php echo Message::show(); ?>
 
@@ -21,7 +15,7 @@
 	  else {
 		echo '<thead><tr>';
 		echo '<th>Datum</th>';
-		echo '<th>BEschreibung</th>';
+		echo '<th>Beschreibung</th>';
 		echo '<th>Ressource</th>';
 		echo '</tr></thead>';
 		echo '<tbody>';

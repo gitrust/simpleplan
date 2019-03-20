@@ -51,7 +51,7 @@ class PDF extends tFPDF
 
 	function CreateFooter() {
 		$this->SetY(-15); 
-		$this->SetFont('DejaVu','I',7);
+		$this->SetFont('DejaVu','',7);
 		$this->Cell(0,10,I18n::tr("label.createdat") .date("j.n.Y"),0,0,'R');
 		$this->Ln();
 	}
@@ -118,9 +118,9 @@ $header = $pdf->TableHeader($data);
 $data = $pdf->LoadData($data);
 
 // Add a Unicode font (uses UTF-8)
-$pdf->AddFont('DejaVu','','DejaVuSansCondensed.ttf',true);
-$pdf->AddFont('DejaVu','B','DejaVuSansCondensed-Bold.ttf',true);
-$pdf->AddFont('DejaVu','I','DejaVuSansCondensed-Oblique.ttf',true);
+$pdf->AddFont('DejaVu','','DejaVuSans.ttf',true);
+$pdf->AddFont('DejaVu','B','DejaVuSans.ttf',true);
+$pdf->AddFont('DejaVu','I','DejaVuSans.ttf',true);
 
 $pdf->SetAutoPageBreak(false);
 $pdf->SetFont('DejaVu','',10);

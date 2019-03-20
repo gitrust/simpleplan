@@ -26,7 +26,15 @@ class Schedules extends Controller {
     $data['activities'] = $this->_model->activities();
     $data['tabledata'] = $this->createtable($data);  
 
-    $this->_view->render('schedules/pdf', $data);
+    $this->_view->render('schedules/tpdf', $data);
+  }
+
+  public function tpdf() {
+    $data['events'] = $this->_model->eventsLimited(0,4);
+    $data['activities'] = $this->_model->activities();
+    $data['tabledata'] = $this->createtable($data);  
+
+    $this->_view->render('schedules/tpdf', $data);
   }
 
   // FIXME only admin should do that
