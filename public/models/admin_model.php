@@ -10,7 +10,7 @@ class Admin_Model extends Model {
    * Get all available events
    */
   public function events() {
-    return $this->_db->select('SELECT id, targetDate,description FROM Events ORDER BY id DESC LIMIT 0, 100');
+    return $this->_db->select('SELECT id, targetDate,description FROM Events ORDER BY targetDate ASC');
   }
 
   /**

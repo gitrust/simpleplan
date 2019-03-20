@@ -10,7 +10,7 @@ class Resources_Model extends Model {
    * Get all available resources
    */
   public function resources() {
-    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY id DESC LIMIT 0, 100');
+    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY name ASC');
   }
 
   /** Add new resource */
