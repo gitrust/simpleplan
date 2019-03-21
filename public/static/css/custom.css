@@ -32,18 +32,20 @@ body {
 }
 
 /* schedule table */
-/*td.caption {
-font-style: italic;
-	color: grey;
-}*/
+table td.caption {
+	text-align: left;
+}
+
+table td.schedule {
+	text-align: center;	
+}
 
 td span.floatright {
 	float: right;
 }
 
-/* horizontal scrollbar for tables */
-.hscroller {
-   overflow-x:scroll;
+table.stripe th {
+	text-align: center;
 }
 
 /* displayed login name, header */
@@ -60,13 +62,13 @@ footer.page-footer {
 		width:100%; 
 		/*border-collapse:collapse; */
 }
-.stripe th{
+.stripe th {
 		background: #ffffff;
 }
 .stripe td{ 
 	padding:8px;
-	 /*border:#4e95f4 1px solid; padding:7px;*/
 }
+
 /* provide some minimal visual accomodation for IE8 and below */
 /*.stripe tr{
 	background: #1EAEDB;
@@ -75,6 +77,7 @@ footer.page-footer {
 /*.stripe tr:nth-child(odd){ 
 	background: #1EAEDB;
 } */
+
 /*  Define the background color for all the EVEN background rows  */
 .stripe tr:nth-child(even){
 	background: #dae5f4;
