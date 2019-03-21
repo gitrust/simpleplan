@@ -5,6 +5,11 @@ class I18n {
 	private static  $msg = null;
 	
    public static function tr($msgid, $lang = "de-de") {
+     // use global language if defined
+     if (defined('SITELANGUAGE')) {
+       $lang = SITELANGUAGE;
+     }
+
      // currently only first requested language is set
      if (self::$msg == null) {
         self::$msg = parse_ini_file("static/i18n/" . $lang . ".ini");
