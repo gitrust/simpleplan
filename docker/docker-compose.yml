@@ -18,15 +18,16 @@ services:
       restart: always
       environment:
         MYSQL_ROOT_PASSWORD: pass
-        MYSQL_DATABASE: wteamplaner
-        MYSQL_USER: wteamplaner
-        MYSQL_PASSWORD: wteamplaner
+        MYSQL_DATABASE: resourceplanner
+        MYSQL_USER: resourceplanner
+        MYSQL_PASSWORD: resourceplanner
       expose:
         - 3306
       volumes:
         - "${SQL_SCRIPTS_FOLDER}:/docker-entrypoint-initdb.d"
       networks:
         - backend
+        
     phpmyadmin:
       image: phpmyadmin/phpmyadmin
       container_name: phpmyadmin
@@ -34,10 +35,10 @@ services:
         PMA_ARBITRARY: 1
         PMA_PORT: 3306
         PMA_HOST: "db"
-        MYSQL_DATABASE: wteamplaner
+        MYSQL_DATABASE: resourceplanner
         MYSQL_ROOT_PASSWORD: pass
-        MYSQL_USER: wteamplaner
-        MYSQL_PASSWORD: wteamplaner
+        MYSQL_USER: resourceplanner
+        MYSQL_PASSWORD: resourceplanner
       restart: always
       ports:
        - "8081:80"
