@@ -1,6 +1,5 @@
 <?php
 define('FPDF_FONTPATH',dirname(__FILE__) . "/../../lib/tfpdf/font/");
-#define("_SYSTEM_TTFONTS","/www/htdocs/w019373a/dienstplan.immanuel-kf.de/lib/tfpdf/font/")
 require('lib/tfpdf/tfpdf.php');
 
 class PDF extends tFPDF
@@ -41,7 +40,7 @@ class PDF extends tFPDF
 
 	function TableHeader($d) {
 		$header = array();
-
+		
 		$header[] = '';
 		foreach ($d['events'] as $item) { 
 			$header[] = $item['targetDate'];
@@ -56,11 +55,18 @@ class PDF extends tFPDF
 		$this->Ln();
 	}
 
+	function TrimValue($v,$maxlen){
+		if (is_null($v)) {
+			return '';
+		}
+		return substr(trim($v),0,$maxlen);
+	}
+
 
 	// Better table
 	function CreateTable($header, $tabledata)
 	{
-		$this->SetFont('DejaVu','B',14);
+		$this->SetFont('DejaVu','B',16);
 		$this->Cell(100);
 		$this->Cell(30,25,I18n::tr("title.reportschedulestitle"),0,0,'C');
 		$this->Ln(20);
@@ -71,7 +77,7 @@ class PDF extends tFPDF
 
 		// Header
 		$headerheight = 10;
-		$this->SetFont('DejaVu','B',10);
+		$this->SetFont('DejaVu','',13);
 		for($i=0;$i<count($header);$i++){
 			$this->Cell($w[$i],$headerheight,$header[$i],0,0,'C');
 		}
@@ -79,14 +85,14 @@ class PDF extends tFPDF
 
 		$this->SetFont('DejaVu','',10);
 
-		// Data
+		// Table Data
 		$rowidx = 1;
 		$rowsperpage = 26;
 		
 		$pagecreated = false;
 		foreach($tabledata as $row)
 		{
-			// New page
+			// Create new page
 			$newpage = ($rowidx++ % $rowsperpage) == 0;
 			if ($newpage) {
 				$this->CreateFooter();
@@ -94,15 +100,30 @@ class PDF extends tFPDF
 				$pagecreated = true;
 			}
 
-			$this->SetFont('DejaVu','',10);
+
+			// Data Columns
 			$colidx=0;
 			foreach ($row as $col) {
 				$value = $col;
-				$this->Cell($w[$colidx++],$row_height,$value,1,'L');
+
+				// first column 
+				if ($colidx == 0){
+					$this->SetFont('DejaVu','',10);
+					// max 30 characters
+					$value = $this->TrimValue($value,30);
+					$this->Cell($w[$colidx++],$row_height,$value,1,0,'L');
+				} else {
+					// max 20 charachters
+					$this->SetFont('DejaVu','B',10);
+					$value = $this->TrimValue($value,20);
+					$this->Cell($w[$colidx++],$row_height,$value,1,0,'C');
+				}
+				
 			}
 			$this->Ln();
 		}
 		
+		// Page Footer (if only one page)
 		if (!$pagecreated) {
 			$this->CreateFooter();
 		}
@@ -117,6 +138,7 @@ $header = $pdf->TableHeader($data);
 // Data loading
 $data = $pdf->LoadData($data);
 
+// Define Fonts that will be used in PDF
 // Add a Unicode font (uses UTF-8)
 $pdf->AddFont('DejaVu','','DejaVuSans.ttf',true);
 $pdf->AddFont('DejaVu','B','DejaVuSans-Bold.ttf',true);
@@ -125,11 +147,11 @@ $pdf->AddFont('DejaVu','I','DejaVuSans-Oblique.ttf',true);
 $pdf->SetAutoPageBreak(false);
 $pdf->SetFont('DejaVu','',10);
 $pdf->SetTitle(I18n::tr("pdfreport.schedules.filetitle"));
-$pdf->SetCreator('schedule-pdf-generator');
+$pdf->SetCreator('resourceplanner');
 $pdf->AddPage();
 
 
 # Generate table
 $pdf->CreateTable($header,$data);
-$pdf->Output('plan.pdf','D');
+$pdf->Output('resourceplan.pdf','D');
 ?>
