@@ -14,7 +14,8 @@ class Schedules extends Controller {
 
     // Paginator
     $itemCount = $this->_model->eventCount();
-    $this->pager = new Paginator("schedules", $page, $itemCount,3);
+    $pageCount = Session::get('paging.pagecount') ? Session::get('paging.pagecount') : 3; 
+    $this->pager = new Paginator("schedules", $page, $itemCount, $pageCount);
   }
 
   public function index() {
@@ -103,6 +104,7 @@ class Schedules extends Controller {
     $data["pager.prev"] = $this->pager->getPrev();
     $data["pager.next"] = $this->pager->getNext();
     $data["pager.page"] = $this->pager->getPage();
+    $data["pager.show"] = $this->pager->getPageCount() > 1;
     $data['events'] = $this->_model->eventsLimited($this->pager->getOffset(),$this->pager->getItemsPerPage());
     $data['activities'] = $this->_model->activities();
     $data['resources'] = $this->_model->resources();

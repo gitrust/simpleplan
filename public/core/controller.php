@@ -66,6 +66,10 @@ class Controller {
 		return $default;
 	}
 
+	protected function getOrDefault($var,$default=null){
+		return isset($var) ? $var : $default;
+	}
+
 	protected function getParamPost($name,$default=null) {
 		if (isset($_POST[$name])){
 			return filter_input(INPUT_POST, $name, FILTER_SANITIZE_SPECIAL_CHARS);

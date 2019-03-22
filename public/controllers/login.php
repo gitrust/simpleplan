@@ -13,8 +13,20 @@ class Login extends Controller {
     $this->render($data);
   }
 
+  public function mobile() {
+    $data['title'] = I18n::tr('title.login') ;
+    $data['form_header'] = I18n::tr('form.login');
+    
+    $this->renderMobile($data);
+  }
+
   public function login() {
     $loggedIn = $this->doLogin();
+
+    # check if mobile version and set initial paging
+    if ($this->getParamPost('mobile','0') == '1') {
+      Session::set('paging.pagecount',1);
+    }
 
     $data['title'] = I18n::tr('title.login') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -63,4 +75,9 @@ class Login extends Controller {
     $this->_view->render('footer');
   }
 
+  private function renderMobile($data) {
+    $this->_view->render('header', $data);
+    $this->_view->render('login/form-mobile', $data);
+    $this->_view->render('footer');
+  }
 }

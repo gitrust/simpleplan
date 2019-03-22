@@ -8,7 +8,8 @@
 ?>
   
 <!-- The above form looks like this -->
-<form method="POST" action="<?= DIR ?>login/login/">
+<form method="POST" action="<?= DIR ?>login/login">
+  <input type="hidden" name="mobile" value="1">
   <div class="row">
     <div class="four columns">&nbsp;
     </div>
@@ -38,7 +39,7 @@
       <input class="button-primary" value="<?= I18n::tr('button.login'); ?>" type="submit">
       
     </div>
-    <div class="two columns"><a href="/login/mobile">Mobile Version</a>
+    <div class="two columns"><a href="/login">Desktop Version</a>
     </div>
     <div class="four columns">&nbsp;
     </div>
