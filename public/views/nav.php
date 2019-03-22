@@ -16,7 +16,7 @@
 	<div class="four columns">
 	<?php 
 	  if (Session::get("userid")) { 
-	    echo '<p class="pull-right loginname">Angemeldet als ' . Session::get('username') . '</p>';
+	    echo '<p class="pull-right loginname">' . I18n::tr('label.loginname') . ' ' . Session::get('username') . '</p>';
 	  }  
 	?>
 	</div>
