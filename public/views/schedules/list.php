@@ -12,11 +12,13 @@
 	
 	<!-- Paginator -->
 	<?php
+	if ($data['pager.show']) {
 	echo 
 		'<div class="paging"><a href="/schedules/?page=' . $data["pager.prev"] . '"> 
 			' . UiHelper::leftIcon() . '</a>  &nbsp; ' . I18n::tr('pager.page') . ' ' . $data["pager.page"] . ' &nbsp;
 			<a href="/schedules?page=' . $data["pager.next"] . '">' . UiHelper::rightIcon() . '</a>
 		</div>';
+	}
 	?>
 
 	<!-- Schedules table -->
