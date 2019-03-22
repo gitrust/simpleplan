@@ -36,15 +36,15 @@ table td.caption {
 	text-align: left;
 }
 
-table td.schedule {
+#schedules td.schedule {
 	text-align: center;	
 }
 
-td span.floatright {
+#schedules td span.floatright {
 	float: right;
 }
 
-table.stripe th {
+#schedules th {
 	text-align: center;
 }
 
