@@ -14,7 +14,7 @@
     </div>
     <div class="four columns">
       <label for="loginInput"><?= I18n::tr('form.login'); ?></label>
-      <input class="u-full-width" placeholder="login" name="login" id="loginInput" type="text">
+      <input class="u-full-width" placeholder="login" name="login" id="loginInput" type="text" required>
     </div>
     <div class="four columns">&nbsp;
     </div>    
@@ -25,7 +25,7 @@
     </div>
     <div class="four columns">
       <label for="pswInput"><?= I18n::tr('form.password'); ?></label>
-      <input class="u-full-width" placeholder="*****" id="pswInput" type="password" name="pass">
+      <input class="u-full-width" placeholder="*****" id="pswInput" type="password" name="pass" required>
     </div>
     <div class="four columns">&nbsp;
     </div>
