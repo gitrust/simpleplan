@@ -25,6 +25,9 @@ define('SESSION_PREFIX','rplan_');
 //optionall create a constant for the name of the site
 define('SITETITLE','Simpleplan');
 
+// App Version
+define('APPVERSION','1.0');
+
 // site language
 // put new translation to static/i18n/*
 define('SITELANGUAGE','de-de');

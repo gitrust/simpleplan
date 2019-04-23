@@ -98,8 +98,11 @@ class Schedules extends Controller {
 
   
   private function render() {
-    $data['title'] = I18n::tr('title.entrylist');
     $data['isadmin'] = $this->isAdmin();
+    $data['ismanager'] = $this->isManager();
+    
+    $data['title'] = I18n::tr('title.entrylist');
+    
     $data["readonly"] = !($this->isAdmin() || $this->isManager());
     $data["pager.prev"] = $this->pager->getPrev();
     $data["pager.next"] = $this->pager->getNext();

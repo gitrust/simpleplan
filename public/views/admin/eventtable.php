@@ -15,7 +15,11 @@
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($item["targetDate"]) . '</td>';
 			echo '<td>' . htmlspecialchars($item["description"]) . '</td>';
-			echo '<td><a href="' . DIR . 'admin/eventdel/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
+			if ($data['isadmin']) {
+				echo '<td><a href="' . DIR . 'admin/eventdel/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
+			} else {
+				echo '<td>&nbsp;</td>';
+			}
 			echo '</tr>';
 		 }
 		 echo '</tbody>';

@@ -6,8 +6,7 @@ class Activities extends Controller {
     parent::__construct($needsLogin=true);
   }
 
-  public function index() {  	 
-    $data["isadmin"] = $this->isAdmin();
+  public function index() {
     $data['activities'] = $this->_model->activities();
     $data['categories'] = $this->_model->categories();
     $data['title'] = I18n::tr('title.activitysite');
@@ -34,7 +33,7 @@ class Activities extends Controller {
       $this->_model->delete($id);
     }
 
-    $data["isadmin"] = $this->isAdmin();
+    
     $data['activities'] = $this->_model->activities();
     $data['categories'] = $this->_model->categories();
     $data['title'] = I18n::tr('title.activitysite') ;
@@ -53,6 +52,9 @@ class Activities extends Controller {
   }
 
   private function render($data) {
+    $data["isadmin"] = $this->isAdmin();
+    $data["ismanager"] = $this->isManager();
+
     $this->_view->render('header', $data);
     $this->_view->render('container_start', $data);
     $this->_view->render('nav', $data);

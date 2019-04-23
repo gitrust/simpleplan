@@ -15,7 +15,11 @@
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($activity["categoryname"]) . '/' . htmlspecialchars($activity["name"]) . '</td>';
 			echo '<td>' . htmlspecialchars($activity["description"]) . '</td>';
+			if ($data['isadmin']) {
 			echo '<td><a href="' . DIR . 'activities/del/' . htmlspecialchars($activity["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
+			} else {
+				echo '<td>&nbsp;</td>';
+			}
 			echo '</tr>';
 		 }
 		 echo '</tbody>';

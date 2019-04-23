@@ -8,6 +8,7 @@ class Users extends Controller {
     if (!$this->isAdmin()) {
       $this->redirectToLogin();
     }
+
   }
 
   public function index() { 
@@ -15,8 +16,7 @@ class Users extends Controller {
   }
 
  /** API: Get Users */
- public function users() {
-  $data["isadmin"] = $this->isAdmin();
+ public function users() {  
   $data['users'] = $this->_model->users(Session::get('userid'));
   $data['title'] = I18n::tr('title.users') ;
   $data['form_header'] = I18n::tr('form.login');
@@ -29,7 +29,6 @@ public function del($id) {
     $this->_model->deleteUser($id,Session::get('userid'));
   }
 
-  $data["isadmin"] = $this->isAdmin();
   $data['users'] = $this->_model->users(Session::get('userid'));
   $data['title'] = I18n::tr('title.users') ;
   $data['form_header'] = I18n::tr('form.login');
@@ -40,7 +39,6 @@ public function del($id) {
 public function add() {
   $this->addUser();
 
-  $data["isadmin"] = $this->isAdmin();
   $data['users'] = $this->_model->users(Session::get('userid'));
   $data['title'] = I18n::tr('title.users') ;
   $data['form_header'] = I18n::tr('form.login');
@@ -60,6 +58,9 @@ public function add() {
 
 
 private function renderUsers($data) {
+  $data["isadmin"] = $this->isAdmin();
+  $data["ismanager"] = $this->isManager();
+
   $this->_view->render('header', $data);
   $this->_view->render('container_start', $data);
   $this->_view->render('nav', $data);

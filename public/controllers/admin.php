@@ -7,12 +7,12 @@ class Admin extends Controller {
   }
 
   public function index() {
-    $this->renderEvents($data);   
+    $this->render($data);   
   }
 
   /** API: Get Events */
   public function events() {
-    $this->renderEvents($data);    
+    $this->render($data);    
   }
 
   /** API: Delete Event */
@@ -21,14 +21,14 @@ class Admin extends Controller {
       $this->_model->deleteEvent($id);
     }
 
-    $this->renderEvents($data);    
+    $this->render($data);    
   }
 
   /** API: Add Event */
   public function eventadd() {
     $this->addEvent();
     
-    $this->renderEvents($data); 
+    $this->render($data); 
   }
 
 
@@ -42,8 +42,9 @@ class Admin extends Controller {
   
   // RENDER TEMPLATES
 
-  private function renderEvents($data) {
+  private function render($data) {
     $data["isadmin"] = $this->isAdmin();
+    $data["ismanager"] = $this->isManager();
     $data['schedules'] = $this->_model->events();
     $data['title'] = I18n::tr('title.schedules') ;
     $data['form_header'] = I18n::tr('form.login');
@@ -59,6 +60,5 @@ class Admin extends Controller {
     $this->_view->render('container_end', $data);
     $this->_view->render('footer');
   } 
-
 
 }

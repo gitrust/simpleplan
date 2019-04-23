@@ -2,7 +2,7 @@
 <div class="row">
 <div class="twelve columns">
 
-	<h1><?= $data['title'] ?></h1>
+	<h2><?= $data['title'] ?></h2>
 
 	<!-- menu -->
 	<div class="subnav">

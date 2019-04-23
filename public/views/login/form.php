@@ -19,7 +19,7 @@
             <input type="text" name="login" class="logininput" placeholder="Enter Username" required>
             <p><?= I18n::tr('form.password'); ?></p>
             <input type="password" class="logininput" name="pass" placeholder="Enter Password" required>
-            <input type="submit" name="submit" value="<?= I18n::tr('button.login'); ?>">
+            <input type="submit" name="submit" class="button-primary" value="<?= I18n::tr('button.login'); ?>">
             <a href="/login/mobile">Mobile Version</a> 
         </form>
 </div>

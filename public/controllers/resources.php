@@ -36,6 +36,7 @@ class Resources extends Controller {
 
   private function render() {
     $data["isadmin"] = $this->isAdmin();
+    $data["ismanager"] = $this->isManager();
     $data['resources'] = $this->_model->resources();
     $data['title'] = I18n::tr('title.resourcesite') ;
     $data['form_header'] = I18n::tr('form.login');

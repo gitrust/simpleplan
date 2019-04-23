@@ -14,7 +14,7 @@ class Events extends Controller {
   /** API: Update function */
   public function update() {
   	 $keys = $this->entryKeysFromUi();
-     if (strtoupper($_SERVER['REQUEST_METHOD']) == 'POST') {
+     if ($this->isPost()) {
         $this->storeKeys($keys);
      }
     
@@ -76,6 +76,7 @@ class Events extends Controller {
     $data['title'] = I18n::tr('title.entrylist');
     
     $data["isadmin"] = $this->isAdmin();
+    $data["ismanager"] = $this->isManager();
     $data['schedules'] = $this->_model->schedules();
     $data['roles'] = $this->_model->roles();
     $data['entrykeys'] = $this->entryKeysFromDb();

@@ -6,13 +6,15 @@ CREATE TABLE Users (
     login VARCHAR(30) NOT NULL,
     email VARCHAR(50),
     userRole VARCHAR(30),
-    pass VARCHAR(255)
+    pass VARCHAR(255),
+    inactive BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 CREATE TABLE Events (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     targetDate date NOT NULL,
-    description VARCHAR(150)
+    description VARCHAR(150),
+    inactive BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 /* Activity Category */
@@ -32,7 +34,8 @@ CREATE TABLE Activities (
 CREATE TABLE Resources (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     name VARCHAR(30) NOT NULL,
-    description VARCHAR(150)
+    description VARCHAR(150),
+    inactive BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE ResourceAssignment (
@@ -47,19 +50,3 @@ CREATE TABLE SystemConfiguration (
  ckey VARCHAR(30) NOT NULL,
  cvalue VARCHAR(30) NOT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
-
-/* OBSOLETE */
-/*
-CREATE TABLE UserRoleAssignment (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    roleId int(6) NOT NULL,
-    userId int(6) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
-
-CREATE TABLE UserRoleEvents (
-    id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
-    userId int(6) NOT NULL,
-    eventId int(6) NOT NULL,
-    roleId int(6) NOT NULL
-) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
-*/

@@ -17,7 +17,11 @@
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($item["name"]) . '</td>';
 			echo '<td>' . htmlspecialchars($item["description"]) . '</td>';
-			echo '<td><a href="' . DIR . 'resources/del/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
+			if ($data['isadmin']) {
+				echo '<td><a href="' . DIR . 'resources/del/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
+			} else {
+				echo '<td>&nbsp;</td>';
+			}
 			echo '</tr>';
 		 }
 		 echo '</tbody>';

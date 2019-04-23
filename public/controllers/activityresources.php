@@ -13,7 +13,8 @@ class ActivityResources extends Controller {
   
   private function render() {
     $data['title'] = I18n::tr('title.activityresources');
-    $data['isadmin'] = $this->isAdmin();
+    $data["isadmin"] = $this->isAdmin();
+    $data["ismanager"] = $this->isManager();
     $data["readonly"] = !($this->isAdmin() || $this->isManager());
     $data['events'] = $this->_model->events();
 
