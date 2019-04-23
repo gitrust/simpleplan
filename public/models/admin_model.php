@@ -10,7 +10,7 @@ class Admin_Model extends Model {
    * Get all available events
    */
   public function events() {
-    return $this->_db->select('SELECT id, targetDate,description FROM Events ORDER BY targetDate ASC');
+    return $this->_db->select('SELECT id, targetDate,description FROM Events WHERE inactive = False ORDER BY targetDate ASC');
   }
 
   /**
@@ -26,8 +26,15 @@ class Admin_Model extends Model {
    * Delete an Event
    */
   public function deleteEvent($id) {
-    $this->_db->delete('ResourceAssignment',array("eventId" => $id),$limit = 'no'); 
+    $this->_db->delete('ResourceAssignment',array("eventId" => $id),$limit = 'no');
     return $this->_db->delete('Events',array("id" => $id),$limit = 1);
+  }
+
+  /**
+   * Inactivate an Event
+   */
+  public function inactivateEvent($id) {
+    return $this->_db->update('Events', array('inactive' => True), array('id' => $id));
   }
 
   /**

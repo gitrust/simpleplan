@@ -11,16 +11,16 @@ class Schedules_Model extends Model {
    * get all available assignments
    */
   public function events() {
-    return $this->_db->select('SELECT id, targetDate, description FROM Events ORDER BY id ASC');
+    return $this->_db->select('SELECT id, targetDate, description FROM Events WHERE inactive = FALSE ORDER BY id ASC');
   }
 
   public function eventsAllCount() {
-    $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events');
+    $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events WHERE inactive = FALSE');
     return $result[0]["eventCount"];
   }
 
   public function eventCount() {
-    $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events WHERE targetDate >= NOW() - INTERVAL 7 DAY');
+    $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events WHERE inactive = FALSE AND targetDate >= NOW() - INTERVAL 7 DAY');
     return $result[0]["eventCount"];
   }
 
@@ -34,7 +34,7 @@ class Schedules_Model extends Model {
 
     return $this->_db->selectWithTypeBinding('SELECT id, targetDate, description 
       FROM Events 
-      WHERE targetDate >= NOW() - INTERVAL 7 DAY
+      WHERE inactive = FALSE AND targetDate >= NOW() - INTERVAL 7 DAY
       ORDER BY targetDate ASC limit :offset, :limit ',
         $data
       );

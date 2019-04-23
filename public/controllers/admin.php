@@ -18,7 +18,7 @@ class Admin extends Controller {
   /** API: Delete Event */
   public function eventdel($id) {
     if (!empty($id)) {
-      $this->_model->deleteEvent($id);
+      $this->_model->inactivateEvent($id);
     }
 
     $this->render($data);    
