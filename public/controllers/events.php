@@ -81,8 +81,10 @@ class Events extends Controller {
     $data['entrykeys'] = $this->entryKeysFromDb();
 
     $this->_view->render('header', $data);
+    $this->_view->render('container_start', $data);
     $this->_view->render('nav', $data);
-    $this->_view->render('events/list', $data);      
+    $this->_view->render('events/list', $data);
+    $this->_view->render('container_end', $data);   
     $this->_view->render('footer');
   }
 

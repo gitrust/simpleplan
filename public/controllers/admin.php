@@ -49,12 +49,14 @@ class Admin extends Controller {
     $data['form_header'] = I18n::tr('form.login');
 
     $this->_view->render('header', $data);
+    $this->_view->render('container_start', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('admin/head', $data);
     $this->_view->render('admin/nav', $data);
     $this->_view->render('admin/eventedit', $data);
     $this->_view->render('admin/eventtable', $data);
     $this->_view->render('admin/footer', $data);
+    $this->_view->render('container_end', $data);
     $this->_view->render('footer');
   } 
 

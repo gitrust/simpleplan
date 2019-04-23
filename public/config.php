@@ -23,11 +23,11 @@ define('DB_PASS','resourceplanner');
 define('SESSION_PREFIX','rplan_');
 
 //optionall create a constant for the name of the site
-define('SITETITLE','Resourcen Planner');
+define('SITETITLE','Simpleplan');
 
 // site language
 // put new translation to static/i18n/*
-define('SITELANGUAGE','en-us');
+define('SITELANGUAGE','de-de');
 
 // session timeout in minutes
 define('SESSION_TIMEOUT',10);

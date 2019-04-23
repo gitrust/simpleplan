@@ -1,4 +1,3 @@
-</div> <!-- / .container -->
 
 <footer class="page-footer">
 <div id="copyright">

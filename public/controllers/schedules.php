@@ -112,10 +112,12 @@ class Schedules extends Controller {
 
     // Render
     $this->_view->render('header', $data);
+    $this->_view->render('container_start', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('schedules/modal', $data);
     $this->_view->render('schedules/list', $data);
     $this->_view->render('schedules/scripts', $data);
+    $this->_view->render('container_end', $data);
     $this->_view->render('footer');
   } 
 

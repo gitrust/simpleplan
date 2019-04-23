@@ -19,7 +19,9 @@ class Page extends Controller {
     $data['title'] = I18n::tr('title.imprint');
 
     $this->_view->render('header', $data);
+    $this->_view->render('container_start', $data);
     $this->_view->render('page/imprint', $data);
+    $this->_view->render('container_end', $data);
     $this->_view->render('footer');
   }
   
@@ -27,7 +29,9 @@ class Page extends Controller {
     $data['title'] = I18n::tr('title.privacy');
 
     $this->_view->render('header', $data);
+    $this->_view->render('container_start', $data);
     $this->_view->render('page/privacy', $data);
+    $this->_view->render('container_end', $data);
     $this->_view->render('footer');
   }
 

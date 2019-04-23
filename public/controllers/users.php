@@ -61,12 +61,14 @@ public function add() {
 
 private function renderUsers($data) {
   $this->_view->render('header', $data);
+  $this->_view->render('container_start', $data);
   $this->_view->render('nav', $data);
   $this->_view->render('partials/admin/head', $data);
   $this->_view->render('partials/admin/nav', $data);
   $this->_view->render('users/edit', $data);
   $this->_view->render('users/table', $data);
   $this->_view->render('partials/admin/footer', $data);
+  $this->_view->render('container_end', $data);
   $this->_view->render('footer');
 } 
 

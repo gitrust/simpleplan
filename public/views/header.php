@@ -43,4 +43,3 @@
 
 </head>
 <body>
-<div class="container" id="main">

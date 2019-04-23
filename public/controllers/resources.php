@@ -41,12 +41,14 @@ class Resources extends Controller {
     $data['form_header'] = I18n::tr('form.login');
 
     $this->_view->render('header', $data);
+    $this->_view->render('container_start', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('partials/admin/head', $data);
     $this->_view->render('partials/admin/nav', $data);
     $this->_view->render('resources/form', $data);
     $this->_view->render('resources/list', $data);
     $this->_view->render('partials/admin/footer', $data);
+    $this->_view->render('container_end', $data);
     $this->_view->render('footer');
   }
 }

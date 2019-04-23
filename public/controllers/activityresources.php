@@ -19,9 +19,11 @@ class ActivityResources extends Controller {
 
     // Render
     $this->_view->render('header', $data);
+    $this->_view->render('container_start', $data);
     $this->_view->render('nav', $data);
     $this->_view->render('activityresources/modal', $data);
     $this->_view->render('activityresources/list', $data);
+    $this->_view->render('container_end', $data);
     $this->_view->render('footer');
   } 
 
