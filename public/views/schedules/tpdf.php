@@ -1,5 +1,5 @@
 <?php
-define('FPDF_FONTPATH',dirname(__FILE__) . "/../../lib/tfpdf/font/");
+#define('FPDF_FONTPATH',dirname(__FILE__) . "/../../lib/tfpdf/font/");
 require('lib/tfpdf/tfpdf.php');
 
 class PDF extends tFPDF
@@ -78,7 +78,7 @@ class PDF extends tFPDF
 		// Header
 		$headerheight = 10;
 		$this->SetFont('DejaVu','',13);
-		for($i=0;$i<count($header);$i++){
+		for($i=0; $i<count($header); $i++){
 			$this->Cell($w[$i],$headerheight,$header[$i],0,0,'C');
 		}
 		$this->Ln();
