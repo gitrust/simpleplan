@@ -10,7 +10,7 @@
 			</div>
 
 			<div class="six columns">				
-				<p class="pull-right">Copyright (c) 2018 - WTeamPlaner</p>				
+				<p class="pull-right">Copyright (c) 2019 - Simpleplan</p>				
 			</div>
 		</div>
     </div>

@@ -27,6 +27,11 @@
   <link type="text/css" rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.7.2/css/all.min.css" />
   <link type="text/css" rel="stylesheet" href="<?= URL::STYLES('custom') ?>">
 
+  	
+  <!-- Favicon
+  ************************* -->
+  <link rel="icon" type="image/x-icon" href="<?= URL::IMG("favicon.ico"); ?>">
+
   <!--  JS	-->
   <script src="<?= URL::JS('rome.min') ?>"></script>
   <!-- Remember to include jQuery :) -->
@@ -35,11 +40,6 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
   <!-- selectize plugin -->
   <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/selectize.js/0.12.6/js/standalone/selectize.min.js"></script>
-
-  	
-  <!-- Favicon
-  ************************* -->
-  <link rel="icon" type="image/x-icon" href="<?= URL::IMG("favicon.ico"); ?>">
 
 </head>
 <body>
