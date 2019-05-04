@@ -1,7 +1,5 @@
 <div class="loginmain">
 
-<h1><?= I18n::tr('title.site');  ?></h1>
-
 <?php echo Message::show() ; ?>
 
 <?php
@@ -13,7 +11,7 @@
 <div class="login-box">
 
     <img src="/static/img/avatar.png" class="avatar">
-        <h1><?= I18n::tr('form.login'); ?></h1>
+        <h1><?= I18n::tr('title.site'); ?></h1>
         <form method="POST" action="<?= DIR ?>login/login/">
             <p><?= I18n::tr('form.login'); ?></p>
             <input type="text" name="login" class="logininput" placeholder="Enter Username" required>

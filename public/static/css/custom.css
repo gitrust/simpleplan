@@ -22,6 +22,7 @@ h1 {
 	width: 100vw;
 	height: 100vh;
 	background-color: lightgray;
+    /* image by Aron Visuals on Unsplash */
     background-image: url("/static/img/background.jpg");
     background-size: cover;
 }

@@ -10,11 +10,10 @@ function popupWindow(event, activity) {
 
 	// set default value
 	// $selectresource[0].selectize.setValue("1");
+	
+	$('#moddiv').modal('show');
 
 	$selectresource[0].selectize.focus();
-
-	$('#moddiv').modal('show');
-	//$('#scheduleform').submit();
 }
 
 // register a click handler for a with id=reslink

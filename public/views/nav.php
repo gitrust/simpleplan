@@ -5,7 +5,7 @@
 		<a href="<?= DIR ?>schedules"><?= I18n::tr('link.entries'); ?></a> |
 <?php 
 		if ($data["isadmin"] || $data["ismanager"]){
-			echo '<a href="' . DIR . 'admin/">' . I18n::tr('link.administration') . '</a> |';
+			echo '<a href="' . DIR . 'resources/">' . I18n::tr('link.administration') . '</a> |';
 		}
 ?>
 		<a href="<?= DIR ?>login/logout/"><?= I18n::tr('link.logout'); ?></a>

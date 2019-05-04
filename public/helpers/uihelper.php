@@ -7,15 +7,15 @@ class UiHelper {
     }
 
     public static function plusIcon() {
-        return '<i class="fas fa-plus"></i>';
+        return '<i title="Add" class="fas fa-plus"></i>';
     }
 
     public static function leftIcon() {
-        return '<i class="fas fa-arrow-left"></i>';
+        return '<i title="Back" class="fas fa-arrow-left"></i>';
     }
 
     public static function rightIcon() {
-        return '<i class="fas fa-arrow-right"></i>';
+        return '<i title="Forward" class="fas fa-arrow-right"></i>';
     }
 
     public static function externalLinkIcon() {
@@ -23,6 +23,6 @@ class UiHelper {
     }
 
     public static function pdfIcon() {
-        return '<i class="far fa-file-pdf"></i>';
+        return '<i title="PDF Report" class="far fa-file-pdf"></i>';
     }
 }
