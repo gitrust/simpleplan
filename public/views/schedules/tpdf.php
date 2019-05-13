@@ -78,6 +78,8 @@ class PDF extends tFPDF
 		// Header
 		$headerheight = 10;
 		$this->SetFont('DejaVu','',13);
+		// offset left border
+		$this->SetX(25);
 		for($i=0; $i<count($header); $i++){
 			$this->Cell($w[$i],$headerheight,$header[$i],0,0,'C');
 		}
@@ -88,6 +90,8 @@ class PDF extends tFPDF
 		// Table Data
 		$rowidx = 1;
 		$rowsperpage = 26;
+
+		
 		
 		$pagecreated = false;
 		foreach($tabledata as $row)
@@ -100,6 +104,8 @@ class PDF extends tFPDF
 				$pagecreated = true;
 			}
 
+			// offset left border
+			$this->SetX(20);
 
 			// Data Columns
 			$colidx=0;
@@ -153,5 +159,5 @@ $pdf->AddPage();
 
 # Generate table
 $pdf->CreateTable($header,$data);
-$pdf->Output('resourceplan.pdf','D');
+$pdf->Output('simpleplan.pdf','D');
 ?>
