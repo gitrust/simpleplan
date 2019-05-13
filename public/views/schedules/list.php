@@ -28,7 +28,7 @@
 		 echo '<div class="alert alert-info">' . I18n::tr('table.noentries') . '</div>';
 	  }
 	  else {
-		echo '<thead><tr><th>&nbsp;</th>';
+		echo '<thead><tr><th>&nbsp;</th><th>&nbsp;</th>';
 		foreach ($data['events'] as $item) { 
 			echo '<th>';
 			echo '' . htmlspecialchars($item['targetDate']) . '';
@@ -53,9 +53,13 @@
 
 				echo '<tr>';
 
-				// first column is name of activity
+				// first col, counter
+				echo '<td class="counter">';
+				echo $i + 1;
+				echo '</td>';
+				// second column is name of activity
 				echo '<td class="caption"><span>';
-				echo $actlink;
+				//echo $actlink;
 				echo htmlspecialchars($row[0]["categoryname"]);
 				echo ' / ';
 				echo htmlspecialchars($row[0]["activityname"]);

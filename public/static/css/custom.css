@@ -53,6 +53,11 @@ table td.caption {
 	text-align: center;	
 }
 
+#schedules td.counter {
+	font-size:10px;
+	color:grey;
+}
+
 #schedules td span.floatright {
 	float: right;
 }
@@ -258,6 +263,11 @@ div.caption-small {
 	font-size: smaller;
 	font-weight: normal;
 	font-style: italic;
+}
+
+/* Modal Dialog */
+#moddiv {
+	min-height: 350px;
 }
 
 } /* media screen */
