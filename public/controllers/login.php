@@ -52,6 +52,7 @@ class Login extends Controller {
     $users = $this->_model->usersByLogin($login,$pass);
 
     if ($users !== false && count($users) > 0 && Pass::validate($pass,$users[0]["pass"])) {
+      $this->_model->updateLastLogin($login);
       Session::set("userid",$users[0]['id']);
       Session::set("username",$users[0]['firstname']);
       return true;
