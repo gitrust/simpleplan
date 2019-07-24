@@ -13,7 +13,7 @@
 		
 		 foreach ($data['schedules'] as $item) {
 			echo '<tr>';
-			echo '<td>' . htmlspecialchars($item["targetDate"]) . '</td>';
+			echo '<td>' . htmlspecialchars(UiHelper::formatDate($item["targetDate"])) . '</td>';
 			echo '<td>' . htmlspecialchars($item["description"]) . '</td>';
 			if ($data['isadmin']) {
 				echo '<td><a href="' . DIR . 'admin/eventdel/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';

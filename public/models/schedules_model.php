@@ -28,7 +28,7 @@ class Schedules_Model extends Model {
    * get all available events (paginated)
    * with a date range starting from now - 1 day
    */
-  public function eventsLimited($offset,$limit) {
+  public function eventsLimited($offset, $limit) {
     $data = array('offset' => array("value" => intval($offset), "type" => PDO::PARAM_INT),
     'limit' => array('value' => intval($limit), "type" => PDO::PARAM_INT));
 
@@ -44,8 +44,8 @@ class Schedules_Model extends Model {
     return $this->_db->select('SELECT a.id, a.name as name, a.description,a.categoryId, ac.name as categoryname
      FROM Activities as a 
      JOIN ActivityCategories as ac 
-     WHERE a.categoryId = ac.id  
-     ORDER BY categoryname ASC, name ASC');
+     WHERE a.categoryId = ac.id 
+     ORDER BY name ASC');
   }
 
   /**
@@ -98,7 +98,7 @@ class Schedules_Model extends Model {
    * Get all available resources
    */
   public function resources() {
-    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY name ASC LIMIT 0, 150');
+    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY name ASC LIMIT 0, 300');
   }
 
   /**

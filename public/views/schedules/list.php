@@ -31,7 +31,7 @@
 		echo '<thead><tr><th>&nbsp;</th><th>&nbsp;</th>';
 		foreach ($data['events'] as $item) { 
 			echo '<th>';
-			echo '' . htmlspecialchars($item['targetDate']) . '';
+			echo '' . htmlspecialchars(UiHelper::formatDate($item['targetDate'])) . '';
 			echo '<br><div class="caption-small">' . htmlspecialchars($item['description']) . '&nbsp;</div>';
 			echo '</th>';
 		}
@@ -59,9 +59,9 @@
 				echo '</td>';
 				// second column is name of activity
 				echo '<td class="caption"><span>';
-				//echo $actlink;
-				echo htmlspecialchars($row[0]["categoryname"]);
-				echo ' / ';
+				echo $actlink;
+				//echo htmlspecialchars($row[0]["categoryname"]);
+				//echo ' / ';
 				echo htmlspecialchars($row[0]["activityname"]);
 				echo '</span></td>';
 

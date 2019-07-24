@@ -20,7 +20,7 @@ class PDF extends tFPDF
 		for ($i = 0; $i < count($table); $i++) {
 			$row = $table[$i];
 			$tcolumns = array();
-			$tcolumns[] = $row[0]["categoryname"] . ' / ' . $row[0]["activityname"];
+			$tcolumns[] = $row[0]["activityname"];
 			
 
 			for ($j = 0; $j < count($row); $j++) {
@@ -43,7 +43,7 @@ class PDF extends tFPDF
 		
 		$header[] = '';
 		foreach ($d['events'] as $item) { 
-			$header[] = $item['targetDate'];
+			$header[] = UiHelper::formatDate($item['targetDate']);
 		}
 		return $header;
 	}

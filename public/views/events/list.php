@@ -50,7 +50,7 @@
 		
 		 foreach ($data['schedules'] as $schedule) {
 			echo '<tr>';
-			echo '<td>' . htmlspecialchars($schedule["targetDate"]) . '</td>';
+			echo '<td>' . htmlspecialchars(UiHelper::formatDate($schedule["targetDate"])) . '</td>';
 			
 			foreach ($data['roles'] as $role) {
 				$key = $schedule["id"] . "-" . $role["id"];
