@@ -25,4 +25,12 @@ class UiHelper {
     public static function pdfIcon() {
         return '<i title="PDF Report" class="far fa-file-pdf"></i>';
     }
+
+    public static function formatDate($d) {
+        if (is_null($d)) {
+            return '--';
+        }
+        // format mysql date to php date with strtotime()
+        return date('d.m.Y',strtotime($d));
+    }
 }
