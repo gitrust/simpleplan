@@ -15,7 +15,7 @@ class Schedules extends Controller {
     // Paginator
     $itemCount = $this->_model->eventCount();
     // default number of items per page = 3
-    $pageCount = Session::get('paging.pagecount') ? Session::get('paging.pagecount') : 3; 
+    $pageCount = Session::get('paging.pagecount') ? Session::get('paging.pagecount') : 4; 
     $this->pager = new Paginator("schedules", $page, $itemCount, $pageCount);
   }
 
