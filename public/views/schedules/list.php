@@ -43,6 +43,7 @@
 		for ($i = 0; $i < count($table); $i++) {
 				$row = $table[$i];
 
+				// activity resources link
 				$actlink = '<a ';
 				$actlink .= 'id="actlink" ';
 				$actlink .= 'class="actlink" ';
