@@ -48,7 +48,7 @@ class Schedules extends Controller {
         if (!empty($activity) && !empty($event) && !empty($resource)) {      
           $this->_model->add($event,$activity,$resource);
         }
-      }
+    }
     $this->render();
   }
 
