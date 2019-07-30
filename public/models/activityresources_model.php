@@ -36,7 +36,7 @@ class ActivityResources_Model extends Model {
    * Get all available resources
    */
   public function resources() {
-    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY name ASC LIMIT 0, 150');
+    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY name ASC LIMIT 0, 300');
   }
 
   /**

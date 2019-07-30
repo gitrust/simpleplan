@@ -24,12 +24,26 @@
 		$addlink .= '</a>&nbsp;';
 
 		echo '<thead><tr>';
-		echo '<th>Datum</th>';
-		echo '<th>Beschreibung</th>';
+		echo '<th>' . I18n::tr('table.header.date') . '</th>';
+		echo '<th>' . I18n::tr('table.header.description') . '</th>';
 		echo '<th>Ressource</th>';
 		echo '</tr></thead>';
 		echo '<tbody>';
+		
 		foreach ($data['events'] as $item) {
+
+			
+			// popup link
+			$addlink = '<a ';
+			$addlink .= 'id="reslink" ';
+			$addlink .= 'class="addlink" ';
+			$addlink .= 'href="#" ';
+			$addlink .= 'data-ref="' . htmlspecialchars($item["id"]) . '" ' ;
+			$addlink .= 'title="' . I18n::tr('title.addresource') . '" ';
+			$addlink .= '>';
+			$addlink .= UiHelper::plusIcon();
+			$addlink .= '</a>&nbsp;';
+			
 			echo '<tr><td>';
 			echo  htmlspecialchars(UiHelper::formatDate($item['targetDate'])) ;
 			echo '</td>';
