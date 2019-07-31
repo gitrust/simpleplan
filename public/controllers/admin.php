@@ -43,11 +43,18 @@ class Admin extends Controller {
   // RENDER TEMPLATES
 
   private function render($data) {
-    $data["isadmin"] = $this->isAdmin();
-    $data["ismanager"] = $this->isManager();
-    $data['schedules'] = $this->_model->events();
+    $isadmin = $this->isAdmin();
+    $data["isadmin"] = $isadmin;
+    $data["ismanager"] = $this->isManager();    
     $data['title'] = I18n::tr('title.schedules') ;
     $data['form_header'] = I18n::tr('form.login');
+
+    // render events dependent on users role
+    if ($isadmin) {
+      $data['schedules'] = $this->_model->events();
+    } else {
+      $data['schedules'] = $this->_model->current_events();
+    }
 
     $this->_view->render('header', $data);
     $this->_view->render('container_start', $data);

@@ -75,11 +75,19 @@ class Events extends Controller {
   private function render() {
     $data['title'] = I18n::tr('title.entrylist');
     
-    $data["isadmin"] = $this->isAdmin();
-    $data["ismanager"] = $this->isManager();
-    $data['schedules'] = $this->_model->schedules();
+    $isadmin = $this->isAdmin();
+
+    $data["isadmin"] = $isadmin;
+    $data["ismanager"] = $this->isManager();    
     $data['roles'] = $this->_model->roles();
     $data['entrykeys'] = $this->entryKeysFromDb();
+
+    // render events dependent on users role
+    if ($isadmin) {
+      $data['schedules'] = $this->_model->schedules();
+    } else {
+      $data['schedules'] = $this->_model->available_schedules();
+    }
 
     $this->_view->render('header', $data);
     $this->_view->render('container_start', $data);
