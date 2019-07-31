@@ -77,8 +77,11 @@ class Bootstrap {
             $method = array_shift($this->_url);
         }
 
-        $parameter = filter_var_array($this->_url, FILTER_SANITIZE_STRING);
+        $parameter = filter_var_array($this->_url, FILTER_SANITIZE_STRING);       
         call_user_func_array(array($this->_controller, $method), $parameter);
+
+        // you can call these parameter in your function this way
+        // myfunction(param1, param2, param3, param4)
     }
 
     /**

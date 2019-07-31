@@ -36,6 +36,9 @@ class Admin extends Controller {
   private function addEvent() {
     if (!empty($_POST['targetDate'])) {
         $date = date_parse_from_format('d.m.Y',$_POST['targetDate']);
+
+        // TODO only allow events in future?
+
         $this->_model->addEvent($date,trim($_POST['desc']));
     }
   }

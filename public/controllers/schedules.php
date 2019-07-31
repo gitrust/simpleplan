@@ -14,7 +14,7 @@ class Schedules extends Controller {
 
     // Paginator
     $itemCount = $this->_model->eventCount();
-    // default number of items per page = 3
+    // default number of items per page = 4
     $pageCount = Session::get('paging.pagecount') ? Session::get('paging.pagecount') : 4; 
     $this->pager = new Paginator("schedules", $page, $itemCount, $pageCount);
   }
@@ -31,15 +31,6 @@ class Schedules extends Controller {
     $this->_view->render('schedules/tpdf', $data);
   }
 
-  public function tpdf() {
-    $data['events'] = $this->_model->eventsLimited(0,4);
-    $data['activities'] = $this->_model->activities();
-    $data['tabledata'] = $this->createtable($data);  
-
-    $this->_view->render('schedules/tpdf', $data);
-  }
-
-  // FIXME only admin should do that
   public function add() {
     if ($this->isPost()){
         $activity = $this->getParamPost('activity');
@@ -59,6 +50,9 @@ class Schedules extends Controller {
     $this->render();
   }
 
+  /**
+   * custom table for the view
+   */
   private function createtable($data) {
       $table[] = array();
 
@@ -99,12 +93,15 @@ class Schedules extends Controller {
 
   
   private function render() {
-    $data['isadmin'] = $this->isAdmin();
-    $data['ismanager'] = $this->isManager();
+    $isadmin = $this->isAdmin();
+    $ismanager = $this->isManager();
+
+    $data['isadmin'] = $isadmin;
+    $data['ismanager'] = $ismanager;
     
     $data['title'] = I18n::tr('title.entrylist');
     
-    $data["readonly"] = !($this->isAdmin() || $this->isManager());
+    $data["readonly"] = !($isadmin || $ismanager);
     $data["pager.prev"] = $this->pager->getPrev();
     $data["pager.next"] = $this->pager->getNext();
     $data["pager.page"] = $this->pager->getPage();
