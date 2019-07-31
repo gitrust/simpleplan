@@ -19,7 +19,7 @@ class ActivityResources_Model extends Model {
 
 
   public function activity($id) {
-    return $this->_db->select('SELECT a.id as id, 
+    $activity =  $this->_db->select('SELECT a.id as id, 
      a.name as activityname,
      a.description as activitydescription,
      a.categoryId as categoryId, 
@@ -28,8 +28,13 @@ class ActivityResources_Model extends Model {
      JOIN ActivityCategories as ac 
      on a.categoryId = ac.id
      WHERE a.id = :aid
-     ORDER BY categoryname ASC, activityname ASC',
+     ORDER BY ac.name ASC, a.name ASC',
      array('aid' => $id));
+
+     if (empty($activity)) {
+       return array();
+     }
+     return $activity[0];
   }
 
   public function resourceAssignments($activityId) {

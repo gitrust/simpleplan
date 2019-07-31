@@ -47,7 +47,7 @@
 				$actlink = '<a ';
 				$actlink .= 'id="actlink" ';
 				$actlink .= 'class="actlink" ';
-				$actlink .= 'href="/activityresources/' . htmlspecialchars($row[0]["activityid"]) . '" ';
+				$actlink .= 'href="/activityresources/' . htmlspecialchars($row[0]["activityid"]) . '/" ';
 				$actlink .= '>';
 				$actlink .= UiHelper::externalLinkIcon();
 				$actlink .= '</a>&nbsp;';

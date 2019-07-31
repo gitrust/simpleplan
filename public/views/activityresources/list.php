@@ -1,7 +1,7 @@
 <div class="row">
 <div class="twelve columns">
 
-	<h2><?= $data['title'] . ' / ' . htmlspecialchars($data['activityname']) ?></h2>
+	<h2><?= $data['title'] . ' - ' . htmlspecialchars($data['activityname']) ?></h2>
 
 	<?php echo Message::show(); ?>
 
@@ -26,7 +26,7 @@
 		echo '<thead><tr>';
 		echo '<th>' . I18n::tr('table.header.date') . '</th>';
 		echo '<th>' . I18n::tr('table.header.description') . '</th>';
-		echo '<th>Ressource</th>';
+		echo '<th>' . I18n::tr('table.header.resources') . '</th>';
 		echo '</tr></thead>';
 		echo '<tbody>';
 		
