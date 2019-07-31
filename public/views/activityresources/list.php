@@ -33,19 +33,24 @@
 		foreach ($data['table'] as $row) {
 
 			
-			// popup link
-			$addlink = '<a ';
-			$addlink .= 'id="reslink" ';
-			$addlink .= 'class="addlink" ';
-			$addlink .= 'href="#" ';
-			$addlink .= 'data-ref="' . htmlspecialchars($row["eventId"]) . '" ' ;
-			$addlink .= 'title="' . I18n::tr('title.addresource') . '" ';
-			$addlink .= '>';
-			$addlink .= UiHelper::plusIcon();
-			$addlink .= '</a>&nbsp;';
-
+			// links
+			$addlink = '';
 			$deleteLink = '';
+			
 			if (!$data["readonly"]) {
+
+				// Add
+				$addlink = '<a ';
+				$addlink .= 'id="reslink" ';
+				$addlink .= 'class="addlink" ';
+				$addlink .= 'href="#" ';
+				$addlink .= 'data-ref="' . htmlspecialchars($row["eventId"]) . '" ' ;
+				$addlink .= 'title="' . I18n::tr('title.addresource') . '" ';
+				$addlink .= '>';
+				$addlink .= UiHelper::plusIcon();
+				$addlink .= '</a>&nbsp;';
+				
+				// Delete
 				// 1. parameter = activityId
 				// 2. parameter = assignmentId					
 				$deleteLink = '<span class="floatright"><a class="dellink" href="' ;
