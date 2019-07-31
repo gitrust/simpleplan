@@ -85,7 +85,7 @@
 					if ($col["resourceexists"]) {
 						echo '<span>' . htmlspecialchars($col["resourcename"]) . '&nbsp;</span>';
 						if (!$data["readonly"]) {						
-							echo '<span class="floatright"><a class="dellink" href="' . DIR . '/schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a></span>';
+							echo '<span class="floatright"><a class="dellink" href="' . DIR . 'schedules/del/' . htmlspecialchars($col["assignmentid"]) . '">' . UiHelper::deleteIcon() . '</a></span>';
 						}
 					} else if (!$data["readonly"]){
 						echo $addlink;						

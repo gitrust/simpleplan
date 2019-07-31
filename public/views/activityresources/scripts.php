@@ -13,7 +13,6 @@ function popupWindow(event) {
 	$selectresource[0].selectize.focus();
 
 	$('#moddiv').modal('show');
-	//$('#scheduleform').submit();
 }
 
 // register a click handler for a with id=reslink

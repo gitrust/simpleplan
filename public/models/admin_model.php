@@ -7,10 +7,17 @@ class Admin_Model extends Model {
   }
 
   /**
-   * Get all available events
+   * Get all events
    */
   public function events() {
     return $this->_db->select('SELECT id, targetDate,description FROM Events WHERE inactive = False ORDER BY targetDate ASC');
+  }
+
+  /**
+   * Get all available events
+   */
+  public function current_events() {
+    return $this->_db->select('SELECT id, targetDate,description FROM Events WHERE inactive = False AND targetDate >= NOW() ORDER BY targetDate ASC');
   }
 
   /**

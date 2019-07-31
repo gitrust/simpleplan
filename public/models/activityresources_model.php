@@ -8,7 +8,7 @@ class ActivityResources_Model extends Model {
   }
 
   /**
-   * get all available assignments
+   * get events 
    */
   public function events() {
     return $this->_db->select('SELECT id, targetDate, description 
@@ -19,11 +19,24 @@ class ActivityResources_Model extends Model {
 
 
   public function activity($id) {
-    return $this->_db->select('SELECT a.id, a.name as name, a.description,a.categoryId, ac.name as categoryname
+    return $this->_db->select('SELECT a.id as id, 
+     a.name as activityname,
+     a.description as activitydescription,
+     a.categoryId as categoryId, 
+     ac.name as categoryname
      FROM Activities as a 
      JOIN ActivityCategories as ac 
-     WHERE a.categoryId = ac.id
-     ORDER BY categoryname ASC, name ASC');
+     on a.categoryId = ac.id
+     WHERE a.id = :aid
+     ORDER BY categoryname ASC, activityname ASC',
+     array('aid' => $id));
+  }
+
+  public function resourceAssignments($activityId) {
+    return $this->_db->select('SELECT ra.id, ra.eventId as eventId, ra.resourceId, r.name as resourcename
+      FROM ResourceAssignment as ra
+      JOIN Resources as r on r.id = ra.resourceId 
+      WHERE ra.activityId = :activityId ', array('activityId' => $activityId));
   }
 
   public function delete($id) {
