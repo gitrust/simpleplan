@@ -24,9 +24,9 @@ class Schedules extends Controller {
   }
 
   public function pdf() {
-    $data['events'] = $this->_model->eventsLimited(0,4);
+    $data['events'] = $this->_model->current_events();
     $data['activities'] = $this->_model->activities();
-    $data['tabledata'] = $this->createtable($data);  
+    $data['tabledata'] = $this->create_report($data);  
 
     $this->_view->render('schedules/tpdf', $data);
   }
@@ -90,6 +90,45 @@ class Schedules extends Controller {
 
       return $table;
   }
+
+  private function create_report($data) {
+    $table[] = array();
+
+    $assignments = $this->_model->assignments();
+
+    $row = 0;      
+    foreach ($data['events'] as $event) {
+       $col = 0;
+       foreach ($data['activities'] as $activity) {
+
+          // FIXME improve performance
+          // search for existing assignments
+          $assignment = array();
+          foreach ($assignments as $a) {
+              $key = $event["id"] . '-' . $activity["id"];
+              // eventid-activityid
+              if ($a["combkey"] == $key) {
+                $assignment = array("resourcename" => $a["resourcename"],"id" => $a["id"]);
+                break;
+              }
+          }
+
+          // generate assignment table
+          $table[$row][$col] = array("eventid" => $event["id"], 
+            "activityid" => $activity["id"],
+            "activityname" => $activity["name"] ,
+            "categoryname" => $activity["categoryname"],
+            "assignmentid" => $assignment["id"], 
+            "resourceexists" => count($assignment) > 0,
+            "targetDate" => UiHelper::formatDate($event['targetDate']),
+            "resourcename" => $assignment["resourcename"]);
+          $col++;
+       }
+       $row++;
+    }
+
+    return $table;
+}
 
   
   private function render() {

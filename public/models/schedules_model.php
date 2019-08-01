@@ -8,10 +8,17 @@ class Schedules_Model extends Model {
   }
 
   /**
-   * get all available assignments
+   * get all events
    */
   public function events() {
     return $this->_db->select('SELECT id, targetDate, description FROM Events WHERE inactive = FALSE ORDER BY id ASC');
+  }
+
+  /**
+   * get all current events
+   */
+  public function current_events() {
+    return $this->_db->select('SELECT id, targetDate, description FROM Events WHERE targetDate >= NOW() AND inactive = FALSE ORDER BY targetDate ASC');
   }
 
   public function eventsAllCount() {
@@ -45,7 +52,7 @@ class Schedules_Model extends Model {
      FROM Activities as a 
      JOIN ActivityCategories as ac 
      WHERE a.categoryId = ac.id 
-     ORDER BY name ASC');
+     ORDER BY a.name ASC');
   }
 
   /**
