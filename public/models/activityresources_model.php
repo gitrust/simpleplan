@@ -13,7 +13,7 @@ class ActivityResources_Model extends Model {
   public function events() {
     return $this->_db->select('SELECT id, targetDate, description 
       FROM Events 
-      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL 7 DAY )
+      WHERE inactive = FALSE AND targetDate >= NOW() 
       ORDER BY targetDate ASC');
   }
 
