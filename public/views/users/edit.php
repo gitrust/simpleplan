@@ -34,8 +34,12 @@
 				<option value="manager"><?= I18n::tr('label.manager'); ?></option>
 				<option value="admin"><?= I18n::tr('label.administrator'); ?></option>
 			</select>           
-        </div>
-		<div class="nine columns">
+		</div>
+		<div class="three columns">
+			<label for="description"> <?= I18n::tr('label.description'); ?></label>
+			<input type="text" name="description" placeholder="<?= I18n::tr('label.description'); ?>" value="" maxlength="150">
+		</div>
+		<div class="six columns">
             <br>
 			<input class="button-primary" value="<?= I18n::tr('button.add'); ?>" type="submit">
 		</div>

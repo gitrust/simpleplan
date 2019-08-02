@@ -26,6 +26,7 @@ class Login extends Controller {
     # check if mobile version and set initial paging
     if ($this->getParamPost('mobile','0') == '1') {
       Session::set('paging.pagecount',1);
+      Session::set('ismobileversion',true);
     }
 
     $data['title'] = I18n::tr('title.login') ;

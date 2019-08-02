@@ -52,7 +52,8 @@ public function add() {
       $genpass = Pass::generate($_POST['pass']);
       $email = $_POST['email'];
       $userRole = $_POST['userrole'];
-      $this->_model->addUser(trim($_POST['login']),trim($_POST['firstname']),$genpass,$email,$userRole);
+      $description = $_POST['description'];
+      $this->_model->addUser(trim($_POST['login']), trim($_POST['firstname']), $genpass, $email, $userRole, $description);
   }
 } 
 
@@ -60,6 +61,7 @@ public function add() {
 private function renderUsers($data) {
   $data["isadmin"] = $this->isAdmin();
   $data["ismanager"] = $this->isManager();
+  $ismobile = Session::get('ismobileversion');
 
   $this->_view->render('header', $data);
   $this->_view->render('container_start', $data);
@@ -67,7 +69,11 @@ private function renderUsers($data) {
   $this->_view->render('partials/admin/head', $data);
   $this->_view->render('partials/admin/nav', $data);
   $this->_view->render('users/edit', $data);
-  $this->_view->render('users/table', $data);
+  if ($ismobile) {
+    $this->_view->render('users/table_mobile', $data);
+  } else {
+    $this->_view->render('users/table', $data);
+  }
   $this->_view->render('partials/admin/footer', $data);
   $this->_view->render('container_end', $data);
   $this->_view->render('footer');

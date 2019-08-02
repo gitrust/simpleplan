@@ -29,7 +29,7 @@ class Users_Model extends Model {
    * get all available users
    */
   public function users($currentUserId) {
-    return $this->_db->select('SELECT id, firstname, login, email, userRole 
+    return $this->_db->select('SELECT id, firstname, login, email, userRole , description
       FROM Users 
       WHERE id != :id 
       ORDER BY firstname ASC 
@@ -37,7 +37,7 @@ class Users_Model extends Model {
   }
  
 
-  public function addUser($login,$name,$pass,$email,$userRole) {
+  public function addUser($login, $name, $pass, $email, $userRole, $description) {
     if (empty($login) || empty($name) || empty($pass) || empty($userRole)) {
       return -1;
     }
@@ -48,12 +48,19 @@ class Users_Model extends Model {
     if ($userExists[0]["total"] > 0) {
         return -1;
     }
+
+    // shorten description
+    if (!empty($description)) {
+      $description = substr($description,0,149);
+    }
     
     return  $this->_db->insert('Users',array("login" => substr(trim($login),0,29),
       "firstname" => substr($name,0,29),
       "pass" => substr($pass,0,254),
       "userRole" => $userRole,
-      "email" => substr($email,0,49)));
+      "email" => substr($email,0,49),
+      "description" => $description
+    ));
   
   }
 
@@ -64,5 +71,7 @@ class Users_Model extends Model {
     
     return 0;
   }
+
+  
 
 }

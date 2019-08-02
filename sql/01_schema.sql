@@ -8,7 +8,8 @@ CREATE TABLE Users (
     userRole VARCHAR(30),
     pass VARCHAR(255),
     inactive BOOLEAN DEFAULT FALSE,
-    lastlogin timestamp NULL DEFAULT NULL
+    lastlogin timestamp NULL DEFAULT NULL,
+    description VARCHAR(150) NULL DEFAULT NULL
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8 ;
 
 CREATE TABLE Events (
