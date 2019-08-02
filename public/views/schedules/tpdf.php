@@ -9,6 +9,9 @@ class PDF extends tFPDF
 	const ROW_HEIGHT = 6;
 	const COL_WIDTH = 20;
 	const LEFT_OFFSET = 15;
+	const MAX_CELL_TEXT = 12;
+	const WITH_BORDER = 1;
+	const NO_BORDER = 0;
 	
 
 	public function __construct() {
@@ -58,21 +61,28 @@ class PDF extends tFPDF
 	}
 
 	function CreateFooter() {
-		$this->SetY(-15); 
+		$currenty = $this->GetY();
+
 		$this->SetFont('DejaVu','I',7);
-		$this->Cell(0,10,I18n::tr("label.createdat") .date("j.n.Y"),0,0,'R');
+		$this->SetY(-15);
+		$this->Cell(0, 10, $this->page, 0, 0, 'C');		
+		$this->Cell(0, 20, I18n::tr("label.createdat") . date("j.n.Y"), self::NO_BORDER,0,'R');
 		$this->Ln();
+
+		$this->SetY($currenty);
 	}
 
-	function TrimValue($v,$maxlen){
+	function TrimValue($v, $maxlen){
 		if (is_null($v)) {
 			return '';
 		}
-		return substr(trim($v),0,$maxlen);
+		return substr(trim($v), 0, $maxlen);
 	}
 
-	function CreateHeader($header) {
-		$col_widths = array_fill(0,self::MAX_COLS,self::COL_WIDTH);
+	function CreateTableHeader($header) {
+		$currentx = $this->GetX();
+
+		$col_widths = array_fill(0, self::MAX_COLS, self::COL_WIDTH);
 
 		// Header
 		$headerheight = 10;
@@ -82,47 +92,58 @@ class PDF extends tFPDF
 		$this->SetX(self::LEFT_OFFSET);
 		
 		// first corner cell
-		//$this->Cell(self::COL_WIDTH,$headerheight,'',0,0,'C');
+		//$this->Cell(self::COL_WIDTH,$headerheight,'', self::NO_BORDER,0,'C');
 		
 		for($i=0; $i<=count($header); $i++){
 			// guard: max column count
 			if ($i > self::MAX_COLS) {
 				break;
 			}
-			$this->Cell($col_widths[$i],$headerheight,$header[$i],0,0,'C');
+			$this->Cell($col_widths[$i], $headerheight, $header[$i], self::NO_BORDER, 0,'C');
 		}
 		$this->Ln();
+
+		$this->SetX($currentx);
+	}
+
+	function CreatePageTitle() {
+		$cy = $this->GetY();
+		$this->SetY(5);
+		$this->SetFont('DejaVu','B',10);
+		$this->Cell(120);
+		$this->Cell(40,10,I18n::tr("title.reportschedulestitle"), self::NO_BORDER,0,'C');
+		$this->Ln(20);
+		$this->SetY($cy);
 	}
 
 	// Better table
 	function CreateTable($header, $rows)
 	{
-		$col_widths = array_fill(0,self::MAX_COLS,self::COL_WIDTH);
-		$maxcelltextlen = 12;
 
-		$this->SetFont('DejaVu','B',10);
-		$this->Cell(100);
-		$this->Cell(30,25,I18n::tr("title.reportschedulestitle"),0,0,'C');
-		$this->Ln(20);
+		$this->CreateFooter();
 
-		// first header
-		$this->CreateHeader($header);
+		// y offset for the table
+		$this->SetY(20);
 
+		// header and footer
+		$this->CreateTableHeader($header);
+		
 		
 		$this->SetFont('DejaVu','',10);
 		// Table Data
-		$rowidx = 1;		
+		$col_widths = array_fill(0, self::MAX_COLS, self::COL_WIDTH);
+		$rowidx = 1;
 		$pagecreated = false;
 		foreach($rows as $row)
 		{
 			// Create new page
 			$newpage = ($rowidx++ % self::ROWS_PER_PAGE) == 0;
-			if ($newpage) {
-				$this->CreateFooter();
+			if ($newpage) {				
 				$this->AddPage();
+				$this->CreateFooter();
 
 				// repeat header for new page
-				$this->CreateHeader($header);
+				$this->CreateTableHeader($header);
 				$pagecreated = true;
 			}
 
@@ -130,7 +151,7 @@ class PDF extends tFPDF
 			$this->SetX(self::LEFT_OFFSET);
 
 			// Data Columns
-			$colidx=0;
+			$colidx = 0;
 			foreach ($row as $col) {
 				$value = $col;
 
@@ -139,11 +160,11 @@ class PDF extends tFPDF
 					$this->SetFont('DejaVu','',8);
 					// max 30 characters
 					$value = $this->TrimValue($value,30);
-					$this->Cell($col_widths[$colidx++],self::ROW_HEIGHT,$value,1,0,'L');
+					$this->Cell($col_widths[$colidx++],self::ROW_HEIGHT,$value, self::WITH_BORDER,0,'L');
 				} else {
 					$this->SetFont('DejaVu','',7);
-					$value = $this->TrimValue($value,$maxcelltextlen);
-					$this->Cell($col_widths[$colidx++],self::ROW_HEIGHT,$value,1,0,'C');
+					$value = $this->TrimValue($value,self::MAX_CELL_TEXT);
+					$this->Cell($col_widths[$colidx++],self::ROW_HEIGHT,$value, self::WITH_BORDER,0,'C');
 				}
 
 				// guard: max column count
@@ -153,11 +174,6 @@ class PDF extends tFPDF
 				
 			}
 			$this->Ln();
-		}
-		
-		// Page Footer (if only one page)
-		if (!$pagecreated) {
-			$this->CreateFooter();
 		}
 	}
 }
@@ -179,11 +195,12 @@ $pdf->AddFont('DejaVu','I','DejaVuSans-Oblique.ttf',true);
 $pdf->SetAutoPageBreak(false);
 $pdf->SetFont('DejaVu','',10);
 $pdf->SetTitle(I18n::tr("pdfreport.schedules.filetitle"));
-$pdf->SetCreator('simpleplan');
+$pdf->SetCreator('simpleplan ' . APPVERSION);
 $pdf->AddPage();
 
 
 # Generate table
+$pdf->CreatePageTitle();
 $pdf->CreateTable($header,$rows);
 $pdf->Output('simpleplan.pdf','D');
 ?>
