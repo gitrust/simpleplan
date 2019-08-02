@@ -44,7 +44,7 @@ Create your docker-compose environment file ".env" in docker directory
 
 # Libraries
 
-- Install fpdf 1.8.1
+- Install tFPDF (https://github.com/rev42/tfpdf/blob/master/src/tFPDF.php)
 
 # Terminology
 
