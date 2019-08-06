@@ -8,12 +8,12 @@ class ActivityResources_Model extends Model {
   }
 
   /**
-   * get events 
+   * get current events 
    */
   public function events() {
     return $this->_db->select('SELECT id, targetDate, description 
       FROM Events 
-      WHERE inactive = FALSE AND targetDate >= NOW() 
+      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL 5 DAY ) 
       ORDER BY targetDate ASC');
   }
 

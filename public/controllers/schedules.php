@@ -13,7 +13,7 @@ class Schedules extends Controller {
     $page = abs(intval($this->getParamGet('page',0)));
 
     // Paginator
-    $itemCount = $this->_model->eventCount();
+    $itemCount = $this->_model->currentEventsCount();
     // default number of items per page = 4
     $pageCount = Session::get('paging.pagecount') ? Session::get('paging.pagecount') : 4; 
     $this->pager = new Paginator("schedules", $page, $itemCount, $pageCount);
@@ -75,6 +75,7 @@ class Schedules extends Controller {
                 }
             }
 
+            //$table[$row] = array("hello" => "helo");
             // generate assignment table
             $table[$row][$col] = array("eventid" => $event["id"], 
               "activityid" => $activity["id"],

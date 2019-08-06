@@ -18,7 +18,16 @@ class Schedules_Model extends Model {
    * get all current events
    */
   public function current_events() {
-    return $this->_db->select('SELECT id, targetDate, description FROM Events WHERE targetDate >= NOW() AND inactive = FALSE ORDER BY targetDate ASC');
+    return $this->_db->select('SELECT id, targetDate, description 
+     FROM Events 
+     WHERE targetDate >= (NOW() - INTERVAL 5 DAY ) AND inactive = FALSE 
+     ORDER BY targetDate ASC');
+  }
+
+  public function currentEventsCount() {
+    $result = $this->_db->select('SELECT COUNT(id) as eventCount 
+    FROM Events WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL 5 DAY ) ');
+    return $result[0]["eventCount"];
   }
 
   public function eventsAllCount() {
@@ -26,10 +35,6 @@ class Schedules_Model extends Model {
     return $result[0]["eventCount"];
   }
 
-  public function eventCount() {
-    $result = $this->_db->select('SELECT COUNT(id) as eventCount FROM Events WHERE inactive = FALSE AND targetDate >= NOW() ');
-    return $result[0]["eventCount"];
-  }
 
   /**
    * get all available events (paginated)
@@ -41,7 +46,7 @@ class Schedules_Model extends Model {
 
     return $this->_db->selectWithTypeBinding('SELECT id, targetDate, description 
       FROM Events 
-      WHERE inactive = FALSE AND targetDate >= NOW() 
+      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL 5 DAY ) 
       ORDER BY targetDate ASC limit :offset, :limit ',
         $data
       );
