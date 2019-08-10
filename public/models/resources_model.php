@@ -10,7 +10,11 @@ class Resources_Model extends Model {
    * Get all available resources
    */
   public function resources() {
-    return $this->_db->select('SELECT id, name, description FROM Resources ORDER BY name ASC');
+    return $this->_db->select('SELECT r.id as id, r.name as name, r.description as description, COUNT(ra.id) as usagecount 
+      FROM Resources r
+      LEFT JOIN ResourceAssignment ra ON ra.resourceid = r.id
+      GROUP BY name, description, id
+      ORDER BY r.name ASC');
   }
 
   /** Add new resource */
