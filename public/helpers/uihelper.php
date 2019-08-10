@@ -3,19 +3,19 @@
 class UiHelper {
 
     public static function deleteIcon() {
-        return '<i title="Delete" class="far fa-trash-alt">';
+        return '<i title="' . I18n::tr('icon.title.delete') . '" class="far fa-trash-alt">';
     }
 
     public static function plusIcon() {
-        return '<i title="Add" class="fas fa-plus"></i>';
+        return '<i title="' . I18n::tr('icon.title.add') . '" class="fas fa-plus"></i>';
     }
 
     public static function leftIcon() {
-        return '<i title="Back" class="fas fa-arrow-left"></i>';
+        return '<i title="' . I18n::tr('icon.title.back') . '" class="fas fa-arrow-left"></i>';
     }
 
     public static function rightIcon() {
-        return '<i title="Forward" class="fas fa-arrow-right"></i>';
+        return '<i title="' . I18n::tr('icon.title.forward') . '" class="fas fa-arrow-right"></i>';
     }
 
     public static function externalLinkIcon() {
@@ -23,7 +23,7 @@ class UiHelper {
     }
 
     public static function pdfIcon() {
-        return '<i title="PDF Report" class="far fa-file-pdf"></i>';
+        return '<i title="' . I18n::tr('icon.title.pdf') . '" class="far fa-file-pdf"></i>';
     }
 
     public static function formatDate($d) {

@@ -7,7 +7,8 @@
 	  }
 	  else {
 		 echo '<thead><tr>';
-		 echo '<th>' . I18n::tr('table.header.schedules') . '</th><th colspan="3">&nbsp;</th>';
+		 echo '<th>' . I18n::tr('table.header.schedules') . '</th>';
+		 echo '<th colspan="2">' . I18n::tr('table.header.description') . '</th>';
 		 echo '</tr></thead>';
 		 echo '<tbody>';
 		
