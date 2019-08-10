@@ -9,7 +9,8 @@
 echo '<option value=""><?= I18n::tr('option.chooseresource'); ?></option>';
 <?php
 foreach ($data['resources'] as $item) {
-	echo '<option value="' . htmlspecialchars($item['id']) . '">' . htmlspecialchars($item["name"]) . '</option>';
+	$render = htmlspecialchars($item["name"]) . ' - ' . htmlspecialchars($item["description"]);
+	echo '<option value="' . htmlspecialchars($item['id']) . '">' . $render . '</option>';
 }
 ?>
 </select>
