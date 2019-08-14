@@ -9,7 +9,6 @@
 		 echo '<thead><tr>';
 		 echo '<th>' . I18n::tr('table.header.users') . '</th>';
          echo '<th>' . I18n::tr('table.header.firstname') . '</th>';
-         echo '<th>' . I18n::tr('table.header.email') . '</th>';
 		 echo '<th>' . I18n::tr('table.header.systemrole') . '</th>';
 		 echo '<th>' . I18n::tr('table.header.description') . '</th>';
          echo '<th>&nbsp;</th>';
@@ -20,7 +19,6 @@
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($user["login"]) . '</td>';
 			echo '<td>' . htmlspecialchars($user["firstname"]) . '</td>';
-            echo '<td>' . htmlspecialchars($user["email"]) . '</td>';
 			echo '<td>' . htmlspecialchars($user["userRole"]) . '</td>';
 			echo '<td>' . htmlspecialchars($user["description"]) . '</td>';
 			echo '<td><a href="' . DIR . 'users/del/' . htmlspecialchars($user["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
