@@ -24,7 +24,7 @@ class Admin_Model extends Model {
    * Get all available Activites
    */
   public function activities() {
-    return $this->_db->select('SELECT id, name, description, categoryId FROM Activities ORDER BY name ASC LIMIT 0, 500');
+    return $this->_db->select('SELECT id, name, description, categoryId FROM Activities WHERE inactive = False ORDER BY name ASC LIMIT 0, 500');
   }
 
   

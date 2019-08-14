@@ -26,7 +26,7 @@
 		echo '<thead><tr>';
 		echo '<th>' . I18n::tr('table.header.date') . '</th>';
 		echo '<th>' . I18n::tr('table.header.description') . '</th>';
-		echo '<th>' . I18n::tr('table.header.resources') . '</th>';
+		echo '<th>' . I18n::tr('table.header.resource') . '</th>';
 		echo '</tr></thead>';
 		echo '<tbody>';
 		

@@ -27,7 +27,35 @@ class Activities extends Controller {
     $this->render($data); 
   }
 
-  /** API: Delete resource */
+  /** API: Activate Activity */
+  public function activate($id) {
+    if (!empty($id)) {
+      $this->_model->activate($id);
+    }
+
+    
+    $data['activities'] = $this->_model->activities();
+    $data['categories'] = $this->_model->categories();
+    $data['title'] = I18n::tr('title.activitysite') ;
+    $data['form_header'] = I18n::tr('form.login');
+    $this->render($data);    
+  }
+
+  /** API: Deactivate Activity */
+  public function deactivate($id) {
+    if (!empty($id)) {
+      $this->_model->deactivate($id);
+    }
+
+    
+    $data['activities'] = $this->_model->activities();
+    $data['categories'] = $this->_model->categories();
+    $data['title'] = I18n::tr('title.activitysite') ;
+    $data['form_header'] = I18n::tr('form.login');
+    $this->render($data);    
+  }
+
+  /** API: Delete Activity */
   public function del($id) {
     if (!empty($id)) {
       $this->_model->delete($id);

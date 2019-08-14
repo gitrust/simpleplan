@@ -12,12 +12,35 @@
 		 echo '</tr></thead>';
 		 echo '<tbody>';
 		
-		 foreach ($data['activities'] as $activity) {
+		 # link templates
+		 $act_link = '<a href="' . DIR . 'activities/activate/{id}/">' . UiHelper::activateIcon() . '</a>';
+		 $deact_link = '<a href="' . DIR . 'activities/deactivate/{id}/">' . UiHelper::deactivateIcon() . '</a>';
+		 $del_link = '<a href="' . DIR . 'activities/del/{id}">' . UiHelper::deleteIcon() . '</a>';
+
+		foreach ($data['activities'] as $activity) {
+			$inactive = $activity['inactive'];
+			$safe_id = htmlspecialchars($activity["id"]);
+
+			# de/activate link
+			$activation_link = "";
+			if ($inactive) {
+				$activation_link = $act_link;
+			} else {
+				$activation_link = $deact_link;
+			}
+
+
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($activity["categoryname"]) . ' - ' . htmlspecialchars($activity["name"]) . '</td>';
 			echo '<td>' . htmlspecialchars($activity["description"]) . '</td>';
+
 			if ($data['isadmin']) {
-			echo '<td><a href="' . DIR . 'activities/del/' . htmlspecialchars($activity["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
+				echo '<td>';
+				echo '&nbsp;';
+				echo str_replace("{id}", $safe_id, $activation_link);
+				echo '&nbsp;';
+				echo str_replace("{id}", $safe_id, $del_link);
+				echo '</td>';
 			} else {
 				echo '<td>&nbsp;</td>';
 			}

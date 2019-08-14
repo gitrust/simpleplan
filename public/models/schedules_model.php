@@ -57,6 +57,7 @@ class Schedules_Model extends Model {
      FROM Activities as a 
      JOIN ActivityCategories as ac 
      WHERE a.categoryId = ac.id 
+     AND a.inactive = False
      ORDER BY a.name ASC');
   }
 

@@ -30,7 +30,8 @@ CREATE TABLE Activities (
     id INT(6) UNSIGNED AUTO_INCREMENT PRIMARY KEY,
     categoryId INT(6) NOT NULL,
     name VARCHAR(30) NOT NULL,
-    description VARCHAR(150)
+    description VARCHAR(150),
+    inactive BOOLEAN DEFAULT FALSE
 ) ENGINE=InnoDB  DEFAULT CHARSET=utf8;
 
 CREATE TABLE Resources (

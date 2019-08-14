@@ -18,6 +18,14 @@ class UiHelper {
         return '<i title="' . I18n::tr('icon.title.forward') . '" class="fas fa-arrow-right"></i>';
     }
 
+    public static function activateIcon() {
+        return '<i title="' . I18n::tr('icon.title.activate') . '" class="far fa-check-circle"></i>';
+    }
+
+    public static function deactivateIcon() {
+        return '<i title="' . I18n::tr('icon.title.deactivate') . '" class="far fa-stop-circle"></i>';
+    }
+
     public static function externalLinkIcon() {
         return '<i class="fas fa-external-link-alt"></i>';
     }
