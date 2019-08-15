@@ -24,7 +24,7 @@
 	<!-- Schedules table -->
 	<table id="schedules" class="stripe">
 	<?php
-	  if (!sizeof($data['events'])) {
+	  if (!sizeof($data['events']) || !sizeof($data['activities'])) {
 		 echo '<div class="alert alert-info">' . I18n::tr('table.noentries') . '</div>';
 	  }
 	  else {
