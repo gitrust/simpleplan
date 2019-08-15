@@ -27,7 +27,7 @@ class Users_Model extends Model {
   }
 
   /**
-   * get all available users
+   * get all available users but not the logged in user
    * @param int $currentUserId id of logged in user
    */
   public function users($currentUserId) {
