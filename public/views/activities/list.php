@@ -22,13 +22,7 @@
 			$safe_id = htmlspecialchars($activity["id"]);
 
 			# de/activate link
-			$activation_link = "";
-			if ($inactive) {
-				$activation_link = $act_link;
-			} else {
-				$activation_link = $deact_link;
-			}
-
+			$activation_link = $inactive ? $act_link : $deact_link;
 
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($activity["categoryname"]) . ' - ' . htmlspecialchars($activity["name"]) . '</td>';
