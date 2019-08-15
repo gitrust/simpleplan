@@ -16,6 +16,7 @@ class Users_Model extends Model {
 
   /**
    * get the first entry from users table matching login
+   * @param string $login user login name
    * @return array with one user
    */
   public function byLogin($login) {
@@ -27,6 +28,7 @@ class Users_Model extends Model {
 
   /**
    * get all available users
+   * @param int $currentUserId id of logged in user
    */
   public function users($currentUserId) {
     return $this->_db->select('SELECT id, firstname, login, email, userRole , description
@@ -37,6 +39,15 @@ class Users_Model extends Model {
   }
  
 
+  /**
+   * Add a new user
+   * @param string $login user login
+   * @param string $name user name
+   * @param string $pass user password
+   * @param string $email user email
+   * @param string $userRole user role
+   * @param string $description user description
+   */
   public function addUser($login, $name, $pass, $email, $userRole, $description) {
     if (empty($login) || empty($name) || empty($pass) || empty($userRole)) {
       return -1;
@@ -64,6 +75,11 @@ class Users_Model extends Model {
   
   }
 
+  /**
+   * Delete a user by id
+   * @param int $id id of the user
+   * @param int $currentUserId id of current logged in user
+   */
   public function deleteUser($id,$currentUserId) {
     if (!empty($id) && $id !== $currentUserId) {
       return $this->_db->delete('Users',array("id" => $id),$limit = 1); 
