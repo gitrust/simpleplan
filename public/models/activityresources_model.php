@@ -2,6 +2,8 @@
 
 class ActivityResources_Model extends Model {
 
+  # number of days to display in past
+  const DAYS = 2;
 
   public function __construct(){
     parent::__construct();
@@ -13,7 +15,7 @@ class ActivityResources_Model extends Model {
   public function events() {
     return $this->_db->select('SELECT id, targetDate, description 
       FROM Events 
-      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL 5 DAY ) 
+      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) 
       ORDER BY targetDate ASC');
   }
 

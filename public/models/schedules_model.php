@@ -2,6 +2,8 @@
 
 class Schedules_Model extends Model {
 
+  # number of days to display in past
+  const DAYS = 2;
 
   public function __construct(){
     parent::__construct();
@@ -20,13 +22,13 @@ class Schedules_Model extends Model {
   public function current_events() {
     return $this->_db->select('SELECT id, targetDate, description 
      FROM Events 
-     WHERE targetDate >= (NOW() - INTERVAL 5 DAY ) AND inactive = FALSE 
+     WHERE targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) AND inactive = FALSE 
      ORDER BY targetDate ASC');
   }
 
   public function currentEventsCount() {
     $result = $this->_db->select('SELECT COUNT(id) as eventCount 
-    FROM Events WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL 5 DAY ) ');
+    FROM Events WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) ');
     return $result[0]["eventCount"];
   }
 
@@ -46,7 +48,7 @@ class Schedules_Model extends Model {
 
     return $this->_db->selectWithTypeBinding('SELECT id, targetDate, description 
       FROM Events 
-      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL 5 DAY ) 
+      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) 
       ORDER BY targetDate ASC limit :offset, :limit ',
         $data
       );
