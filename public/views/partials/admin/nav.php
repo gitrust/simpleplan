@@ -8,6 +8,7 @@
 if ($data["isadmin"]){
 			echo ' | <a href="' . DIR . 'activities">' . I18n::tr('link.activities') . '</a>';
 			echo ' | <a href="' . DIR . 'users/">' . I18n::tr('link.users') . '</a>';
+			echo ' | <a href="' . DIR . 'statistics/">' . I18n::tr('link.statistics') . '</a>';
 }
 ?>
 		</div>
