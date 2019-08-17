@@ -22,7 +22,7 @@ class Schedules_Model extends Model {
     public function current_events() {
         return $this->_db->select('SELECT id, targetDate, description 
             FROM Events 
-            WHERE targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) AND inactive = FALSE 
+            WHERE targetDate >= (CURDATE() - INTERVAL ' . self::DAYS . ' DAY ) AND inactive = FALSE 
             ORDER BY targetDate ASC');
     }
 
@@ -31,7 +31,7 @@ class Schedules_Model extends Model {
      */
     public function currentEventsCount() {
         $result = $this->_db->select('SELECT COUNT(id) as eventCount 
-        FROM Events WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) ');
+        FROM Events WHERE inactive = FALSE AND targetDate >= (CURDATE() - INTERVAL ' . self::DAYS . ' DAY ) ');
         return $result[0]["eventCount"];
     }
 
@@ -54,7 +54,7 @@ class Schedules_Model extends Model {
 
         return $this->_db->selectWithTypeBinding('SELECT id, targetDate, description 
             FROM Events 
-            WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) 
+            WHERE inactive = FALSE AND targetDate >= (CURDATE() - INTERVAL ' . self::DAYS . ' DAY ) 
             ORDER BY targetDate ASC limit :offset, :limit ',
             $data
             );

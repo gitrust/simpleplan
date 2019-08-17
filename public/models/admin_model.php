@@ -17,7 +17,7 @@ class Admin_Model extends Model {
    * Get all available events
    */
   public function current_events() {
-    return $this->_db->select('SELECT id, targetDate,description FROM Events WHERE inactive = False AND targetDate >= NOW() ORDER BY targetDate ASC');
+    return $this->_db->select('SELECT id, targetDate,description FROM Events WHERE inactive = False AND targetDate >= CURDATE() ORDER BY targetDate ASC');
   }
 
   /**

@@ -17,7 +17,7 @@ class Events_Model extends Model {
    * get all available schedules
    */
   public function available_schedules() {
-    return $this->_db->select('SELECT id, targetDate FROM Events WHERE targetDate >= NOW() ORDER BY id ASC LIMIT 0, 500');
+    return $this->_db->select('SELECT id, targetDate FROM Events WHERE targetDate >= CURDATE() ORDER BY id ASC LIMIT 0, 500');
   }
 
   /**

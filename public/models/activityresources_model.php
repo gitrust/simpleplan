@@ -15,7 +15,7 @@ class ActivityResources_Model extends Model {
   public function events() {
     return $this->_db->select('SELECT id, targetDate, description 
       FROM Events 
-      WHERE inactive = FALSE AND targetDate >= (NOW() - INTERVAL ' . self::DAYS . ' DAY ) 
+      WHERE inactive = FALSE AND targetDate >= (CURDATE() - INTERVAL ' . self::DAYS . ' DAY ) 
       ORDER BY targetDate ASC');
   }
 
@@ -38,6 +38,7 @@ class ActivityResources_Model extends Model {
      }
      return $activity[0];
   }
+
 
   public function resourceAssignments($activityId) {
     return $this->_db->select('SELECT ra.id, ra.eventId as eventId, ra.resourceId, r.name as resourcename
