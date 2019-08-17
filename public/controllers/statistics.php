@@ -8,10 +8,13 @@ class Statistics extends Controller {
 
     public function index() {
         $stats = array();
-        $stats['count activities'] = $this->_model->count_activities()[0]['cnt'];
-        $stats['count users'] = $this->_model->count_users()[0]['cnt'];
-        $stats['count events'] = $this->_model->count_events()[0]['cnt'];
-        $stats['count resources'] = $this->_model->count_resources()[0]['cnt'];
+        $stats['all activities'] = $this->_model->count_activities()[0]['cnt'];
+        $stats['all inactive activities'] = $this->_model->count_inactive_activities()[0]['cnt'];
+        $stats['all users'] = $this->_model->count_users()[0]['cnt'];
+        $stats['all events'] = $this->_model->count_events()[0]['cnt'];
+        $stats['current events'] = $this->_model->count_current_events()[0]['cnt'];
+        $stats['old events'] = $this->_model->count_old_events()[0]['cnt'];
+        $stats['all resources'] = $this->_model->count_resources()[0]['cnt'];
         
         $data['statistics'] = $stats;
         $data['title'] = I18n::tr('title.statisticssite');
