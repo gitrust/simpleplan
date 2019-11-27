@@ -252,6 +252,14 @@ a i.fas.fa-arrow-right{
 	color: #0FA0CE;
 }
 
+a i.far.fa-check-circle {
+	color: #0FA0CE;
+}
+
+a i.far.fa-stop-circle {
+	color: #0FA0CE;
+}
+
 /* paging */
 .paging {
 	justify-content: center;

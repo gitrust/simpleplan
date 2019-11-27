@@ -10,7 +10,11 @@
 	  else {
 		 echo '<thead><tr>';
 		 echo '<th>' . I18n::tr('table.header.resource') . '</th>';
-		 echo '<th>' . I18n::tr('table.header.inuse') . '</th>';
+
+		 if ( !Session::get('ismobileversion')) {
+		 	echo '<th>' . I18n::tr('table.header.inuse') . '</th>';
+		 }
+
 		 echo '<th colspan="2">' . I18n::tr('table.header.description') . '</th>';
 		 echo '</tr></thead>';
 		 echo '<tbody>';
@@ -20,7 +24,9 @@
 
 			echo '<tr>';
 			echo '<td>' . htmlspecialchars($item["name"]) . '</td>';
-			echo '<td>' . $isusedflag . '</td>';
+			if ( !Session::get('ismobileversion')) {
+				echo '<td>' . $isusedflag . '</td>';
+			}
 			echo '<td>' . htmlspecialchars($item["description"]) . '</td>';
 			if ($data['isadmin']) {
 				echo '<td><a href="' . DIR . 'resources/del/' . htmlspecialchars($item["id"]) . '">' . UiHelper::deleteIcon() . '</a></td>';
