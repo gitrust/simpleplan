@@ -4,6 +4,7 @@
 date_default_timezone_set('Europe/Berlin');
 
 //site address
+// define('ENVIRONMENT', 'production');
 define('ENVIRONMENT', 'development');
 
 
