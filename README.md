@@ -16,14 +16,14 @@ Used PHP framework is based on sources of simple mvc
 - Setup a MySQL database and initialize with data from `sql/` folder
 
 
-# Play around with docker
+# Play around in docker
 
 ## Install docker
 
 ### Docker-Toolbox for Windows
 
 * Download Docker-Toolbox for windows
-* use NDIS 5 driver during installation
+* chose NDIS 5 driver during installation
 * set up your PATH environment properly
 
 #### Setup docker environment
@@ -41,20 +41,22 @@ Create a shared folder in VirtualBox for "default" image
 	vboxmanage sharedfolder add default --name "projectname" --hostpath "c:\users\username\myproject" --automount
 
 	docker-machine start 
+
+#### Shared folder
+
+use that shared folder in your docker compose file:
+
+	volumes:
+		- /projectname:/some/dir/in/container/project_name
     
 ### or Docker for Windows
 
 * install Docker for Windows 
 	
 
-### Shared folder
-
-use that shared folder in your docker compose file:
-
-	volumes:
-		- /projectname:/some/dir/in/container/project_name
+### Docker configuration
 		
 Create your docker-compose environment file ".env" in `docker` directory
 
-* init WWW_FOLDER variable
-* init SQL_SCRIPTS_FOLDER variable
+* initialize `WWW_FOLDER` variable
+* initialize `SQL_SCRIPTS_FOLDER` variable
