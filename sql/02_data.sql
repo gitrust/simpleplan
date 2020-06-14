@@ -1,5 +1,5 @@
 
-
+/* admin / pass */
 insert into Users(firstname,login,email,userRole,pass) VALUES("Administrator","admin","admin@admin.com","admin","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
 insert into Users(firstname,login,email,userRole,pass) VALUES("User","user","user@admin.com","user","JDJhJDA3JFBxeUM3bFBudkVzUW11VTRGQkJWWWUudk9IQi5kMUhvWktSa0h2ZHYveHVzd2pRQnN6SUhT");
 
