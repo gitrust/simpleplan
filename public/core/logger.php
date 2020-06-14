@@ -26,7 +26,7 @@ class Logger {
        return 0;
    }
 
-   public static function newMessage(Exception $exception, $print_error = false, $clear = false, $error_file = 'errorlog.html') {
+   public static function newMessage(Throwable $exception, $print_error = false, $clear = false, $error_file = 'errorlog.html') {
 
       $message = $exception->getMessage();
       $code = $exception->getCode();

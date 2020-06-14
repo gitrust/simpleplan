@@ -4,6 +4,7 @@
 date_default_timezone_set('Europe/Berlin');
 
 //site address
+// define('ENVIRONMENT', 'production');
 define('ENVIRONMENT', 'development');
 
 
@@ -26,7 +27,7 @@ define('SESSION_PREFIX','rplan_');
 define('SITETITLE','Simpleplan');
 
 // App Version
-define('APPVERSION','1.5');
+define('APPVERSION','1.6');
 
 // site language
 // put new translation to static/i18n/*
