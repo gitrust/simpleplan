@@ -31,7 +31,7 @@ define('APPVERSION','1.6');
 
 // site language
 // put new translation to static/i18n/*
-define('SITELANGUAGE','de-de');
+define('SITELANGUAGE','en-us');
 
 // session timeout in minutes
 define('SESSION_TIMEOUT',10);

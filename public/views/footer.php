@@ -9,7 +9,7 @@
 			</div>
 
 			<div class="six columns">				
-				<p class="pull-right">Copyright (c) 2019 - Simpleplan, v <?= APPVERSION ?></p>			
+				<p class="pull-right">Copyright (c) 2020 - Simpleplan, v <?= APPVERSION ?></p>			
 			</div>
 		</div>
     </div>
